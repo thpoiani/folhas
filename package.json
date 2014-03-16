@@ -1,0 +1,20 @@
+{
+  "name": "folhas",
+  "version": "0.0.1",
+  "description": "editor colaborativo de documentos em tempo real",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/thpoiani/folhas"
+  },
+  "keywords": [
+    "editor",
+    "colaborativo",
+    "documento"
+  ],
+  "author": "Thiago Henrique Poiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thpoiani/folhas/issues"
+  },
+  "homepage": "https://github.com/thpoiani/folhas"
+}
