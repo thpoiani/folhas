@@ -2,7 +2,7 @@
   "name": "folhas",
   "version": "0.0.1",
   "description": "editor colaborativo de documentos em tempo real",
-  "main": "server.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/thpoiani/folhas"
@@ -19,11 +19,15 @@
   },
   "homepage": "https://github.com/thpoiani/folhas",
   "scripts": {
-    "start": "node server",
-    "test": "./node_modules/mocha/bin/mocha test/*.js"
+    "start": "node app.js",
+    "debug": "node debug app.js"
   },
   "dependencies": {
-    "express": "~3.5.0"
+    "sails": "0.9.13",
+    "grunt": "0.4.1",
+    "sails-disk": "~0.9.0",
+    "ejs": "0.8.4",
+    "optimist": "0.3.4"
   },
   "devDependencies": {
     "mocha": "~1.17.1",
