@@ -20,7 +20,8 @@
   "homepage": "https://github.com/thpoiani/folhas",
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "test" : "./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
     "sails": "0.9.13",
