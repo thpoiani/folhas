@@ -12,36 +12,22 @@ participação de colaboradores?
 --------
 
 
-☐ Introdução e Justificativa
+☑ Introdução e Justificativa
 ----------------------------
 
 Redes sociais são populares pelo dinamismo em que um indivíduo interage com outros, compartilhando interesses em comum a grupos ao qual está relacionado. Combinar essas comunidades com aplicações tecnológicas estabelece uma conexão com um usuário real, permitindo expressar-se com círculos de amigos sobre o sistema utilizado.
 
-Boyd e Ellison (2007) definem redes sociais como serviços que permitem aos indivíduos construírem um perfil público e agrupar outros usuários por uma conexão em comum. Essa definição pode variar de acordo com suas especificações.
+Segundo Boyd e Ellison (2007), redes sociais são serviços que permitem aos indivíduos construírem um perfil público e agrupar outros usuários por uma conexão em comum. Essa definição pode variar de acordo com suas especificações.
 
 A ação de um grupo de usuários de uma rede social trabalhando em conjunto para alcançar uma meta em comum é chamada de colaboração social. David Carr (2014), autor de "Social Collaboration for Dummies", exemplifica que uma empresa se beneficia desse trabalho colaborativo, especialmente quando possui empregados que trabalham remotamente.
 
 Carlos Dominguez (2011), após avaliar diversas definições de colaboração, a descreve como equipes diversificadas trabalhando juntas com o propósito de incorporar valor a algo, aproveitando tecnologias para interações efetivas independentemente do espaço (virtual ou físico). Consequentemente, um software colaborativo deve auxiliar os usuários a atingirem seus objetivos executando tarefas em conjunto.
 
+Num trabalho de escrita em grupo, conhecido como escrita colaborativa, "pode ocorrer a complementaridade de capacidades, de conhecimentos, de esforços individuais, de opiniões e pontos de vista" (Pinheiro, 2011, p. 228). Em ambiente virtual, essa atividade exige ferramentas como mensageiros instantâneos ou correios eletrônicos (Pinheiro, Op. cit., p. 232).
 
+Sistemas exclusivos para escrita colaborativa são software colaborativos de edição de texto em tempo real. O Microsoft OneDrive é um modelo aplicado dessa tecnologia, contudo não se complementa com as redes sociais mais populares, restringindo o usuário a utilizar seus recursos sem compartilhar informação para suas conexões de amigos.
 
-```
-Editor de texto colaborativo em tempo real? escrita colaborativa?
-
-similares ?
-
-porque desenvolver ?
-
-objetivos? - último paragrafo
-
-Software colaborativos não se estendem à redes sociais, apenas a grupos fechados
-de usuários daquele sistema.
-
-Quantidade de referências sobre redes sociais e aprendizagem colaborativa.
-
-Oportunidade de estudo de ferramentas e tecnologias usadas em softwares
-colaborativos.
-```
+Como resultado de tal observação, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de grupos de usuários relacionados aos autores.
 
 ☑ Objetivos
 -----------
@@ -123,6 +109,8 @@ CARR, David F. **Social Collaboration, Small Business Style**. InformationWeek.2
 
 DOMINGUEZ, Carlos. **Collaboration: What Does it really mean?**. Cisco Blogs. 2011. Disponível em: <https://blogs.cisco.com/news/collaboration-what-does-it-really-mean>. Acesso em: mar 2014.
 
+PINHEIRO, Petrilson Alan. **A escrita colaborativa por meio do uso de ferramentas digitais: ressignificando a produção textual no contexto escolar**
+In: Calidoscópio (UNISINOS), 2011. v. 9, p. 226-239.
 
 <br>
 
@@ -163,3 +151,6 @@ boyd, d. m. and Ellison, N. B. (2007), Social Network Sites: Definition, History
 7. Quality Assurance
 8. Ambiente de produção
 ```
+
+7- Citação de `Op. cit.` está correta?
+
