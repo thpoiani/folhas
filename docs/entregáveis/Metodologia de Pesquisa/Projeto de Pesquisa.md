@@ -1,6 +1,7 @@
 ☑ DESENVOLVIMENTO DE EDITOR DE TEXTO COM ESTRATÉGIAS DE ESCRITA COLABORATIVA PARA COMPARTILHAMENTO DE DOCUMENTOS EM REDES SOCIAIS
 ================================================================================================================================
 
+
 ☑ Pergunta
 ----------
 
@@ -8,14 +9,17 @@ O compartilhamento de documentos em redes sociais contribui para a
 participação de colaboradores?
 
 
-☐ Resumo
+☑ Resumo
 --------
+
+Com a popularidade das redes sociais, a conexão com conjuntos de amigos se exterioriza a sistemas integrados a essas comunidades. Quando esses grupos trabalham em conjunto para alcançar um objetivo em comum, ocorre a colaboração social que, se envolvida à produção de textos, torna-se escrita colaborativa. Softwares de edição de texto para múltiplos usuários são ineficientes em integração com redes sociais, portanto o objetivo desse projeto é desenvolver uma aplicação colaborativa de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de amigos relacionados aos autores, que constribuirão, em tempo real, a documentos sem um planejamento prévio, empregando conceitos de escrita reativa.
 
 
 ☑ Palavras-chaves
 -----------------
 
 Escrita colaborativa, editor de texto, rede social, colaboração, tempo real
+
 
 ☑ Introdução e Justificativa
 ----------------------------
@@ -32,16 +36,18 @@ O *Microsoft OneDrive* é um modelo aplicado de software de edição de texto em
 
 Como resultado de tal observação, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de grupos de usuários relacionados aos autores.
 
+
 ☑ Objetivos
 -----------
 
-Com a popularidade de redes sociais como Facebook e Twitter, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus grupos de amigos.
+Com a popularidade de redes sociais, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus grupos de amigos.
 
 Observado a ineficiência de alguns editores de texto colaborativos em relação à integração com redes sociais, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com foco em compartilhamento de documentos em redes sociais.
 
 Quando o software estiver finalizado e em estado operacional, surgirá a necessidade de analisar dados referentes ao uso e produtividade dos usuários. Em caso de resultados positivos, será fundamental realizar ajustes no projeto para aprimorar a experiência do usuário e promover a participação em documentos colaborados.
 
-☐ Material e métodos
+
+☑ Material e métodos
 --------------------
 
 Considerando a falta de editores de texto com integração social, o software desenvolvido nesse artigo terá como fundamento a escrita reativa. Pinheiro (2011) esclarece que os colaboradores que executam essa estratégia de escrita colaborativa "criam um documento em tempo real, reagindo às mudanças e contribuições de cada um do grupo e ajustando o texto, sem que haja necessariamente um planejamento prévio e uma coordenação explícita do texto a ser elaborado".
@@ -54,12 +60,14 @@ Simplificando a integração com banco de dados, será usado *MongoDB*, um banco
 
 A navegação do usuário será registrada usando softwares estatísticos de visitação de sites, recolhendo informações de tempo de uso, áreas de cliques e interação social. A possibilidade de criação de metas, na ferramenta *Google Analytics* (GOOGLE ANALYTICS, 2014), permite analisar se o usuário completou certos requisitos durante o acesso ao sistema, enquanto o *Facebook Insights* (FACEBOOK DEVELOPERS, 2014) informa dados dos colaboradores como sexo, idade e horário de acesso.
 
-☐ Forma de análise dos resultados
+
+☑ Forma de análise dos resultados
 ---------------------------------
 
 Com os relatórios oferecidos das ferramentas de análises métricas *Google Analytics* e *Facebook Insights*, será verificado qual o público alvo do sistema e se o usaram de maneira esperada. Ambas ferramentas representam os dados em formas gráficas, facilitando a interpretação e distribuição dos resultados.
 
 Considerando os resultados analisados, o software sofrerá novas atualizações, com correções ou implementações de novos recursos, para garantir a qualidade esperada aos usuários.
+
 
 ☑ Cronograma de trabalho
 ------------------------------------------------
@@ -78,7 +86,7 @@ Considerando os resultados analisados, o software sofrerá novas atualizações,
 | Entrega                       |       |       |       |       |       | **X** |
 
 
-☐ Bibliografia
+☑ Bibliografia
 --------------
 
 BOYD, D. M.; ELLISON, N. B. **Social Network Sites: Definition, History, and Scholarship**. In: Journal of Computer-Mediated Communication, 2007. v.13, p. 210-230.
