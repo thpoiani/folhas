@@ -1,5 +1,5 @@
-☐ Como o compartilhamento social contribui para a edição colaborativa de documentos
-===================================================================================
+☑ DESENVOLVIMENTO DE EDITOR DE TEXTO COM ESTRATÉGIAS DE ESCRITA COLABORATIVA PARA COMPARTILHAMENTO DE DOCUMENTOS EM REDES SOCIAIS
+================================================================================================================================
 
 ☑ Pergunta
 ----------
@@ -12,78 +12,56 @@ participação de colaboradores?
 --------
 
 
+☑ Palavras-chaves
+-----------------
+
+Escrita colaborativa, editor de texto, rede social, colaboração, tempo real
+
 ☑ Introdução e Justificativa
 ----------------------------
 
-Redes sociais são populares pelo dinamismo em que um indivíduo interage com outros, compartilhando interesses em comum a grupos ao qual está relacionado. Combinar essas comunidades com aplicações tecnológicas estabelece uma conexão com um usuário real, permitindo expressar-se com círculos de amigos sobre o sistema utilizado.
+Redes sociais são serviços que permitem aos indivíduos construírem perfis públicos e agruparem outros usuários por conexões em comum (BOYD e ELLISON, 2007). Populares pelo dinamismo de interações entre amigos, combinar essas comunidades com aplicações tecnológicas estabelece uma conexão com um usuário real, permitindo expressar-se com círculos de amigos pelo sistema utilizado.
 
-Segundo Boyd e Ellison (2007), redes sociais são serviços que permitem aos indivíduos construírem um perfil público e agrupar outros usuários por uma conexão em comum. Essa definição pode variar de acordo com suas especificações.
+O trabalho em conjunto de um grupo de usuários de uma rede social para alcançar uma meta em comum é chamada de colaboração social. David Carr (2014), autor de "Social Collaboration for Dummies", exemplifica que uma empresa se beneficia desse trabalho colaborativo, especialmente quando possui empregados que trabalham remotamente.
 
-A ação de um grupo de usuários de uma rede social trabalhando em conjunto para alcançar uma meta em comum é chamada de colaboração social. David Carr (2014), autor de "Social Collaboration for Dummies", exemplifica que uma empresa se beneficia desse trabalho colaborativo, especialmente quando possui empregados que trabalham remotamente.
+Após avaliar diversas definições de colaboração, Carlos Dominguez (2011) a descreve como equipes diversificadas trabalhando juntas com o propósito de agregar valor a algo, aproveitando tecnologias para interações efetivas independentemente do espaço (virtual ou físico). Consequentemente, um software colaborativo deve auxiliar os usuários a atingirem seus objetivos executando tarefas em conjunto.
 
-Carlos Dominguez (2011), após avaliar diversas definições de colaboração, a descreve como equipes diversificadas trabalhando juntas com o propósito de incorporar valor a algo, aproveitando tecnologias para interações efetivas independentemente do espaço (virtual ou físico). Consequentemente, um software colaborativo deve auxiliar os usuários a atingirem seus objetivos executando tarefas em conjunto.
+Num trabalho de escrita em grupo, conhecido como escrita colaborativa, "pode ocorrer a complementaridade de capacidades, de conhecimentos, de esforços individuais, de opiniões e pontos de vista" (PINHEIRO, 2011, p. 228). Em ambiente virtual, essa atividade exige ferramentas como mensageiros instantâneos ou correios eletrônicos (Op. cit., p. 232).
 
-Num trabalho de escrita em grupo, conhecido como escrita colaborativa, "pode ocorrer a complementaridade de capacidades, de conhecimentos, de esforços individuais, de opiniões e pontos de vista" (Pinheiro, 2011, p. 228). Em ambiente virtual, essa atividade exige ferramentas como mensageiros instantâneos ou correios eletrônicos (Pinheiro, Op. cit., p. 232).
-
-Sistemas exclusivos para escrita colaborativa são software colaborativos de edição de texto em tempo real. O Microsoft OneDrive é um modelo aplicado dessa tecnologia, contudo não se complementa com as redes sociais mais populares, restringindo o usuário a utilizar seus recursos sem compartilhar informação para suas conexões de amigos.
+O *Microsoft OneDrive* é um modelo aplicado de software de edição de texto em tempo real para escrita colaborativa. Contudo, não se integra com as redes sociais mais populares, restringindo o usuário a utilizar seus recursos sem compartilhar informação para suas conexões de amigos.
 
 Como resultado de tal observação, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de grupos de usuários relacionados aos autores.
 
 ☑ Objetivos
 -----------
 
-Com a popularidade de redes sociais como Facebook e Twitter, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus grupos de amigos e que não necessitará de um novo cadastro para autenticação, promovendo a centralização de contas de acesso.
+Com a popularidade de redes sociais como Facebook e Twitter, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus grupos de amigos.
 
-Para analisar a viabilidade dessa integração social é preciso investigar previamente o impacto e a visibilidade das informações compartilhadas. Portanto, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com foco em compartilhamento de documentos em redes sociais.
+Observado a ineficiência de alguns editores de texto colaborativos em relação à integração com redes sociais, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com foco em compartilhamento de documentos em redes sociais.
 
-Quando o software estiver finalizado e em estado operacional, em produção, surgirá a necessidade de analisar dados referentes ao uso e produtividade dos usuários, sendo então comparado a sistemas similares, como Google Drive e Microsoft OneDrive. Em caso de resultados positivos, será fundamental realizar ajustes no projeto para aprimorar a experiência do usuário e promover a participação em documentos colaborados.
-
-```
-Investigar o impacto e a visibilidade de informações compartilhadas em redes
-sociais.
-
-Desenvolver software colaborativo de edição de texto com foco em
-compartilhamento de documentos em redes sociais.
-
-Analisar a produtividade do usuários utilizando sistemas similares.
-
-Promover participação de usuários em documentos colaborados.
-```
+Quando o software estiver finalizado e em estado operacional, surgirá a necessidade de analisar dados referentes ao uso e produtividade dos usuários. Em caso de resultados positivos, será fundamental realizar ajustes no projeto para aprimorar a experiência do usuário e promover a participação em documentos colaborados.
 
 ☐ Material e métodos
 --------------------
 
-```
-Comparativo entre softwares colaborativos para manipulação de documentos e suas
-maneiras de distribuição em redes sociais, como Facebook e Google+.
+Considerando a falta de editores de texto com integração social, o software desenvolvido nesse artigo terá como fundamento a escrita reativa. Pinheiro (2011) esclarece que os colaboradores que executam essa estratégia de escrita colaborativa "criam um documento em tempo real, reagindo às mudanças e contribuições de cada um do grupo e ajustando o texto, sem que haja necessariamente um planejamento prévio e uma coordenação explícita do texto a ser elaborado".
 
-Desenvolver ferramenta capaz de compartilhar documentos em redes sociais para
-amigos e grupos que poderão contribuir, em tempo real, ao arquivo.
+Para facilitar a usabilidade do editor colaborativo, esse será uma aplicação web, sendo integrado às redes sociais. A escrita colaborativa entre múltiplos usuários será permitida implementando conceitos de *real-time system* e *websockets*, ambos com o propósito de estabelecer conexões entre cliente e servidor (TOMISLAV CAPAN, 2014).
 
-Análise dos dados recolhidos das ferramentas oferecidas pelas redes sociais.
+De acordo com Tomislav Capan (Op. cit), a plataforma *Node.js* é excepcional em *aplicações em tempo real* por empregar *websockets*. Conceituando esse desenvolvedor, este projeto implementará essa tecnologia pelo fato de ser eficiente nesse padrão de aplicação.
 
-Constante melhoria baseada na usabilidade e experiência do usuário.
+Simplificando a integração com banco de dados, será usado *MongoDB*, um banco de dados não relacional orientado a documentos. Tais documentos são escritos em formato *JSON*, que são objetos em *Node.js*, desse modo nenhuma conversão é necessária para manipulação de dados (TOMISLAV CAPAN, Op. cit.).
 
-Análise de métricas
-```
+A navegação do usuário será registrada usando softwares estatísticos de visitação de sites, recolhendo informações de tempo de uso, áreas de cliques e interação social. A possibilidade de criação de metas, na ferramenta *Google Analytics* (GOOGLE ANALYTICS, 2014), permite analisar se o usuário completou certos requisitos durante o acesso ao sistema, enquanto o *Facebook Insights* (FACEBOOK DEVELOPERS, 2014) informa dados dos colaboradores como sexo, idade e horário de acesso.
 
 ☐ Forma de análise dos resultados
 ---------------------------------
 
-```
-google analytics
+Com os relatórios oferecidos das ferramentas de análises métricas *Google Analytics* e *Facebook Insights*, será verificado qual o público alvo do sistema e se o usaram de maneira esperada. Ambas ferramentas representam os dados em formas gráficas, facilitando a interpretação e distribuição dos resultados.
 
-facebook open graph
+Considerando os resultados analisados, o software sofrerá novas atualizações, com correções ou implementações de novos recursos, para garantir a qualidade esperada aos usuários.
 
-dados demográficos
-
-surveys
-
-categorizar documentos e analisar
-```
-
-
-☑ Plano de trabalho e cronograma de sua execução
+☑ Cronograma de trabalho
 ------------------------------------------------
 
 | Atividade                     | jan   | fev   | mar   | abr   | mai   | jun   |
@@ -105,52 +83,16 @@ categorizar documentos e analisar
 
 BOYD, D. M.; ELLISON, N. B. **Social Network Sites: Definition, History, and Scholarship**. In: Journal of Computer-Mediated Communication, 2007. v.13, p. 210-230.
 
-CARR, David F. **Social Collaboration, Small Business Style**. InformationWeek.2014. Disponível em: <http://www.informationweek.com/software/productivity-collaboration-apps/social-collaboration-small-business-style/d/d-id/1113955>. Acesso em: mar 2014.
+CARR, David F. **Social Collaboration, Small Business Style**. InformationWeek: Connecting The Business Technology Community. 2014. Disponível em: <http://www.informationweek.com/software/productivity-collaboration-apps/social-collaboration-small-business-style/d/d-id/1113955>. Acesso em: mar 2014.
+
+CAPAN, Tomislav. **Why The Hell Would I Use Node.js? A Case-by-Case Introduction**. Toptal | Exclusive access to top developer. 2014. Disponível em: <http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js>. Acesso em: abr 2014.
 
 DOMINGUEZ, Carlos. **Collaboration: What Does it really mean?**. Cisco Blogs. 2011. Disponível em: <https://blogs.cisco.com/news/collaboration-what-does-it-really-mean>. Acesso em: mar 2014.
 
-PINHEIRO, Petrilson Alan. **A escrita colaborativa por meio do uso de ferramentas digitais: ressignificando a produção textual no contexto escolar**
-In: Calidoscópio (UNISINOS), 2011. v. 9, p. 226-239.
+FACEBOOK DEVELOPERS. **Custom Stories Insights**. Disponível em:
+<https://developers.facebook.com/docs/opengraph/guides/insights/#demographics>. Acesso em: abr 2014.
 
-<br>
+GOOGLE ANALYTICS. **About Goals - Analytics Help**. Disponível em:
+<https://support.google.com/analytics/answer/1012040>. Acesso em: abr 2014.
 
-PERGUNTAS PARA ALINE
---------------------
-
-1- Referências devem ser `[1]` ou `nome`?
-
-2- Referências devem ser listadas por ordem de exibição no artigo ou ordem alfabética?
-
-3- *doi* (Digital Object Identifier) deve ser referenciado?
-
-```
-boyd, d. m. and Ellison, N. B. (2007), Social Network Sites: Definition, History, and Scholarship. Journal of Computer-Mediated Communication, 13: 210–230. doi: 10.1111/j.1083-6101.2007.00393.x
-```
-
-> http://onlinelibrary.wiley.com/doi/10.1111/j.1083-6101.2007.00393.x/full
-
-4- Referências devem exibir um link completo ou shortlink?
-
-> https://blogs.cisco.com/news/collaboration-what-does-it-really-mean/
-
-> https://blogs.cisco.com/?p=19892
-
-5- Posso colocar essa citação?
-```
-[...] David Carr (2014), autor de "Social Collaboration for Dummies" [...]
-```
-
-6- No plano de trabalho deve ser colocado algo ou só o cronograma?
-```
-1. Estudo de tecnologias
-2. Análise de Viabilidade
-3. Criação de ambiente e aprendizagem
-4. Layout
-5. Desenvolvimento Back-End
-6. Desenvolvimento Front-End
-7. Quality Assurance
-8. Ambiente de produção
-```
-
-7- Citação de `Op. cit.` está correta?
-
+PINHEIRO, Petrilson Alan. **A escrita colaborativa por meio do uso de ferramentas digitais: ressignificando a produção textual no contexto escolar**. In: Calidoscópio (UNISINOS), 2011. v. 9, p. 226-239.
