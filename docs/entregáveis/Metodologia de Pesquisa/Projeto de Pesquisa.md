@@ -12,7 +12,7 @@ participação de colaboradores?
 ☑ Resumo
 --------
 
-Com a popularidade das redes sociais, a conexão com conjuntos de amigos se exterioriza a sistemas integrados a essas comunidades. Quando esses grupos trabalham em conjunto para alcançar um objetivo em comum, ocorre a colaboração social que, se envolvida à produção de textos, torna-se escrita colaborativa. Softwares de edição de texto para múltiplos usuários são ineficientes em integração com redes sociais, portanto o objetivo desse projeto é desenvolver uma aplicação colaborativa de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de amigos relacionados aos autores, que constribuirão, em tempo real, a documentos sem um planejamento prévio, empregando conceitos de escrita reativa.
+Com a popularidade das redes sociais, grupos de amigos trabalham em conjunto para alcançar objetivos em comum, desencadeando a colaboração social que, se envolvida à produção de textos, torna-se escrita colaborativa. A conexão dessas comunidades ultrapassa o domínio dos próprios sites, integrando-se a variados sistemas externos. Softwares de edição de texto para múltiplos usuários são ineficientes em integração com redes sociais, portanto o objetivo desse projeto é desenvolver uma aplicação colaborativa de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de amigos relacionados aos autores, que constribuirão sem um planejamento prévio, em tempo real, à documentos, empregando conceitos de escrita reativa.
 
 
 ☑ Palavras-chaves
@@ -28,9 +28,9 @@ Redes sociais são serviços que permitem aos indivíduos construírem perfis p�
 
 O trabalho em conjunto de um grupo de usuários de uma rede social para alcançar uma meta em comum é chamada de colaboração social. David Carr (2014), autor de "Social Collaboration for Dummies", exemplifica que uma empresa se beneficia desse trabalho colaborativo, especialmente quando possui empregados que trabalham remotamente.
 
-Após avaliar diversas definições de colaboração, Carlos Dominguez (2011) a descreve como equipes diversificadas trabalhando juntas com o propósito de agregar valor a algo, aproveitando tecnologias para interações efetivas independentemente do espaço (virtual ou físico). Consequentemente, um software colaborativo deve auxiliar os usuários a atingirem seus objetivos executando tarefas em conjunto.
+Após avaliar diversas definições de colaboração, Carlos Dominguez (2011) a descreve como equipes diversificadas trabalhando juntas com o propósito de atribuir valor a algo, aproveitando tecnologias para interações efetivas, independentemente do espaço (virtual ou físico). Consequentemente, um software colaborativo deve auxiliar os usuários a atingirem seus objetivos executando tarefas em conjunto.
 
-Num trabalho de escrita em grupo, conhecido como escrita colaborativa, "pode ocorrer a complementaridade de capacidades, de conhecimentos, de esforços individuais, de opiniões e pontos de vista" (PINHEIRO, 2011, p. 228). Em ambiente virtual, essa atividade exige ferramentas como mensageiros instantâneos ou correios eletrônicos (Op. cit., p. 232).
+Num trabalho de escrita em grupo, conhecido como escrita colaborativa, "pode ocorrer a complementaridade de capacidades, de conhecimentos, de esforços individuais, de opiniões e pontos de vista" (PINHEIRO, 2011, p. 228). Em ambiente virtual, essa atividade colaborativa exige ferramentas como mensageiros instantâneos ou correios eletrônicos (Op. cit., p. 232).
 
 O *Microsoft OneDrive* é um modelo aplicado de software de edição de texto em tempo real para escrita colaborativa. Contudo, não se integra com as redes sociais mais populares, restringindo o usuário a utilizar seus recursos sem compartilhar informação para suas conexões de amigos.
 
@@ -40,7 +40,7 @@ Como resultado de tal observação, o objetivo desse projeto é desenvolver um s
 ☑ Objetivos
 -----------
 
-Com a popularidade de redes sociais, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus grupos de amigos.
+Com a popularidade de redes sociais, durante a concepção de um software, a equipe responsável pelo planejamento deve considerar a integração com tais comunidades, pois caracteriza que o usuário poderá se relacionar com seus amigos.
 
 Observado a ineficiência de alguns editores de texto colaborativos em relação à integração com redes sociais, o objetivo desse projeto é desenvolver um software colaborativo de edição de texto com foco em compartilhamento de documentos em redes sociais.
 
@@ -64,7 +64,7 @@ A navegação do usuário será registrada usando softwares estatísticos de vis
 ☑ Forma de análise dos resultados
 ---------------------------------
 
-Com os relatórios oferecidos das ferramentas de análises métricas *Google Analytics* e *Facebook Insights*, será verificado qual o público alvo do sistema e se o usaram de maneira esperada. Ambas ferramentas representam os dados em formas gráficas, facilitando a interpretação e distribuição dos resultados.
+Com os relatórios oferecidos das ferramentas de análises métricas, *Google Analytics* e *Facebook Insights*, será verificado qual o público alvo do sistema e se o usaram de maneira esperada. Ambas ferramentas representam os dados em formas gráficas, facilitando a interpretação e distribuição dos resultados.
 
 Considerando os resultados analisados, o software sofrerá novas atualizações, com correções ou implementações de novos recursos, para garantir a qualidade esperada aos usuários.
 
