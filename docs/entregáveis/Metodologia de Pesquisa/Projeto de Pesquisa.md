@@ -12,7 +12,7 @@ participação de colaboradores?
 ☑ Resumo
 --------
 
-Com a popularidade das redes sociais, grupos de amigos trabalham em conjunto para alcançar objetivos em comum, desencadeando a colaboração social que, se envolvida à produção de textos, torna-se escrita colaborativa. A conexão dessas comunidades ultrapassa o domínio dos próprios sites, integrando-se a variados sistemas externos. Softwares de edição de texto para múltiplos usuários são ineficientes em integração com redes sociais, portanto o objetivo desse projeto é desenvolver uma aplicação colaborativa de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de amigos relacionados aos autores, que constribuirão sem um planejamento prévio, em tempo real, à documentos, empregando conceitos de escrita reativa.
+Com a popularidade das redes sociais, grupos de amigos trabalham em conjunto para alcançar objetivos em comum, desencadeando a colaboração social que, se envolvida à produção de textos, torna-se escrita colaborativa. A conexão dessas comunidades ultrapassa o domínio dos próprios sites, integrando-se a variados sistemas externos. Softwares de edição de texto para múltiplos usuários são ineficientes em integração com redes sociais, portanto o objetivo desse projeto é desenvolver uma aplicação colaborativa de edição de texto com estratégias de escrita colaborativa para compartilhamento de documentos em redes sociais, promovendo a participação de amigos relacionados aos autores, que contribuirão sem um planejamento prévio à documentos em tempo real, empregando conceitos de escrita reativa.
 
 
 ☑ Palavras-chaves

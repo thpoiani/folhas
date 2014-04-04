@@ -21,6 +21,18 @@ describe('request', function(done) {
       request(app.express.app).get('/').expect(200, done);
     });
   });
+
+  describe('GET /document', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/document').expect(200, done);
+    });
+  });
+
+  describe('GET /:hash', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/276878392403546').expect(200, done);
+    });
+  });
 });
 
 after(function(done) {
