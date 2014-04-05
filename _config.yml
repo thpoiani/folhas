@@ -1,6 +1,5 @@
 name: folhas
-markdown: redcarpet
+baseurl: /folhas
 pygments: true
-
-source: public
 encoding: utf-8
+exclude: [README.md, bower.json]
