@@ -1,0 +1,16 @@
+{
+  "name": "folhas",
+  "version": "0.0.0",
+  "description": "editor colaborativo de documentos em tempo real",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thpoiani/folhas/tree/gh-pages"
+  },
+  "keywords": [
+    "editor",
+    "colaborativo",
+    "documento"
+  ],
+  "author": "Thiago Poiani <thpoiani@gmail.com>",
+  "license": "MIT"
+}
