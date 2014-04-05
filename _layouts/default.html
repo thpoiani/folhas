@@ -20,7 +20,7 @@
 
 <link rel="canonical" href="" />
 
-<!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+<!-- <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico"> -->
 
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -38,5 +38,10 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+{% if page.script %}
+<script async defer src="{{ site.baseurl }}/assets/js/{{ page.script }}.js"></script>
+{% endif %}
+
 </body>
 </html>
