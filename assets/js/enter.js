@@ -1,10 +1,10 @@
 (function (win, doc, $) {
   'use strict';
 
-  function User(name, email, password) {
-    this.name = name;
+  function User(email, password, persist) {
     this.email = email;
     this.password = password;
+    this.persist = persist;
     this._isValid = true;
     this._errors = [];
   }
@@ -20,15 +20,10 @@
   };
 
   User.prototype._validate = function (field) {
-    var name = this.name,
-      email = this.email,
-      password = this.password;
+    var email = this.email,
+        password = this.password;
 
     switch (field) {
-      case 'name' :
-        this._validateName(name);
-        break;
-
       case 'email' :
         this._validateEmail(email);
         break;
@@ -38,21 +33,11 @@
         break;
 
       default:
-        this._validateName(name);
         this._validateEmail(email);
         this._validatePassword(password);
     }
 
     return this._isValid;
-  };
-
-  User.prototype._validateName = function (value) {
-    value = value || '';
-
-    if (!value.length || value.length > 80) {
-      this._isValid = false;
-      this._errors.push('name');
-    }
   };
 
   User.prototype._validateEmail = function (value) {
@@ -82,24 +67,24 @@
   };
 
 
-  var Join = (function () {
+  var Enter = (function () {
 
     var exports = {};
 
     var input = {
-      name: doc.querySelector('input[name=name]'),
       email: doc.querySelector('input[name=email]'),
-      password: doc.querySelector('input[name=password]')
+      password: doc.querySelector('input[name=password]'),
+      persist: doc.querySelector('input[name=persist]')
     };
 
     var assemblyUser = function () {
-      var name, email, password;
+      var email, password, persist;
 
-      name = input.name.value.trim();
       email = input.email.value.trim();
       password = input.password.value;
+      persist = input.persist.checked;
 
-      return new User(name, email, password);
+      return new User(email, password, persist);
     };
 
     var validateUser = function (user) {
@@ -133,6 +118,11 @@
         event.preventDefault();
 
         if (user.isValid()) {
+
+          if (user.persist) {
+            // TODO PERSIST
+          }
+
           $.post(form.action, user, function(response) {
             console.log(response);
           });
@@ -154,6 +144,6 @@
     return exports;
   })();
 
-  Join.form();
+  Enter.form();
 
 })(window, document, jQuery);

@@ -6,15 +6,15 @@ script: join
 
 <h2>Join</h2>
 
-<form>
+<form action="{{site.action}}" method="post" enctype="multipart/form-data">
   <label for="name">Name</label>
-  <input type="text" name="name" tabindex="1" autofocus="autofocus">
+  <input type="text" name="name" id="name" tabindex="1" autofocus="autofocus">
 
   <label for="email">E-mail</label>
-  <input type="email" name="email" tabindex="2">
+  <input type="email" name="email" id="email" tabindex="2">
 
   <label for="password">Password</label>
-  <input type="password" name="password" tabindex="3">
+  <input type="password" name="password" id="password" tabindex="3">
 
   <input type="submit" value="Join" tabindex="4">
 </form>

@@ -3,3 +3,6 @@ baseurl: /folhas
 pygments: true
 encoding: utf-8
 exclude: [README.md, bower.json]
+
+markdown: redcarpet
+action: http://localhost:1337

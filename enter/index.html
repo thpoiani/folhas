@@ -6,12 +6,17 @@ script: enter
 
 <h2>Enter</h2>
 
-<form>
+<form action="{{site.action}}" method="post" enctype="multipart/form-data">
   <label for="email">E-mail</label>
-  <input type="email" name="email" tabindex="1" autofocus="autofocus">
+  <input type="email" name="email" id="email" tabindex="1" autofocus="autofocus">
 
   <label for="password">Password</label>
-  <input type="password" name="password" tabindex="2">
+  <input type="password" name="password" id="password" tabindex="2">
 
-  <input type="submit" value="Enter" tabindex="3">
+  <input type="checkbox" name="persist" id="persist" tabindex="3"/>
+  <label for="persist">Keep me logged in</label>
+
+  <input type="submit" value="Enter" tabindex="4">
 </form>
+
+<a rel="nofollow" href="{{site.action}}" tabindex="5">Forgot your password?</a>
