@@ -42,15 +42,19 @@ module.exports.routes = {
     action: 'index'
   },
 
-  '/auth/login': {
-    controller: 'auth',
-    action: 'login'
-  },
-
-  '/auth/logout': {
-    controller: 'auth',
-    action: 'logout'
+  '/auth': {
+    controller: 'auth'
   }
+
+//  '/auth/login': {
+//    controller: 'auth',
+//    action: 'login'
+//  },
+//
+//  '/auth/logout': {
+//    controller: 'auth',
+//    action: 'logout'
+//  }
 
   /*
   // But what if you want your home page to display
