@@ -94,8 +94,6 @@ module.exports = {
 
   logout: function (req, res) {
     // TODO fechar sessao
-  },
-
-  _config: {}
+  }
 
 };

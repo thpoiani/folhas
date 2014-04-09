@@ -1,5 +1,5 @@
 /**
- * DocumentController
+ * LoginController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -18,7 +18,15 @@
 module.exports = {
 
   index: function (req, res) {
-    res.view('document/index', {document: req.param('hash')});
+    res.view('enter/index');
+  },
+
+  remember: function (req, res) {
+    res.view('enter/remember');
+  },
+
+  exit: function (req, res) {
+    res.view('enter/exit');
   }
 
 };

@@ -22,9 +22,44 @@ describe('request', function(done) {
     });
   });
 
-  describe('GET /document', function(done) {
+  describe('GET /enter', function(done) {
     it('should return 200', function (done) {
-      request(app.express.app).get('/document').expect(200, done);
+      request(app.express.app).get('/enter').expect(200, done);
+    });
+  });
+
+  describe('GET /login', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/login').expect(200, done);
+    });
+  });
+  describe('GET /remember', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/remember').expect(200, done);
+    });
+  });
+
+  describe('GET /exit', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/exit').expect(200, done);
+    });
+  });
+
+  describe('GET /join', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/join').expect(200, done);
+    });
+  });
+
+  describe('GET /destroy', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/destroy').expect(200, done);
+    });
+  });
+
+  describe('GET /me', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app).get('/me').expect(200, done);
     });
   });
 

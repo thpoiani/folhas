@@ -1,5 +1,5 @@
 /**
- * DocumentController
+ * IndexController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -18,7 +18,7 @@
 module.exports = {
 
   index: function (req, res) {
-    res.view('document/index', {document: req.param('hash')});
+    res.view('home/index');
   }
 
 };
