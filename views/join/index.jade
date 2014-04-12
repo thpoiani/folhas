@@ -1,3 +1,19 @@
 extends ../layout
+block script
+    script(src='/js/user.js')
+    script(src='/js/join.js')
+
 block body
-    h1 Join
+    h2 Join
+    form(method="post", enctype="multipart/form-data")
+        label(for="name") Name
+        input(type="text", name="name", id="name", tabindex="1", autofocus="autofocus")
+
+        label(for="email") E-mail
+        input(type="email", name="email", id="email", tabindex="2")
+
+        label(for="password") Password
+        input(type="password", name="password", id="password", tabindex="3")
+
+        input(type="submit", value="Join", tabindex="4")
+

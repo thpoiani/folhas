@@ -1,17 +1,6 @@
-/**
- * User
- *
- * @module      :: Model
- * @description :: A short summary of how this model works and what it represents.
- * @docs		:: http://sailsjs.org/#!documentation/models
- */
-var bcrypt = require('bcrypt');
-
 module.exports = {
 
   attributes: {
-
-//    id: 'integer',
 
     name: {
       type: 'string',
@@ -19,7 +8,7 @@ module.exports = {
     },
 
     email: {
-      type: 'email', // Email type will get validated by the ORM
+      type: 'email',
       required: true,
       unique: true
     },
@@ -30,21 +19,26 @@ module.exports = {
       required: true
     },
 
-    apiKey : 'string',
+    apiKey: {
+      type: 'string',
+      defaultsTo: null
+    },
 
-    isActive: 'boolean'
-
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-
+    isActive: {
+      type: 'boolean',
+      defaultsTo: true
+    }
   },
 
-  // Lifecycle Callbacks
-  beforeCreate: function(values, next) {
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(values.password, salt, function(err, hash) {
-        if(err) return next(err);
+  beforeCreate: function (values, next) {
+    var bcrypt = require('bcrypt');
+
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(values.password, salt, function (err, hash) {
+        if (err) {
+          return next(err);
+        }
+
         values.password = hash;
         next();
       });

@@ -1,3 +1,8 @@
 extends ../layout
 block body
-    h1 Remember
+    h2 Remember
+    form(method="post", enctype="multipart/form-data")
+        label(for="email") E-mail
+        input(type="email", name="email", id="email", tabindex="1", autofocus="autofocus")
+
+        input(type="submit", value="Enter", tabindex="2")

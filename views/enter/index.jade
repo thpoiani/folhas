@@ -1,3 +1,18 @@
 extends ../layout
+block script
+    script(src='/js/user.js')
+    script(src='/js/enter.js')
+
 block body
-    h1 Enter
+    h2 Enter
+    form(method="post", enctype="multipart/form-data")
+        label(for="email") E-mail
+        input(type="email", name="email", id="email", tabindex="1", autofocus="autofocus")
+        label(for="password") Password
+        input(type="password", name="password", id="password", tabindex="2")
+        input(type="checkbox", name="persist", id="persist", tabindex="3")
+        label(for="persist") Keep me logged in
+
+        input(type="submit", value="Enter", tabindex="4")
+
+    <a rel="nofollow" href="/remember" tabindex="5">Forgot your password?</a>

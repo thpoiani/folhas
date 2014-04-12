@@ -35,14 +35,14 @@ module.exports.routes = {
   },
 
   // Enter
-  '/enter': {
+  'get /enter': {
     controller: 'enter',
     action: 'index'
   },
 
-  '/login': {
+  'post /enter': {
     controller: 'enter',
-    action: 'index'
+    action: 'enter'
   },
 
   // Remember
@@ -58,9 +58,14 @@ module.exports.routes = {
   },
 
   // Join
-  '/join': {
+  'get /join': {
     controller: 'join',
     action: 'index'
+  },
+
+  'post /join': {
+    controller: 'join',
+    action: 'create'
   },
 
   // Destroy
