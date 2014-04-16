@@ -55,7 +55,7 @@
 
         if (user.isValid('email') && user.isValid('password')) {
           socket.post(location.href, {user: user}, function (response) {
-            console.log(response);
+            location.href = '/me';
           });
         } else {
           validateUser(user);

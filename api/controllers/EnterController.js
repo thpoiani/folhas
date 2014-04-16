@@ -1,5 +1,5 @@
 var bcrypt = require('bcrypt'),
-    validator = require('validator');
+  validator = require('validator');
 
 module.exports = {
 
@@ -7,8 +7,8 @@ module.exports = {
     res.view('enter/index');
   },
 
-enter: function (req, res) {
-  var user, fn_assembly, fn_push_error, fn_validate, fn_find, fn_error;
+  enter: function (req, res) {
+    var user, fn_assembly, fn_push_error, fn_validate, fn_persistentCookie, fn_find, fn_error;
 
     /**
      * Receive socket POST params
@@ -71,6 +71,20 @@ enter: function (req, res) {
     };
 
     /**
+     * Create a persistent cookie
+     */
+    fn_persistentCookie = function (user) {
+      var encode, email, password, time;
+
+      encode = 'base64';
+      email = new Buffer(user.email).toString(encode);
+      password = new Buffer(user.password).toString(encode);
+      time = 1000 * 60 * 60 * 24 * 3; // 3 days
+
+//      res.cookie(email, password, { maxAge: time });
+    };
+
+    /**
      * Check password
      * @param user
      * @param doc
@@ -78,15 +92,19 @@ enter: function (req, res) {
     fn_find = function (user, doc) {
       bcrypt.compare(user.password, doc.password, function (err, result) {
         if (err) {
-          res.json({success: false, error: fn_push_error('bcrypt error', '', err)});
+          return res.json({success: false, error: fn_push_error('bcrypt error', '', err)});
         }
 
         if (!result) {
-          res.json({success: false, error: fn_push_error('Password incorrect', 'password', '')});
+          return res.json({success: false, error: fn_push_error('Password incorrect', 'password', '')});
+        }
+
+        if (user.persist) {
+          fn_persistentCookie(user);
         }
 
         req.session.user = user;
-        res.json({success: true, user: {name: doc.name, email: doc.email}});
+        return res.json({success: true, user: {name: doc.name, email: doc.email}});
       });
     };
 
@@ -95,7 +113,7 @@ enter: function (req, res) {
      * @param errors
      */
     fn_error = function (errors) {
-      res.json({success: false, errors: errors});
+      return res.json({success: false, errors: errors});
     };
 
     user = fn_assembly(req.param('user'));
@@ -107,7 +125,8 @@ enter: function (req, res) {
   },
 
   exit: function (req, res) {
-    res.view('enter/exit');
+    req.session.user = null;
+    res.redirect('/enter');
   }
 
 };
