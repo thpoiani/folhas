@@ -1,11 +1,11 @@
 var validator = require('validator'),
   nodemailer = require("nodemailer"),
-  Hashids = require("hashids");
+  Hashids = require("hashids"),
+  _ = require('underscore');
 
 module.exports = {
 
   index: function (req, res) {
-
     res.view('remember/index');
   },
 
@@ -40,6 +40,14 @@ module.exports = {
     };
 
     /**
+     * Return errors objects
+     * @param errors
+     */
+    fn_error = function (errors) {
+      return res.json({success: false, errors: errors});
+    };
+
+    /**
      * Validade model and executes fn_find|fn_error in success|fail
      *
      * @param user
@@ -69,32 +77,44 @@ module.exports = {
      * @param user
      */
     fn_recovery = function (user) {
-      var hashids,
-        unique_id,
-        date = new Date();
+      recovery = _.findWhere(user.recovery, {hasChanged: false});
 
-      hashids = new Hashids(date.getTime().toString());
-      unique_id = hashids.encryptHex(user.id);
+      // exists
+      if (recovery) {
+        fn_send(user, recovery._id, function(response) {
+          return res.json({success: true, message: response.message});
+        });
+      } else {
+        var hashids,
+            unique_id,
+            date = new Date();
 
-      user.recovery.push(
-        {
-          _id: unique_id,
-          date: date
-        }
-      );
+        hashids = new Hashids(date.getTime().toString());
+        unique_id = hashids.encryptHex(user.id);
 
-      user.save(function (err) {
-        if (err) {
-          return res.json({success: false, errors: [
-            fn_push_error('Failure to build recovery system', 'recovery', err)
-          ]});
-        }
+        user.recovery.push(
+          {
+            _id: unique_id,
+            date: date,
+            hasChanged: false
+          }
+        );
 
-        fn_send(user, unique_id);
-      });
+        fn_send(user, unique_id, function(response) {
+          user.save(function (err) {
+            if (err) {
+              return res.json({success: false, errors: [
+                fn_push_error('Failure to build recovery system', 'recovery', err)
+              ]});
+            }
+
+            return res.json({success: true, message: response.message});
+          });
+        });
+      }
     };
 
-    fn_send = function (user, unique_id) {
+    fn_send = function (user, unique_id, callback) {
       var text, html, smtpTransport, mailOptions;
 
       // TODO TEMPLATE EMAIL
@@ -125,17 +145,12 @@ module.exports = {
             fn_push_error('Sending error', 'email', error)
           ]});
         } else {
-          return res.json({success: true, message: response.message});
+
+          if (callback) {
+            callback(response);
+          }
         }
       });
-    };
-
-    /**
-     * Return errors objects
-     * @param errors
-     */
-    fn_error = function (errors) {
-      return res.json({success: false, errors: errors});
     };
 
     user = fn_assembly(req.param('user'));
@@ -171,7 +186,8 @@ module.exports = {
       unwind = { $unwind: "$recovery" };
       match = {
         $match: {
-          'recovery._id': unique_id
+          'recovery._id': unique_id,
+          'recovery.hasChanged': false
         }
       };
 
@@ -277,7 +293,10 @@ module.exports = {
     };
 
     fn_update = function (user, doc) {
+      recovery = _.findWhere(doc.recovery, {hasChanged: false});
+
       doc.password = user.password;
+      recovery.hasChanged = true;
 
       doc.save(function (err) {
         if (err) {
@@ -286,7 +305,7 @@ module.exports = {
           ]});
         }
 
-//        req.session.user = doc;
+        req.session.user = doc;
         res.json({success: true, user: {name: doc.name, email: doc.email}});
       });
     };
