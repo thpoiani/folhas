@@ -7,18 +7,16 @@
 
     var input = {
       email: doc.querySelector('input[name=email]'),
-      password: doc.querySelector('input[name=password]'),
-      persist: doc.querySelector('input[name=persist]')
+      password: doc.querySelector('input[name=password]')
     };
 
     var assemblyUser = function () {
-      var email, password, persist;
+      var email, password;
 
       email = input.email.value.trim();
       password = input.password.value;
-      persist = input.persist.checked;
 
-      return new User(null, email, password, persist);
+      return new User(null, email, password);
     };
 
     var validateUser = function (user) {
@@ -55,7 +53,28 @@
 
         if (user.isValid('email') && user.isValid('password')) {
           socket.post(location.href, {user: user}, function (response) {
-            location.href = '/me';
+            if (response.success) {
+              location.href = '/me';
+            } else {
+              var container = doc.getElementById('errors'),
+                length = response.errors.length;
+
+              if (!container) {
+                container = doc.createElement('div');
+                container.setAttribute('id', 'errors');
+
+                form.appendChild(container);
+              }
+
+              container.innerHTML = null;
+
+              for (var i = 0; i < length; i++) {
+                var error = doc.createElement('p');
+                error.innerHTML = response.errors[i].message;
+
+                container.innerHTML += error.outerHTML;
+              }
+            }
           });
         } else {
           validateUser(user);

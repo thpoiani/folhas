@@ -46,9 +46,27 @@ module.exports.routes = {
   },
 
   // Remember
-  '/remember': {
-    controller: 'enter',
+  'get /remember': {
+    controller: 'remember',
+    action: 'index'
+  },
+
+  // Remember
+  'post /remember': {
+    controller: 'remember',
     action: 'remember'
+  },
+
+  // Recovery
+  'get /recovery/:unique_id': {
+    controller: 'remember',
+    action: 'recovery'
+  },
+
+  // Recovery
+  'post /recovery/:unique_id': {
+    controller: 'remember',
+    action: 'update'
   },
 
   // Exit
@@ -69,7 +87,6 @@ module.exports.routes = {
   },
 
   // Destroy
-  // Join
   '/destroy': {
     controller: 'join',
     action: 'destroy'

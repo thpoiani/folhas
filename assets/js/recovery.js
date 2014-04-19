@@ -1,23 +1,18 @@
 (function (win, doc, User) {
+  'use strict';
 
-  var Join = (function () {
+  var Recovery = (function () {
 
     var exports = {};
 
     var input = {
-      name: doc.querySelector('input[name=name]'),
-      email: doc.querySelector('input[name=email]'),
       password: doc.querySelector('input[name=password]')
     };
 
     var assemblyUser = function () {
-      var name, email, password;
+      var password = input.password.value;
 
-      name = input.name.value.trim();
-      email = input.email.value.trim();
-      password = input.password.value;
-
-      return new User(name, email, password);
+      return new User(null, null, password);
     };
 
     var validateUser = function (user) {
@@ -52,11 +47,13 @@
 
         event.preventDefault();
 
-        if (user.isValid()) {
+        if (user.isValid('password')) {
           socket.post(location.href, {user: user}, function (response) {
             if (response.success) {
               location.href = '/me';
             } else {
+              console.log(response);
+
               var container = doc.getElementById('errors'),
                 length = response.errors.length;
 
@@ -95,6 +92,6 @@
     return exports;
   })();
 
-  Join.form();
+  Recovery.form();
 
 })(window, document, User);

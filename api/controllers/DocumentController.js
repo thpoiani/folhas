@@ -18,7 +18,7 @@
 module.exports = {
 
   index: function (req, res) {
-    res.view('document/index', {document: req.param('hash')});
+    res.view('document/index', {document: req.param('encrypt')});
   }
 
 };

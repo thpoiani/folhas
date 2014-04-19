@@ -1,4 +1,8 @@
 extends ../layout
+block script
+    script(src='/js/user.js')
+    script(src='/js/remember.js')
+
 block body
     h2 Remember
     form(method="post", enctype="multipart/form-data")

@@ -8,19 +8,18 @@ module.exports = {
   },
 
   enter: function (req, res) {
-    var user, fn_assembly, fn_push_error, fn_validate, fn_persistentCookie, fn_find, fn_error;
+    var user, fn_assembly, fn_push_error, fn_validate, fn_find, fn_error;
 
     /**
      * Receive socket POST params
      *
      * @param model
-     * @returns {{email: (string), password: (*), persist: (boolean)}}
+     * @returns {{email: (string), password: (*)}}
      */
     fn_assembly = function (model) {
       return {
         email: model.email.trim(),
-        password: model.password,
-        persist: model.persist
+        password: model.password
       }
     };
 
@@ -58,30 +57,16 @@ module.exports = {
         if (err) {
           errors.push(fn_push_error('MongoDB error', '', err));
         } else if (!doc) {
-          errors.push(fn_push_error('E-mail don\'t exists', 'email', user.email));
+          errors.push(fn_push_error('Incorrect e-mail or password', 'email', user.email));
         }
 
         if (!validator.isLength(user.password, 4)) {
-          errors.push(fn_push_error('Invalid password', 'password', user.password));
+          errors.push(fn_push_error('Incorrect e-mail or password', 'password', user.password));
         }
 
         !errors.length ? fn_find(user, doc) : fn_error(errors);
 
       });
-    };
-
-    /**
-     * Create a persistent cookie
-     */
-    fn_persistentCookie = function (user) {
-      var encode, email, password, time;
-
-      encode = 'base64';
-      email = new Buffer(user.email).toString(encode);
-      password = new Buffer(user.password).toString(encode);
-      time = 1000 * 60 * 60 * 24 * 3; // 3 days
-
-//      res.cookie(email, password, { maxAge: time });
     };
 
     /**
@@ -92,15 +77,16 @@ module.exports = {
     fn_find = function (user, doc) {
       bcrypt.compare(user.password, doc.password, function (err, result) {
         if (err) {
-          return res.json({success: false, error: fn_push_error('bcrypt error', '', err)});
+          return res.json({
+            success: false, errors: [
+              fn_push_error('bcrypt error', '', err)
+            ]});
         }
 
         if (!result) {
-          return res.json({success: false, error: fn_push_error('Password incorrect', 'password', '')});
-        }
-
-        if (user.persist) {
-          fn_persistentCookie(user);
+          return res.json({success: false, errors: [
+            fn_push_error('Incorrect e-mail or password', 'password', '')
+          ]});
         }
 
         req.session.user = user;
@@ -118,10 +104,6 @@ module.exports = {
 
     user = fn_assembly(req.param('user'));
     fn_validate(user, fn_find, fn_error);
-  },
-
-  remember: function (req, res) {
-    res.view('enter/remember');
   },
 
   exit: function (req, res) {

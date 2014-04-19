@@ -27,6 +27,13 @@ module.exports.policies = {
     exit: 'isAuthenticated'
   },
 
+  RememberController: {
+    index: 'isNotAuthenticated',
+    remember: 'isNotAuthenticated',
+    recovery: 'isNotAuthenticated',
+    update: 'isNotAuthenticated'
+  },
+
   JoinController: {
     index: 'isNotAuthenticated',
     create: 'isNotAuthenticated',

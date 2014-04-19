@@ -79,7 +79,10 @@ module.exports = {
     fn_save = function (user) {
       User.create(user).done(function (err, user) {
         if (err) {
-          res.json({success: false, error: fn_push_error('MongoDB error', '', err)});
+          res.json({
+            success: false, errors: [
+              fn_push_error('MongoDB error', '', err)
+            ]});
         }
 
         req.session.user = user;

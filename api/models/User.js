@@ -1,3 +1,18 @@
+var encrypt = function(values, next) {
+  var bcrypt = require('bcrypt');
+
+  bcrypt.genSalt(function (err, salt) {
+    bcrypt.hash(values.password, salt, function (err, hash) {
+      if (err) {
+        return next(err);
+      }
+
+      values.password = hash;
+      next();
+    });
+  });
+};
+
 module.exports = {
 
   attributes: {
@@ -19,6 +34,11 @@ module.exports = {
       required: true
     },
 
+    recovery: {
+      type: 'array',
+      defaultsTo: []
+    },
+
     apiKey: {
       type: 'string',
       defaultsTo: null
@@ -31,17 +51,21 @@ module.exports = {
   },
 
   beforeCreate: function (values, next) {
-    var bcrypt = require('bcrypt');
+    encrypt(values, next);
+  },
 
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(values.password, salt, function (err, hash) {
-        if (err) {
-          return next(err);
-        }
+  beforeUpdate: function (values, next) {
+    User.findOne({email: values.email}, function(err, user) {
+      if (err) {
+        return next(err);
+      }
 
-        values.password = hash;
+      // if password changes
+      if (values.password && user.password != values.password) {
+        encrypt(values, next)
+      } else {
         next();
-      });
+      }
     });
   }
 

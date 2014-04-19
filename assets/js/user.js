@@ -1,8 +1,7 @@
-function User(name, email, password, persist) {
+function User(name, email, password) {
   this.name = name;
   this.email = email;
   this.password = password;
-  this.persist = persist || false;
   this._isValid = true;
   this._errors = [];
 }
@@ -34,8 +33,6 @@ User.prototype._validate = function (field) {
     case 'password':
       this._validatePassword(password);
       break;
-
-    case 'persist': return;
 
     default:
       this._validateName(name);
