@@ -89,7 +89,7 @@ module.exports = {
           ]});
         }
 
-        req.session.user = user;
+        req.session.user = doc;
         return res.json({success: true, user: {name: doc.name, email: doc.email}});
       });
     };

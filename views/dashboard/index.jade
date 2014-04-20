@@ -1,4 +1,9 @@
 extends ../layout
 block body
     h1 Dashboard
-    a(href="/exit") Logout
+    p= user.name
+    ul
+        li
+            a(href="/me/edit") Edit profile
+        li
+            a(href="/exit") Logout

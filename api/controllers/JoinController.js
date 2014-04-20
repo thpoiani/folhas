@@ -102,8 +102,4 @@ module.exports = {
     fn_validate(user, fn_save, fn_error);
   },
 
-  destroy: function (req, res) {
-    res.view('join/destroy');
-  }
-
 };

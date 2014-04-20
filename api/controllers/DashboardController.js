@@ -17,8 +17,35 @@
 
 module.exports = {
 
+  // show
   index: function (req, res) {
-    res.view('dashboard/index');
+    res.render('dashboard/index', {user: req.session.user});
+  },
+
+  edit: function(req, res) {
+    res.render('dashboard/edit', {user: req.session.user});
+  },
+
+  update: function(req, res) {
+    console.log(req.param('user'));
+
+    process.exit(1);
+    // update database
+    // update session
+
+    // edit profile
+  },
+
+  change_password: function(req, res) {
+    // update database
+
+    // change password
+  },
+
+  destroy: function(req, res) {
+    // update database isActive
+    // clear session
+    // send home
   }
 
 };

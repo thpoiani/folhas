@@ -86,16 +86,34 @@ module.exports.routes = {
     action: 'create'
   },
 
-  // Destroy
-  '/destroy': {
-    controller: 'join',
-    action: 'destroy'
-  },
-
   // Me
   '/me': {
     controller: 'dashboard',
     action: 'index'
+  },
+
+  // Profile
+  'get /me/edit': {
+    controller: 'dashboard',
+    action: 'edit'
+  },
+
+  // Profile
+  'put /me': {
+    controller: 'dashboard',
+    action: 'update'
+  },
+
+  // Profile - Change password
+  'put /me/change_password': {
+    controller: 'dashboard',
+    action: 'change_password'
+  },
+
+  // Profile - Change password
+  'delete /me': {
+    controller: 'dashboard',
+    action: 'destroy'
   },
 
   // Document

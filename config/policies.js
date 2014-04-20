@@ -41,7 +41,8 @@ module.exports.policies = {
   },
 
   DashboardController: {
-    index: 'isAuthenticated'
+    index: 'isAuthenticated',
+    edit: 'isAuthenticated'
   },
 
   DocumentController: {
