@@ -21,13 +21,13 @@ block body
         input(type="hidden", name="_method", value="put")
 
         label(for="password") Old password
-        input(type="text", name="user[password]", id="password", tabindex="4")
+        input(type="password", name="user[password]", id="password", tabindex="4")
 
         label(for="new_password") New password
-        input(type="text", name="user[new_password]", id="new_password", tabindex="5")
+        input(type="password", name="user[new_password]", id="new_password", tabindex="5")
 
         label(for="confirm_new_password") Confirm new password
-        input(type="text", name="user[confirm_new_password]", id="confirm_new_password", tabindex="6")
+        input(type="password", name="user[confirm_new_password]", id="confirm_new_password", tabindex="6")
 
         input(type="submit", value="Change password", tabindex="7")
 
@@ -39,6 +39,6 @@ block body
         input(type="text", name="user[email]", id="delete_account_email", tabindex="8")
 
         label(for="delete_account_password") Password
-        input(type="text", name="user[password]", id="delete_account_password", tabindex="9")
+        input(type="password", name="user[password]", id="delete_account_password", tabindex="9")
 
         input(type="submit", value="Delete account", tabindex="10")

@@ -53,7 +53,7 @@ module.exports = {
         errors.push(fn_push_error('Invalid e-mail', 'email', user.email));
       }
 
-      User.findOne({email: user.email}).done(function (err, doc) {
+      User.findOne({email: user.email, isActive: true}).done(function (err, doc) {
         if (err) {
           errors.push(fn_push_error('MongoDB error', '', err));
         } else if (!doc) {

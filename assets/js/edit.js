@@ -7,6 +7,8 @@
 
     exports.form = function () {
       submit = function (event) {
+        event.preventDefault();
+
         var form = event.srcElement,
           action = form.action,
           method = form.querySelector('[name=_method]').value,
@@ -26,20 +28,22 @@
         switch (method) {
           case 'put':
             socket.put(action, {user: user}, function (response) {
+              // TODO
               console.log(response);
             });
             break;
 
           case 'delete':
             socket.delete(action, {user: user}, function (response) {
+              // TODO
               console.log(response);
+
+              if (response.success) {
+                location.href = '/';
+              }
             });
             break;
         }
-
-        event.preventDefault();
-
-
       };
 
       var forms, submit;

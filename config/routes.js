@@ -69,12 +69,6 @@ module.exports.routes = {
     action: 'update'
   },
 
-  // Exit
-  '/exit': {
-    controller: 'enter',
-    action: 'exit'
-  },
-
   // Join
   'get /join': {
     controller: 'join',
@@ -86,16 +80,16 @@ module.exports.routes = {
     action: 'create'
   },
 
-  // Me
-  '/me': {
-    controller: 'dashboard',
-    action: 'index'
+  // Exit
+  '/exit': {
+    controller: 'enter',
+    action: 'exit'
   },
 
-  // Profile
-  'get /me/edit': {
+  // Me
+  'get /me': {
     controller: 'dashboard',
-    action: 'edit'
+    action: 'index'
   },
 
   // Profile
@@ -105,15 +99,21 @@ module.exports.routes = {
   },
 
   // Profile - Change password
-  'put /me/change_password': {
-    controller: 'dashboard',
-    action: 'change_password'
-  },
-
-  // Profile - Change password
   'delete /me': {
     controller: 'dashboard',
     action: 'destroy'
+  },
+
+  // Profile
+  'get /me/edit': {
+    controller: 'dashboard',
+    action: 'edit'
+  },
+
+  // Profile - Change password
+  'put /me/change_password': {
+    controller: 'dashboard',
+    action: 'change_password'
   },
 
   // Document

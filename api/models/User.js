@@ -25,7 +25,8 @@ module.exports = {
     email: {
       type: 'email',
       required: true,
-      unique: true
+      unique: true,
+      index: true
     },
 
     password: {
@@ -61,7 +62,7 @@ module.exports = {
       }
 
       // if password changes
-      if (values.password && user.password != values.password) {
+      if (user && values.password && user.password != values.password) {
         encrypt(values, next)
       } else {
         next();

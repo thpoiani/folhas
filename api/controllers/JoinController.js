@@ -100,6 +100,6 @@ module.exports = {
 
     user = fn_assembly(req.param('user'));
     fn_validate(user, fn_save, fn_error);
-  },
+  }
 
 };
