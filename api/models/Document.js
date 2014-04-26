@@ -1,19 +1,28 @@
-/**
- * Document
- *
- * @module      :: Model
- * @description :: A short summary of how this model works and what it represents.
- * @docs		:: http://sailsjs.org/#!documentation/models
- */
-
 module.exports = {
 
   attributes: {
-  	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
+    hash: {
+      type: 'string',
+      required: true,
+      unique: true,
+      index: true
+    },
+
+    author: {
+      type: 'email',
+      defaultsTo: null
+    },
+
+    text: {
+      type: 'text',
+      defaultsTo: null
+    },
+
+    isActive: {
+      type: 'boolean',
+      defaultsTo: true
+    }
+
   }
 
 };

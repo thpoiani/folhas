@@ -1,0 +1,28 @@
+{
+  "name": "folhas",
+  "version": "0.0.0",
+  "homepage": "https://github.com/thpoiani/folhas",
+  "authors": [
+    "Thiago Henrique Poiani <thpoiani@gmail.com>"
+  ],
+  "description": "editor colaborativo de documentos em tempo real",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "editor",
+    "colaborativo",
+    "documento"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/bower_components"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.1",
+    "ace-builds": "~1.1.3"
+  }
+}

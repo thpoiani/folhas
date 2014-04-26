@@ -1,9 +1,14 @@
 extends ../layout
+block script
+    script(src='/js/dashboard.js')
+
 block body
     h1 Dashboard
     p= user.name
     ul
         li
             a(href="/me/edit") Edit profile
+        li
+            a(data-create="document") New document
         li
             a(href="/exit") Logout

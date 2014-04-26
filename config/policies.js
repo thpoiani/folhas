@@ -49,6 +49,7 @@ module.exports.policies = {
   },
 
   DocumentController: {
-    index: true
+    index: true,
+    create: true
   }
 }

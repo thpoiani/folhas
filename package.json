@@ -1,6 +1,6 @@
 {
   "name": "folhas",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "editor colaborativo de documentos em tempo real",
   "main": "app.js",
   "repository": {
@@ -12,7 +12,7 @@
     "colaborativo",
     "documento"
   ],
-  "author": "Thiago Henrique Poiani",
+  "author": "Thiago Henrique Poiani <thpoiani@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thpoiani/folhas/issues"

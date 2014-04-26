@@ -1,3 +1,7 @@
 extends ../layout
+block script
+    script(src='/bower_components/ace-builds/src-min-noconflict/ace.js')
+    script(src='/js/document.js')
 block body
-    h1 #{document}
+    h1 #{document.hash}
+    div#editor(style="width:50%; height:400px")

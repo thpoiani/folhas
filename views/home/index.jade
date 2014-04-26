@@ -1,4 +1,7 @@
 extends ../layout
+block script
+    script(src='/js/home.js')
+
 block body
     h1 Folhas
     ul
@@ -13,4 +16,4 @@ block body
         li
             a(href="/me", target="_blank") Me
         li
-            a(href="/document", target="_blank") Document
+            a(data-create="document") Create document

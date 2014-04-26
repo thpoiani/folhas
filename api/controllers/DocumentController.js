@@ -1,24 +1,28 @@
-/**
- * DocumentController
- *
- * @module      :: Controller
- * @description	:: A set of functions called `actions`.
- *
- *                 Actions contain code telling Sails how to respond to a certain type of request.
- *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
- *
- *                 You can configure the blueprint URLs which trigger these actions (`config/controllers.js`)
- *                 and/or override them with custom routes (`config/routes.js`)
- *
- *                 NOTE: The code you write here supports both HTTP and Socket.io automatically.
- *
- * @docs        :: http://sailsjs.org/#!documentation/controllers
- */
-
 module.exports = {
 
   index: function (req, res) {
-    res.view('document/index', {document: req.param('hash')});
+    var hash = req.param('hash');
+
+    Document.findOne({hash:hash}, function(err, document) {
+      if (err) throw new Error(err);
+
+      if (!document) return res.serverError('Invalid HASH');
+
+      res.render('document/index', {document: document});
+    });
+  },
+
+  create: function (req, res) {
+    if (!req.isSocket) throw new Error('This request must be sent by socket');
+
+    var author = req.session.user ? req.session.user.email : null,
+        hash = DocumentService.generateHash();
+
+    Document.create({author: author, hash: hash}).done(function(err, document){
+      if (err) throw new Error(err);
+
+      res.json({success: true, document: document});
+    });
   }
 
 };

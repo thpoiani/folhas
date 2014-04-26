@@ -117,6 +117,11 @@ module.exports.routes = {
   },
 
   // Document
+  'post /document': {
+    controller: 'document',
+    action: 'create'
+  },
+
   '/:hash': {
     controller: 'document',
     action: 'index'

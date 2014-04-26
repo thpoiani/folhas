@@ -94,7 +94,8 @@ describe('request', function(done) {
         }
       };
 
-      request(app.express.app).post('/login').send(param).expect(200, done);
+      // TODO
+      request(app.express.app).post('/join').send(param).expect(200, done);
     });
   });
 
