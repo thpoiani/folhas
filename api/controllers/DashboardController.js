@@ -23,7 +23,11 @@ var fn_push_error = function (message, name, value) {
 module.exports = {
 
   index: function (req, res) {
-    res.render('dashboard/index', {user: req.session.user});
+    Document.find({author: req.session.user.email}, function(err, documents) {
+      if (err) throw new Error(err);
+
+      res.render('dashboard/index', {user: req.session.user, documents: documents});
+    });
   },
 
   edit: function (req, res) {

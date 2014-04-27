@@ -12,3 +12,8 @@ block body
             a(data-create="document") New document
         li
             a(href="/exit") Logout
+
+    ul
+        each document in documents
+          li 
+            a(href='/' + document.hash)= document.hash

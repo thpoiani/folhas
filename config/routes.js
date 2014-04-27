@@ -122,6 +122,16 @@ module.exports.routes = {
     action: 'create'
   },
 
+  '/document/connect': {
+    controller: 'document',
+    action: 'connect'
+  },
+
+  '/document/change': {
+    controller: 'document',
+    action: 'change'
+  },
+
   '/:hash': {
     controller: 'document',
     action: 'index'

@@ -15,7 +15,7 @@ module.exports = {
 
     text: {
       type: 'text',
-      defaultsTo: null
+      defaultsTo: ''
     },
 
     isActive: {

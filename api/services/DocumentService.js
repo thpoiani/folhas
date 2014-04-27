@@ -1,6 +1,6 @@
 var Hashids = require('hashids');
 
-exports.generateHash = function() {
+exports.generateHash = function () {
   var options, hashids;
 
   options = {

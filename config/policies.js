@@ -50,6 +50,8 @@ module.exports.policies = {
 
   DocumentController: {
     index: true,
-    create: true
+    create: true,
+    connect: true,
+    change: true
   }
 }

@@ -124,8 +124,8 @@ module.exports = {
       smtpTransport = nodemailer.createTransport("SMTP", {
         service: "Gmail",
         auth: {
-          user: "thpoiani@gmail.com", // TODO
-          pass: "tgopoiani01" // TODO
+          user: "email", // TODO
+          pass: "password" // TODO
         }
       });
 

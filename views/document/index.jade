@@ -4,4 +4,4 @@ block script
     script(src='/js/document.js')
 block body
     h1 #{document.hash}
-    div#editor(style="width:50%; height:400px")
+    div#editor(style="width:50%; height:400px", tabindex=0)= document.text
