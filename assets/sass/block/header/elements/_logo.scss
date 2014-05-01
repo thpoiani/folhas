@@ -1,0 +1,36 @@
+.header-logo {
+  @extend %height-full;
+  @include padding(0 0 0 20px);
+  width: rem(200);
+  float: left;
+
+  h1 {
+    @extend %vertical-align-top;
+    @extend %text-align-left;
+    font-family: "Quicksand-Light", $helvetica;
+    line-height: 60px;
+  }
+
+  a {
+    @extend %color-#28441B;
+    @include padding(2px 0 0 55px);
+    background: url("/images/logo-folhas.png") no-repeat;
+    @include transition (all 300ms);
+
+    &:hover {
+      @extend %color-#557C16;
+      background: url("/images/logo-folhas-hover.png") no-repeat;
+    }
+  }
+
+  @include media($tablet) {
+    @include omega();
+  }
+
+  @include media($mobile) {
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+    width: 165px;
+  }
+}

@@ -1,2 +1,18 @@
 header
-    p Header
+    .header-logo
+        h1
+            a(href="/", title="folhas") folhas
+    .header-social
+        ul
+            li.header-social-facebook
+                a(href="#", target="_blank", title="Facebook")
+            li.header-social-googleplus
+                a(href="#", target="_blank", title="Google Plus")
+            li.header-social-twitter
+                a(href="#", target="_blank", title="Twitter")
+    .header-auth
+        form(method="post", enctype="multipart/form-data", novalidate)
+            input(name="user[email]", type="email", placeholder="Email" tabindex="1", autofocus="autofocus")
+            input(name="user[password]", type="password", placeholder="Password", tabindex="2")
+            input(type="submit", value="Enter", title="Enter", tabindex="3")
+        a.header-auth-remember(rel="nofollow", href="/remember", tabindex="4") Forgot your password?

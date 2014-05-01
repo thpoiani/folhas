@@ -1,0 +1,5 @@
+header {
+  @include outer-container;
+  @include clearfix;
+  height: rem(60);
+}
