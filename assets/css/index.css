@@ -245,6 +245,18 @@ dl {
   font-style: normal;
   src: url("/fonts/Quicksand/quicksand-light.eot");
   src: url("/fonts/Quicksand/quicksand-light.eot?#iefix") format("embedded-opentype"), url("/fonts/Quicksand/quicksand-light.woff") format("woff"), url("/fonts/Quicksand/quicksand-light.ttf") format("truetype"), url("/fonts/Quicksand/quicksand-light.svg#Quicksand-Light") format("svg"); }
+@font-face {
+  font-family: "Quicksand-Regular";
+  font-weight: normal;
+  font-style: normal;
+  src: url("/fonts/Quicksand/quicksand-regular.eot");
+  src: url("/fonts/Quicksand/quicksand-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/Quicksand/quicksand-regular.woff") format("woff"), url("/fonts/Quicksand/quicksand-regular.ttf") format("truetype"), url("/fonts/Quicksand/quicksand-regular.svg#Quicksand-Regular") format("svg"); }
+@font-face {
+  font-family: "Quicksand-Bold";
+  font-weight: bold;
+  font-style: normal;
+  src: url("/fonts/Quicksand/quicksand-bold.eot");
+  src: url("/fonts/Quicksand/quicksand-bold.eot?#iefix") format("embedded-opentype"), url("/fonts/Quicksand/quicksand-bold.woff") format("woff"), url("/fonts/Quicksand/quicksand-bold.ttf") format("truetype"), url("/fonts/Quicksand/quicksand-bold.svg#Quicksand-Bold") format("svg"); }
 *,
 *:before,
 *:after {
@@ -254,29 +266,96 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social {
+.header-social, .banner-content, .authentication-enter, .authentication-join, .technologies {
   text-align: center; }
 
 .header-auth {
   text-align: right; }
 
-.header-logo h1, .header-auth input {
+.header-auth input, .header-auth input[type="submit"], .authentication .button, .header-logo h1 {
   vertical-align: top; }
 
-.header-logo a {
+.header-logo a, .header-auth .header-auth-remember:hover {
   color: #28441B; }
 
-.header-logo a:hover {
+.header-logo a:hover, .header-auth .header-auth-remember {
   color: #557C16; }
 
-.header-logo, .header-social, .header-auth {
+.header-logo, .header-social, .header-auth, .banner-content, .ace {
   height: 100%; }
 
-.header-social a {
+.ace {
+  width: 100%; }
+
+.technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 1024px) {
+    .technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 48.21067%; }
+      .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin: 0 0 1.875rem; }
+      .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
+        margin-right: 0; } }
+
+.header-social a, .authentication .button {
   display: block; }
 
-.header-social li, .header-auth input {
+.header-auth input, .header-social li {
   display: inline-block; }
+
+.header-auth input {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  font-size: 0.875rem;
+  padding: 0.4375rem;
+  height: 2rem; }
+  .header-auth input:hover, .header-auth input:focus {
+    border-color: #557c16; }
+
+.header-auth input[type="submit"], .authentication .button {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  color: white;
+  cursor: pointer;
+  font-weight: normal;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  letter-spacing: 0.125rem; }
+  .header-auth input[type="submit"]:active, .authentication .button:active, .header-auth input[type="submit"]:focus, .authentication .button:focus, .header-auth input[type="submit"]:hover, .authentication .button:hover {
+    border: none;
+    letter-spacing: -0.125rem; }
 
 .header-auth {
   position: relative; }
@@ -310,10 +389,10 @@ header {
     transition: all 300ms; }
     .header-logo a:hover {
       background: url("/images/logo-folhas-hover.png") no-repeat; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .header-logo {
       margin-right: 0; } }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 480px) {
     .header-logo {
       margin: 0 auto;
       float: none;
@@ -355,60 +434,170 @@ header {
     background: url("/images/social/twitter.png") no-repeat; }
     .header-social .header-social-twitter a:hover {
       background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .header-social {
       float: right; } }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 480px) {
     .header-social {
       display: none; } }
 
 .header-auth {
-  padding: 14px 20px 0 0;
-  float: right;
-  width: 420px; }
-  .header-auth input {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    transition: all 300ms;
-    font-size: 0.875rem;
-    padding: 0.4375rem;
-    height: 32px; }
+  padding: 0.875rem 1.25rem 0 0;
+  width: 26.25rem;
+  float: right; }
   .header-auth input[name^="user"] {
     margin: 0 3px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
     font-family: inherit;
-    width: 160px; }
+    width: 10rem; }
   .header-auth input[type="submit"] {
-    margin: 0 0 0 3px;
-    cursor: pointer;
-    font-weight: normal;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    text-shadow: none;
-    width: 60px; }
-    .header-auth input[type="submit"]:active, .header-auth input[type="submit"]:focus {
-      box-shadow: none;
-      border: none; }
+    margin: 0 0 0 0.1875rem;
+    width: 3.75rem;
+    background: #557c16; }
+    .header-auth input[type="submit"]:active, .header-auth input[type="submit"]:focus, .header-auth input[type="submit"]:hover {
+      background: #28441b;
+      box-shadow: inset 0 1px 0 0 #28441b;
+      letter-spacing: -0.03125rem; }
   .header-auth .header-auth-remember {
     position: absolute;
     right: 105px;
     bottom: 7px;
     font-size: 0.75rem;
     line-height: 0; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .header-auth {
       display: none; } }
+
+.banner {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 28.125rem;
+  background: url("/images/trianglify.png") no-repeat; }
+  .banner:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.banner-content {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%;
+  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.25rem;
+  color: white; }
+  .banner-content:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .banner-content {
+      width: 100%;
+      margin: 0; } }
+
+.authentication {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto 3.75rem;
+  padding: 3.75rem 0;
+  background: #f7c451; }
+  .authentication:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .authentication .button {
+    padding: 0.5rem 0;
+    width: 18.75rem;
+    font-size: 2rem;
+    font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.authentication-enter {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-left: 17.05961%; }
+  .authentication-enter:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .authentication-enter {
+      width: 100%;
+      margin: 0; } }
+
+.enter-button {
+  border: 1px solid white;
+  background: #f7c451;
+  float: right;
+  border: 1px solid #fa8d37 !important; }
+  .enter-button:active, .enter-button:focus, .enter-button:hover {
+    background: #fa8d37;
+    border: 1px solid #fa8d37 !important; }
+  @media screen and (max-width: 768px) {
+    .enter-button {
+      float: none;
+      margin: 0 auto;
+      border-bottom: 1px solid white; } }
+
+.authentication-join {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%; }
+  .authentication-join:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .authentication-join {
+      width: 100%;
+      margin: 0; } }
+
+.join-button {
+  border: 1px solid white;
+  background: #fa8d37;
+  border: 1px solid #fa8d37 !important; }
+  .join-button:active, .join-button:focus, .join-button:hover {
+    background: #e73f38;
+    border: 1px solid #e73f38 !important; }
+  @media screen and (max-width: 768px) {
+    .join-button {
+      margin: 0 auto; } }
+
+.technologies {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto 3.75rem;
+  padding: 0 1.25rem; }
+  .technologies:after {
+    content: "";
+    display: table;
+    clear: both; }
+  @media screen and (max-width: 480px) {
+    .technologies {
+      padding: 0 0.625rem;
+      margin: 0 0 1.875rem; } }
+  .technologies .title {
+    font-family: "Quicksand-Bold", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal; }
+  .technologies .description {
+    font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+@media screen and (max-width: 1024px) {
+  .technologies-reactive-writing {
+    margin-right: 0; } }
+
+.document {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto 3.75rem;
+  padding: 3.75rem 0; }
+  .document:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.document-editor {
+  height: 31.25rem;
+  width: 33.75rem;
+  margin: 0 auto; }

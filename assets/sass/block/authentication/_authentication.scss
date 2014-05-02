@@ -1,0 +1,15 @@
+.authentication {
+  @include outer-container;
+  @include margin(0 auto rem(60));
+  @include padding(rem(60) 0);
+  background: $color-F7C451;
+
+  .button {
+    @extend %display-block;
+    @extend %submit;
+    @include padding(rem(8) 0);
+    width: rem(300);
+    font-size: rem(32);
+    font-family: "Quicksand-Light", $helvetica;
+  }
+}

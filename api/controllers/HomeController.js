@@ -1,7 +1,12 @@
 module.exports = {
 
   index: function (req, res) {
-    res.render('home/index');
+    var data = {
+      pageTitle: "folhas",
+      isPhone: MobileDetect.isPhone(req)
+    };
+
+    res.render('home/index', data);
   }
 
 };

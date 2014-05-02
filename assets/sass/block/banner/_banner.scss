@@ -1,0 +1,5 @@
+.banner {
+  @include outer-container;
+  height: rem(450);
+  background: url("/images/trianglify.png") no-repeat;
+}

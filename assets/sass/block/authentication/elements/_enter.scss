@@ -1,0 +1,28 @@
+.authentication-enter {
+  @include span-columns(4);
+  @include shift(2);
+  @extend %text-align-center;
+
+  @include media($tablet) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.enter-button {
+  border: 1px solid white;
+  background: $color-F7C451;
+  float: right;
+  border: 1px solid $color-FA8D37 !important;
+
+  &:active, &:focus, &:hover {
+    background: $color-FA8D37;
+    border: 1px solid $color-FA8D37 !important;
+  }
+
+  @include media($tablet) {
+    float: none;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+  }
+}

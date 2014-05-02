@@ -1,0 +1,24 @@
+.authentication-join {
+  @include span-columns(4);
+  @extend %text-align-center;
+
+  @include media($tablet) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.join-button {
+  border: 1px solid white;
+  background: $color-FA8D37;
+  border: 1px solid $color-FA8D37 !important;
+
+  &:active, &:focus, &:hover {
+    background: $color-E73F38;
+    border: 1px solid $color-E73F38 !important;
+  }
+
+  @include media($tablet) {
+    margin: 0 auto;
+  }
+}

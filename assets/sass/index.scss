@@ -1,8 +1,17 @@
-@import "bootstrap";
-@import "extends/base";
+@import "helpers/bootstrap";
+@import "helpers/extend/base";
 
 @import "block/header/header";
-@import "block/header/elements/logo";
-@import "block/header/elements/social";
-@import "block/header/elements/auth";
+@import "block/header/elements/base";
 
+@import "block/banner/banner";
+@import "block/banner/elements/base";
+
+@import "block/authentication/authentication";
+@import "block/authentication/elements/base";
+
+@import "block/technologies/technologies";
+@import "block/technologies/elements/base";
+
+@import "block/document/document";
+@import "block/document/elements/base";

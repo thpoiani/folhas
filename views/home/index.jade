@@ -1,10 +1,47 @@
 extends ../layout
+block style
+    link(rel='stylesheet', href='/css/index.css')
+
 block script
+    script(src='/bower_components/ace-builds/src-min-noconflict/ace.js')
     script(src='/js/home.js')
 
 block body
-    img(src="/images/trianglify.png")
+    .banner
+        .banner-content
+            img(src="/images/folhas.png", width="300", height="300", alt="folhas", title="folhas")
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            p Etiam vulputate turpis ut varius aliquet.
 
+    .authentication
+        .authentication-enter
+            a(href="/enter", title="Enter").enter-button.button ENTER
+        .authentication-join
+            a(href="/join", title="Join").join-button.button JOIN
+
+    .technologies
+        .technologies-ifsp
+            img(src="/images/technology.png", width="150", height="100", alt="reactive writing", title="reactive writing")
+            h2.title IFSP
+            p.description Instituto Federal de Educação, Ciência e Tecnologia de São Paulo
+        .technologies-reactive-writing
+            img(src="/images/technology.png", width="150", height="100", alt="reactive writing", title="reactive writing")
+            h2.title Reactive Writing
+            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
+        .technologies-nodejs
+            img(src="/images/technology.png", width="150", height="100", alt="node.js logo", title="node.js")
+            h2.title node.js
+            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
+        .technologies-websockets
+            img(src="/images/technology.png", width="150", height="100", alt="socket.io logo", title="socket.io")
+            h2.title Socket.IO
+            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
+
+    .document
+        .document-editor
+            #editor.ace
+
+//
     h1 Folhas
     ul
         li

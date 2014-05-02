@@ -1,0 +1,5 @@
+.document {
+  @include outer-container;
+  @include margin(0 auto rem(60));
+  @include padding(rem(60) 0);
+}

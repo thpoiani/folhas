@@ -1,0 +1,10 @@
+.document-editor {
+  height: rem(500);
+  width: rem(540);
+  margin: 0 auto;
+}
+
+.ace {
+  @extend %width-full;
+  @extend %height-full;
+}
