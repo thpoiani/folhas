@@ -1,7 +1,7 @@
 doctype html
 html(lang="en", class=(isPhone?'phone':''))
     include _partial/head
-    body
+    body(itemscope itemtype="http://schema.org/WebApplication")
         include _partial/header
         block body
         include _partial/footer

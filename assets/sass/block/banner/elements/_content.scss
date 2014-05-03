@@ -7,6 +7,10 @@
   font-size: rem(20);
   color: white;
 
+  img {
+    @include margin(rem(80) 0 rem(40) 0);
+  }
+
   @include media($tablet) {
     width: 100%;
     margin: 0;

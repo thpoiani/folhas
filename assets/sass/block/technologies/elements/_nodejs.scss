@@ -1,3 +1,11 @@
 .technologies-nodejs {
   @extend %technologies;
+
+  a {
+    @extend %color-#557C16;
+
+    &:hover {
+      @extend %color-#28441B;
+    }
+  }
 }

@@ -23,6 +23,20 @@
       ]);
     };
 
+    exports.animation = {
+      header: function () {
+        var technologies = doc.querySelector('.technologies'),
+            header = document.querySelector('header');
+
+        win.onscroll = function() {
+          (win.scrollY >= technologies.offsetTop)
+           ? header.style.backgroundColor = "white"
+           : header.style.backgroundColor = "";
+        };
+      }
+
+    };
+
     exports.ace = {
       initialize: function() {
         var editor = Ace.edit(element);
@@ -36,6 +50,22 @@
 
         disableKeyBindings(editor);
         instance = editor;
+      },
+
+      resize: function() {
+        var html= doc.getElementsByTagName('html')[0],
+            documentEditor = doc.getElementsByClassName('document-editor')[0];
+
+        if (html.className === 'phone') {
+          element.style.width = documentEditor.style.width = '300px';
+        } else {
+          window.onresize = function() {
+            (window.innerWidth <= 600)
+              ? element.style.width = documentEditor.style.width = '300px'
+              : element.style.width = documentEditor.style.width = '';
+          }
+        }
+
       }
     };
 
@@ -57,6 +87,8 @@
   })();
 
 //  Home.createDocument();
+  Home.animation.header();
   Home.ace.initialize();
+  Home.ace.resize();
 
 })(window, document, ace);

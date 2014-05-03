@@ -9,9 +9,8 @@ block script
 block body
     .banner
         .banner-content
-            img(src="/images/folhas.png", width="300", height="300", alt="folhas", title="folhas")
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            p Etiam vulputate turpis ut varius aliquet.
+            img(src="/images/folhas.png", width="245", height="200", alt="folhas", title="folhas", itemprop="image")
+            p(itemprop="about") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate turpis ut varius aliquet.
 
     .authentication
         .authentication-enter
@@ -20,25 +19,21 @@ block body
             a(href="/join", title="Join").join-button.button JOIN
 
     .technologies
-        .technologies-ifsp
-            img(src="/images/technology.png", width="150", height="100", alt="reactive writing", title="reactive writing")
-            h2.title IFSP
-            p.description Instituto Federal de Educação, Ciência e Tecnologia de São Paulo
-        .technologies-reactive-writing
-            img(src="/images/technology.png", width="150", height="100", alt="reactive writing", title="reactive writing")
+        .technologies-ifsp(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
+            img(src="/images/ifsp.png", width="150", height="86", alt="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", title="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", itemprop="logo")
+            p.description(itemprop="description") <strong itemprop="name">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, campus São Carlos</strong>.
+        .technologies-reactive-writing(itemprop="mentions")
             h2.title Reactive Writing
-            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
-        .technologies-nodejs
-            img(src="/images/technology.png", width="150", height="100", alt="node.js logo", title="node.js")
-            h2.title node.js
-            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
-        .technologies-websockets
-            img(src="/images/technology.png", width="150", height="100", alt="socket.io logo", title="socket.io")
-            h2.title Socket.IO
-            p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tincidunt quam. Duis vitae nulla neque. Nam lacinia nibh et ante sollicitudin, vel semper quam aliquam.
+            p.description <strong>Reactive writing</strong> occurs when team members collaborate synchronously to develop their product. Team members react to and adjust each other's contributions as they are made.
+        .technologies-nodejs(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
+            img(src="/images/nodejs.png", width="150", height="41", alt="node.js", title="node.js", itemprop="logo")
+            p.description(itemprop="description") <strong itemprop="name">Node.js</strong> is a platform built on <a href="https://code.google.com/p/v8/" target="_blank" title="V8 JavaScript Engine">Chrome's JavaScript runtime</a> for easily building fast, scalable network applications.
+        .technologies-websockets(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
+            img(src="/images/socketio.png", width="150", height="39", alt="socket.io", title="socket.io", itemprop="logo")
+            p.description(itemprop="description") <strong itemprop="name">Socket.IO</strong> aims to make realtime apps possible in every browser and mobile device, blurring the differences between the different transport mechanisms.
 
-    .document
-        .document-editor
+    section.document
+        article.document-editor
             #editor.ace
 
 //

@@ -1,4 +1,12 @@
 header {
+  width: 100%;
+  position: fixed;
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 -2px 5px 0px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.header {
   @include outer-container;
   @include clearfix;
   height: rem(60);
