@@ -1,44 +1,50 @@
 extends ../layout
+block style
+    link(rel='stylesheet', href='/css/dashboard.css')
+
 block script
     script(src='/js/edit.js')
 
 block body
-    h2 Edit profile
-    form(method="post", action="/me", enctype="multipart/form-data")
-        input(type="hidden", name="_method", value="put")
+    section(style="padding-top: 80px")
+        h2 Edit profile
+        form(method="post", action="/me", enctype="multipart/form-data")
+            input(type="hidden", name="_method", value="put")
 
-        label(for="name") Name
-        input(type="text", name="user[name]", id="name", tabindex="1", value="#{user.name}")
+            label(for="name") Name
+            input(type="text", name="user[name]", id="name", tabindex="1", value="#{user.name}")
 
-        label(for="email") E-mail
-        input(type="text", name="user[email]", id="email", tabindex="2", value="#{user.email}")
+            label(for="email") E-mail
+            input(type="text", name="user[email]", id="email", tabindex="2", value="#{user.email}")
 
         input(type="submit", value="Update profile", tabindex="3")
 
 
-    h2 Change password
-    form(method="post", action="/me/change_password", enctype="multipart/form-data")
-        input(type="hidden", name="_method", value="put")
+    section
+        h2 Change password
+        form(method="post", action="/me/change_password", enctype="multipart/form-data")
+            input(type="hidden", name="_method", value="put")
 
-        label(for="password") Old password
-        input(type="password", name="user[password]", id="password", tabindex="4")
+            label(for="password") Old password
+            input(type="password", name="user[password]", id="password", tabindex="4")
 
-        label(for="new_password") New password
-        input(type="password", name="user[new_password]", id="new_password", tabindex="5")
+            label(for="new_password") New password
+            input(type="password", name="user[new_password]", id="new_password", tabindex="5")
 
-        label(for="confirm_new_password") Confirm new password
-        input(type="password", name="user[confirm_new_password]", id="confirm_new_password", tabindex="6")
+            label(for="confirm_new_password") Confirm new password
+            input(type="password", name="user[confirm_new_password]", id="confirm_new_password", tabindex="6")
 
-        input(type="submit", value="Change password", tabindex="7")
+            input(type="submit", value="Change password", tabindex="7")
 
-    h2 Delete account
-    form(method="post", action="/me", enctype="multipart/form-data")
-        input(type="hidden", name="_method", value="delete")
+    section
+        h2 Delete account
+        form(method="post", action="/me", enctype="multipart/form-data")
+            input(type="hidden", name="_method", value="delete")
 
-        label(for="delete_account_email") E-mail
-        input(type="text", name="user[email]", id="delete_account_email", tabindex="8")
+            label(for="delete_account_email") E-mail
+            input(type="text", name="user[email]", id="delete_account_email", tabindex="8")
 
-        label(for="delete_account_password") Password
-        input(type="password", name="user[password]", id="delete_account_password", tabindex="9")
+            label(for="delete_account_password") Password
+            input(type="password", name="user[password]", id="delete_account_password", tabindex="9")
 
-        input(type="submit", value="Delete account", tabindex="10")
+            input(type="submit", value="Delete account", tabindex="10")

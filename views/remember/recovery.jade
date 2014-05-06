@@ -1,22 +1,25 @@
 extends ../layout
+block style
+    link(rel='stylesheet', href='/css/recovery.css')
+
 block script
     script(src='/js/user.js')
     script(src='/js/recovery.js')
 
 block body
-    h2 Recovery
-    if (success)
-        p= user.name
-        p= user.email
-        p= user.password
+    section.form(style="padding-top: 80px")
+        if (success)
+            p= user.name
+            p= user.email
+            p= user.password
 
-        form(method="post", enctype="multipart/form-data")
-            label(for="password") New password
-            input(type="password", name="password", id="password", tabindex="1", autofocus="autofocus")
+            form(method="post", enctype="multipart/form-data")
+                label(for="password") New password
+                input(type="password", name="password", id="password", tabindex="1", autofocus="autofocus")
 
-            input(type="submit", value="Update", tabindex="2")
-    else
-        each error in errors
-            p #{error.message}
+                input(type="submit", value="Update", tabindex="2")
+        else
+            each error in errors
+                p #{error.message}
 
-        a(href="/") Return
+            a(href="/") Return

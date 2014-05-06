@@ -34,16 +34,16 @@
     exports.form = function () {
       var blur, submit, form, inputs;
 
-      blur = function (event) {
-        var user = assemblyUser(),
-          field = event.srcElement.name;
-
-        if (user.isValid(field)) {
-          clearInput(field);
-        } else {
-          validateUser(user);
-        }
-      };
+//      blur = function (event) {
+//        var user = assemblyUser(),
+//          field = event.srcElement.name;
+//
+//        if (user.isValid(field)) {
+//          clearInput(field);
+//        } else {
+//          validateUser(user);
+//        }
+//      };
 
       submit = function (event) {
         var user = assemblyUser(),
@@ -51,7 +51,7 @@
 
         event.preventDefault();
 
-        if (user.isValid('email') && user.isValid('password')) {
+//        if (user.isValid('email') && user.isValid('password')) {
           socket.post(location.href, {user: user}, function (response) {
             if (response.success) {
               location.href = '/me';
@@ -76,9 +76,9 @@
               }
             }
           });
-        } else {
-          validateUser(user);
-        }
+//        } else {
+//          validateUser(user);
+//        }
       };
 
       form = doc.querySelector('form');

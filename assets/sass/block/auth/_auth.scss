@@ -1,0 +1,5 @@
+.auth {
+  @include outer-container;
+  @include padding(rem(80) rem(10) 0);
+}
+

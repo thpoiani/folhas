@@ -12,7 +12,7 @@ header
                 li.header-social-twitter
                     a(href="#", target="_blank", title="Twitter")
         .header-auth
-            form(method="post", enctype="multipart/form-data", novalidate)
+            form(action="/user/validate", method="post", enctype="multipart/form-data", novalidate)
                 input(name="user[email]", type="email", placeholder="email" tabindex="1", autofocus="autofocus")
                 input(name="user[password]", type="password", placeholder="password", tabindex="2")
                 input(type="submit", value="enter", title="Enter", tabindex="3")

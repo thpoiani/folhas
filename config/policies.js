@@ -16,6 +16,10 @@ module.exports.policies = {
 
   '*': false,
 
+  UserController: {
+    validate: true
+  },
+
   HomeController: {
     index: true
   },

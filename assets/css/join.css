@@ -266,62 +266,40 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social, .banner-content, .authentication-enter, .authentication-join, .technologies, .information {
+.header-social, .information {
   text-align: center; }
 
 .header-auth {
   text-align: right; }
 
-.header-auth input, .header-auth input[type="submit"], .authentication .button, .header-logo h1 {
+.header-auth input, .auth-form input[name^="user"], .header-auth input[type="submit"], .auth-form input[type="submit"], .header-logo h1 {
   vertical-align: top; }
 
-.header-logo a, .header-auth .header-auth-remember:hover, .technologies-nodejs a:hover {
+.auth-form a {
+  float: right; }
+
+.header-logo a, .header-auth .header-auth-remember:hover, .auth-form a:hover {
   color: #28441B; }
 
-.header-auth .header-auth-remember, .technologies-nodejs a {
+.header-auth .header-auth-remember, .auth-form a {
   color: #557C16; }
 
 .header-logo a:hover {
   color: #FA8D37; }
 
-.header-logo, .header-social, .header-auth, .banner-content, .ace {
+.header-logo, .header-social, .header-auth {
   height: 100%; }
 
-.ace {
+.auth-form input[name^="user"] {
   width: 100%; }
 
-.technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 23.23176%; }
-  .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
-    margin-right: 0; }
-  @media screen and (max-width: 1024px) {
-    .technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
-      float: left;
-      display: block;
-      margin-right: 3.57866%;
-      width: 48.21067%; }
-      .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
-        margin-right: 0; } }
-  @media screen and (max-width: 480px) {
-    .technologies-ifsp, .technologies-reactive-writing, .technologies-nodejs, .technologies-websockets {
-      float: left;
-      display: block;
-      margin-right: 7.42297%;
-      width: 100%;
-      margin: 0 0 1.875rem; }
-      .technologies-ifsp:last-child, .technologies-reactive-writing:last-child, .technologies-nodejs:last-child, .technologies-websockets:last-child {
-        margin-right: 0; } }
-
-.header-social a, .authentication .button, .information img, .information-author img {
+.header-social a, .information img, .information-author img {
   display: block; }
 
-.header-auth input, .header-social li {
+.header-auth input, .auth-form input[name^="user"], .header-social li {
   display: inline-block; }
 
-.header-auth input {
+.header-auth input, .auth-form input[name^="user"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -341,10 +319,10 @@ dl {
   font-size: 0.875rem;
   padding: 0.4375rem;
   height: 2rem; }
-  .header-auth input:hover, .header-auth input:focus {
+  .header-auth input:hover, .auth-form input[name^="user"]:hover, .header-auth input:focus, .auth-form input[name^="user"]:focus {
     border-color: #557c16; }
 
-.header-auth input[type="submit"], .authentication .button {
+.header-auth input[type="submit"], .auth-form input[type="submit"] {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   transition: all 300ms;
@@ -356,7 +334,7 @@ dl {
   box-shadow: none;
   text-shadow: none;
   letter-spacing: 0.125rem; }
-  .header-auth input[type="submit"]:active, .authentication .button:active, .header-auth input[type="submit"]:focus, .authentication .button:focus, .header-auth input[type="submit"]:hover, .authentication .button:hover {
+  .header-auth input[type="submit"]:active, .auth-form input[type="submit"]:active, .header-auth input[type="submit"]:focus, .auth-form input[type="submit"]:focus, .header-auth input[type="submit"]:hover, .auth-form input[type="submit"]:hover {
     border: none;
     letter-spacing: -0.125rem; }
 
@@ -478,146 +456,44 @@ header {
     .header-auth {
       display: none; } }
 
-header {
-  background: rgba(255, 255, 255, 0.3); }
-
-.banner {
+.auth {
   max-width: 85.375em;
   margin-left: auto;
   margin-right: auto;
-  height: 28.125rem;
-  background: url("/images/trianglify.png") no-repeat; }
-  .banner:after {
+  padding: 5rem 0.625rem 0; }
+  .auth:after {
     content: "";
     display: table;
     clear: both; }
 
-.banner-content {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%;
-  margin-left: 25.58941%;
-  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  font-size: 1.25rem;
-  color: white; }
-  .banner-content:last-child {
-    margin-right: 0; }
-  .banner-content img {
-    margin: 5rem 0 2.5rem; }
-  @media screen and (max-width: 768px) {
-    .banner-content {
-      width: 100%;
-      margin: 0; } }
-
-.authentication {
-  max-width: 85.375em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5rem 0;
-  box-shadow: inset 0px 1px 10px -5px #333;
-  background: #f7c451;
-  max-width: 100%; }
-  .authentication:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .authentication .button {
-    padding: 0.5rem 0;
-    width: 18.75rem;
-    font-size: 2rem;
+.auth-form {
+  margin: 0 auto 3.75rem;
+  width: 18.75rem; }
+  .auth-form label {
     font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
-
-.authentication-enter {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  margin-left: 17.05961%; }
-  .authentication-enter:last-child {
-    margin-right: 0; }
-  @media screen and (max-width: 768px) {
-    .authentication-enter {
-      width: 100%;
-      margin: 0; } }
-
-.enter-button {
-  border: 1px solid white;
-  background: #f7c451;
-  float: right;
-  border: 1px solid #fa8d37 !important; }
-  .enter-button:active, .enter-button:focus, .enter-button:hover {
-    background: #fa8d37;
-    border: 1px solid #fa8d37 !important; }
-  @media screen and (max-width: 768px) {
-    .enter-button {
-      float: none;
-      margin: 0 auto;
-      border-bottom: 1px solid white; } }
-
-.authentication-join {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%; }
-  .authentication-join:last-child {
-    margin-right: 0; }
-  @media screen and (max-width: 768px) {
-    .authentication-join {
-      width: 100%;
-      margin: 0; } }
-
-.join-button {
-  border: 1px solid white;
-  background: #fa8d37;
-  border: 1px solid #fa8d37 !important; }
-  .join-button:active, .join-button:focus, .join-button:hover {
-    background: #e73f38;
-    border: 1px solid #e73f38 !important; }
-  @media screen and (max-width: 768px) {
-    .join-button {
-      margin: 0 auto; } }
-
-.technologies {
-  max-width: 85.375em;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0 auto 3.75rem;
-  padding: 5rem 1.25rem 0; }
-  .technologies:after {
-    content: "";
-    display: table;
-    clear: both; }
-  @media screen and (max-width: 480px) {
-    .technologies {
-      padding: 5rem 0.625rem 0;
-      margin: 0 0 1.875rem; } }
-  .technologies .title {
-    font-family: "Quicksand-Bold", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-    font-weight: normal; }
-  .technologies .description {
+  .auth-form input[name^="user"] {
+    font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    margin-bottom: 1.25rem; }
+  .auth-form input[type="submit"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 5.625rem;
+    background: #557c16; }
+    .auth-form input[type="submit"]:active, .auth-form input[type="submit"]:focus, .auth-form input[type="submit"]:hover {
+      background: #28441b;
+      box-shadow: inset 0 1px 0 0 #28441b;
+      letter-spacing: -0.03125rem; }
+  .auth-form a {
+    margin: 0.1875rem 0 0;
     font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
-
-@media screen and (max-width: 1024px) {
-  .technologies-reactive-writing {
-    margin-right: 0; } }
-
-.document {
-  max-width: 85.375em;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0 auto 3.75rem;
-  padding: 3.75rem 0; }
-  .document:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-.document-editor {
-  box-shadow: 0px 1px 5px -3px rgba(0, 0, 0, 0.5);
-  height: 31.25rem;
-  width: 33.75rem;
-  margin: 0 auto; }
 
 footer {
   max-width: 85.375em;

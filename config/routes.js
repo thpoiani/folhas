@@ -28,6 +28,12 @@
 
 module.exports.routes = {
 
+  // User
+  '/user/validate' : {
+    controller: 'user',
+    action: 'validate'
+  },
+
   // Home
   '/': {
     controller: 'home',

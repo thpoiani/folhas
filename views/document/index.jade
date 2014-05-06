@@ -1,7 +1,12 @@
 extends ../layout
+block style
+    link(rel='stylesheet', href='/css/document.css')
+
 block script
     script(src='/bower_components/ace-builds/src-min-noconflict/ace.js')
     script(src='/js/document.js')
+
 block body
-    h1 #{document.hash}
-    div#editor(style="width:50%; height:400px", tabindex=0)= document.text
+    section(style="padding-top: 80px")
+        h1 #{document.hash}
+        div#editor(style="width:50%; height:400px", tabindex=0)= document.text

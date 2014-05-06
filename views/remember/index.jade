@@ -1,12 +1,15 @@
 extends ../layout
+block style
+    link(rel='stylesheet', href='/css/remember.css')
+
 block script
     script(src='/js/user.js')
     script(src='/js/remember.js')
 
 block body
-    h2 Remember
-    form(method="post", enctype="multipart/form-data")
-        label(for="email") E-mail
-        input(type="email", name="email", id="email", tabindex="1", autofocus="autofocus")
+    section.form(style="padding-top: 80px")
+        form(method="post", enctype="multipart/form-data")
+            label(for="email") E-mail
+            input(type="email", name="email", id="email", tabindex="1", autofocus="autofocus")
 
-        input(type="submit", value="Enter", tabindex="2")
+            input(type="submit", value="Enter", tabindex="2")
