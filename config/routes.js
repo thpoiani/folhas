@@ -29,9 +29,15 @@
 module.exports.routes = {
 
   // User
-  '/user/validate' : {
+  'post /user/validate' : {
     controller: 'user',
     action: 'validate'
+  },
+
+  // User
+  'post /user' : {
+    controller: 'user',
+    action: 'create'
   },
 
   // Home

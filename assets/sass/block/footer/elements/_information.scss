@@ -1,6 +1,6 @@
 .information {
   @extend %text-align-center;
-  font-family: "Quicksand-Regular", $helvetica;
+  @extend %Quicksand-Regular;
   font-size: rem(18);
 
   img {
@@ -26,11 +26,11 @@
 
   img {
     @include margin(0 auto);
-    @extend %display-block;
     @include border-top-radius(rem(3));
     @include border-bottom-radius(rem(3));
     @include border-left-radius(rem(3));
     @include border-right-radius(rem(3));
+    @extend %display-block;
     box-shadow: 0px 0px 6px -2px #666
   }
 

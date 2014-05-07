@@ -7,17 +7,17 @@ block script
     script(src='/js/recovery.js')
 
 block body
-    section.form(style="padding-top: 80px")
+    section.auth
         if (success)
             p= user.name
             p= user.email
             p= user.password
 
-            form(method="post", enctype="multipart/form-data")
+            form.auth-form(method="post", enctype="multipart/form-data", novalidate)
                 label(for="password") New password
-                input(type="password", name="password", id="password", tabindex="1", autofocus="autofocus")
+                input(type="password", name="user[password]", id="password", tabindex="1", autofocus="autofocus")
 
-                input(type="submit", value="Update", tabindex="2")
+                input(type="submit", value="Update", title="Update", tabindex="2")
         else
             each error in errors
                 p #{error.message}

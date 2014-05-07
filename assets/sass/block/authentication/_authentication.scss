@@ -9,8 +9,8 @@
     @extend %display-block;
     @extend %submit;
     @include padding(rem(8) 0);
+    @extend %Quicksand-Light;
     width: rem(300);
     font-size: rem(32);
-    font-family: "Quicksand-Light", $helvetica;
   }
 }

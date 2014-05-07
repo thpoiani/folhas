@@ -1,0 +1,41 @@
+%Quicksand-Light {
+  font-family: "Quicksand-Light", $helvetica;
+}
+
+%Quicksand-Regular {
+  font-family: "Quicksand-Regular", $helvetica;
+}
+
+%Quicksand-Bold {
+  font-family: "Quicksand-Bold", $helvetica;
+}
+
+%ion {
+  display: inline-block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%ionicon-ios7-drag {
+  @extend %ion;
+
+  &:before {
+    content: "\f185";
+  }
+}
+
+%ionicon-ios7-close-empty {
+  @extend %ion;
+
+  &:before {
+    content: "\f2bd";
+  }
+}

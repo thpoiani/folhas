@@ -257,6 +257,12 @@ dl {
   font-style: normal;
   src: url("/fonts/Quicksand/quicksand-bold.eot");
   src: url("/fonts/Quicksand/quicksand-bold.eot?#iefix") format("embedded-opentype"), url("/fonts/Quicksand/quicksand-bold.woff") format("woff"), url("/fonts/Quicksand/quicksand-bold.ttf") format("truetype"), url("/fonts/Quicksand/quicksand-bold.svg#Quicksand-Bold") format("svg"); }
+@font-face {
+  font-family: "Ionicons";
+  font-weight: normal;
+  font-style: normal;
+  src: url("/bower_components/ionicons/fonts/ionicons.eot");
+  src: url("/bower_components/ionicons/fonts/ionicons.eot?#iefix") format("embedded-opentype"), url("/bower_components/ionicons/fonts/ionicons.woff") format("woff"), url("/bower_components/ionicons/fonts/ionicons.ttf") format("truetype"), url("/bower_components/ionicons/fonts/ionicons.svg#Ionicons") format("svg"); }
 *,
 *:before,
 *:after {
@@ -266,34 +272,68 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social, .information {
+.header-social, .header-navigation, .information {
   text-align: center; }
 
 .header-auth {
   text-align: right; }
 
-.header-auth input, .header-auth input[type="submit"], .header-logo h1 {
+.header-auth input, .auth-form input[name^="user"], .header-auth input[type="submit"], .auth-form input[type="submit"], .header-logo h1 {
   vertical-align: top; }
 
-.header-logo a, .header-auth .header-auth-remember:hover {
+.header-navigation, .header-auth, .auth-form span, .auth-form a {
+  float: right; }
+
+.header-logo a, .header-navigation.close, .header-auth .header-auth-remember:hover, .auth-form a:hover {
   color: #28441B; }
 
-.header-auth .header-auth-remember {
+.header-auth .header-auth-remember, .auth-form a {
   color: #557C16; }
 
-.header-logo a:hover {
+.header-logo a:hover, .header-navigation.close:hover, .header-navigation.open {
   color: #FA8D37; }
+
+.header-navigation.open:hover, .auth-form .error {
+  color: #E73F38; }
 
 .header-logo, .header-social, .header-auth {
   height: 100%; }
 
+.auth-form input[name^="user"] {
+  width: 100%; }
+
 .header-social a, .information img, .information-author img {
   display: block; }
 
-.header-auth input, .header-social li {
+.header-auth input, .auth-form input[name^="user"], .header-social li {
   display: inline-block; }
 
-.header-auth input {
+.header-logo h1, .auth-form label {
+  font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.auth-form input[name^="user"], .auth-form a, .information {
+  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.header-navigation.close, .header-navigation.open {
+  display: inline-block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.header-navigation.close:before {
+  content: "\f185"; }
+
+.header-navigation.open:before {
+  content: "\f2bd"; }
+
+.header-auth input, .auth-form input[name^="user"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -313,10 +353,10 @@ dl {
   font-size: 0.875rem;
   padding: 0.4375rem;
   height: 2rem; }
-  .header-auth input:hover, .header-auth input:focus {
+  .header-auth input:hover, .auth-form input[name^="user"]:hover, .header-auth input:focus, .auth-form input[name^="user"]:focus {
     border-color: #557c16; }
 
-.header-auth input[type="submit"] {
+.header-auth input[type="submit"], .auth-form input[type="submit"] {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   transition: all 300ms;
@@ -328,7 +368,7 @@ dl {
   box-shadow: none;
   text-shadow: none;
   letter-spacing: 0.125rem; }
-  .header-auth input[type="submit"]:active, .header-auth input[type="submit"]:focus, .header-auth input[type="submit"]:hover {
+  .header-auth input[type="submit"]:active, .auth-form input[type="submit"]:active, .header-auth input[type="submit"]:focus, .auth-form input[type="submit"]:focus, .header-auth input[type="submit"]:hover, .auth-form input[type="submit"]:hover {
     border: none;
     letter-spacing: -0.125rem; }
 
@@ -361,7 +401,6 @@ header {
   width: 12.5rem;
   float: left; }
   .header-logo h1 {
-    font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     line-height: 60px; }
   .header-logo a {
     padding: 0 0 0 55px;
@@ -423,10 +462,19 @@ header {
     .header-social {
       display: none; } }
 
+.header-navigation {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  padding: 0 1.25rem;
+  width: 6.25rem;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  cursor: pointer; }
+
 .header-auth {
   padding: 0.875rem 1.25rem 0 0;
-  width: 26.25rem;
-  float: right; }
+  width: 26.25rem; }
   .header-auth input[name^="user"] {
     margin: 0 3px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -450,6 +498,45 @@ header {
     .header-auth {
       display: none; } }
 
+.auth {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 0.625rem 0; }
+  .auth:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.auth-form {
+  margin: 0 auto 3.75rem;
+  width: 18.75rem; }
+  .auth-form .error {
+    border-color: #e73f38 !important; }
+    .auth-form .error:active, .auth-form .error:focus, .auth-form .error:hover {
+      border-color: #e73f38 !important; }
+  .auth-form input[name^="user"] {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    margin-bottom: 1.25rem; }
+  .auth-form input[type="submit"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 5.625rem;
+    background: #557c16; }
+    .auth-form input[type="submit"]:active, .auth-form input[type="submit"]:focus, .auth-form input[type="submit"]:hover {
+      background: #28441b;
+      box-shadow: inset 0 1px 0 0 #28441b;
+      letter-spacing: -0.03125rem; }
+  .auth-form a {
+    margin: 0.1875rem 0 0; }
+
 footer {
   max-width: 85.375em;
   margin-left: auto;
@@ -464,7 +551,6 @@ footer {
     clear: both; }
 
 .information {
-  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.125rem; }
   .information img {
     margin: 0 auto;

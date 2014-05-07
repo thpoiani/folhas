@@ -7,7 +7,7 @@
   h1 {
     @extend %vertical-align-top;
     @extend %text-align-left;
-    font-family: "Quicksand-Light", $helvetica;
+    @extend %Quicksand-Light;
     line-height: 60px;
   }
 

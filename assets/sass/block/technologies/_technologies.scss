@@ -10,12 +10,12 @@
   }
 
   .title {
-    font-family: "Quicksand-Bold", $helvetica;
+    @extend %Quicksand-Bold;
     font-weight: normal;
   }
 
   .description {
-    font-family: "Quicksand-Regular", $helvetica;
+    @extend %Quicksand-Regular;
   }
 }
 

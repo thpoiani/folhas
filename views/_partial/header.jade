@@ -11,6 +11,10 @@ header
                     a(href="#", target="_blank", title="Google Plus")
                 li.header-social-twitter
                     a(href="#", target="_blank", title="Twitter")
+
+        div.header-navigation.close
+
+    //
         .header-auth
             form(action="/user/validate", method="post", enctype="multipart/form-data", novalidate)
                 input(name="user[email]", type="email", placeholder="email" tabindex="1", autofocus="autofocus")

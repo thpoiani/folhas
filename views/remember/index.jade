@@ -7,9 +7,10 @@ block script
     script(src='/js/remember.js')
 
 block body
-    section.form(style="padding-top: 80px")
-        form(method="post", enctype="multipart/form-data")
-            label(for="email") E-mail
-            input(type="email", name="email", id="email", tabindex="1", autofocus="autofocus")
+    section.auth
+        form.auth-form(method="post", enctype="multipart/form-data", novalidate)
 
-            input(type="submit", value="Enter", tabindex="2")
+            label(for="email") Email
+            input(type="email", name="user[email]", id="email", tabindex="1", autofocus="autofocus")
+
+            input(type="submit", value="Enter", title="Enter" tabindex="2")

@@ -7,18 +7,19 @@ block script
     script(src='/js/home.js')
 
 block body
-    .banner
+
+    section.banner
         .banner-content
             img(src="/images/folhas.png", width="245", height="200", alt="folhas", title="folhas", itemprop="image")
             p(itemprop="about") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate turpis ut varius aliquet.
 
-    .authentication
+    section.authentication
         .authentication-enter
             a(href="/enter", title="Enter").enter-button.button ENTER
         .authentication-join
             a(href="/join", title="Join").join-button.button JOIN
 
-    .technologies
+    section.technologies
         .technologies-ifsp(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
             img(src="/images/ifsp.png", width="150", height="86", alt="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", title="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", itemprop="logo")
             p.description(itemprop="description") <strong itemprop="name">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, campus São Carlos</strong>.

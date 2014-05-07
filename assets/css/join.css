@@ -257,6 +257,12 @@ dl {
   font-style: normal;
   src: url("/fonts/Quicksand/quicksand-bold.eot");
   src: url("/fonts/Quicksand/quicksand-bold.eot?#iefix") format("embedded-opentype"), url("/fonts/Quicksand/quicksand-bold.woff") format("woff"), url("/fonts/Quicksand/quicksand-bold.ttf") format("truetype"), url("/fonts/Quicksand/quicksand-bold.svg#Quicksand-Bold") format("svg"); }
+@font-face {
+  font-family: "Ionicons";
+  font-weight: normal;
+  font-style: normal;
+  src: url("/bower_components/ionicons/fonts/ionicons.eot");
+  src: url("/bower_components/ionicons/fonts/ionicons.eot?#iefix") format("embedded-opentype"), url("/bower_components/ionicons/fonts/ionicons.woff") format("woff"), url("/bower_components/ionicons/fonts/ionicons.ttf") format("truetype"), url("/bower_components/ionicons/fonts/ionicons.svg#Ionicons") format("svg"); }
 *,
 *:before,
 *:after {
@@ -266,7 +272,7 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social, .information {
+.header-social, .header-navigation, .information {
   text-align: center; }
 
 .header-auth {
@@ -275,17 +281,20 @@ dl {
 .header-auth input, .auth-form input[name^="user"], .header-auth input[type="submit"], .auth-form input[type="submit"], .header-logo h1 {
   vertical-align: top; }
 
-.auth-form a {
+.header-navigation, .header-auth, .auth-form span, .auth-form a {
   float: right; }
 
-.header-logo a, .header-auth .header-auth-remember:hover, .auth-form a:hover {
+.header-logo a, .header-navigation.close, .header-auth .header-auth-remember:hover, .auth-form a:hover {
   color: #28441B; }
 
 .header-auth .header-auth-remember, .auth-form a {
   color: #557C16; }
 
-.header-logo a:hover {
+.header-logo a:hover, .header-navigation.close:hover, .header-navigation.open {
   color: #FA8D37; }
+
+.header-navigation.open:hover, .auth-form .error {
+  color: #E73F38; }
 
 .header-logo, .header-social, .header-auth {
   height: 100%; }
@@ -298,6 +307,31 @@ dl {
 
 .header-auth input, .auth-form input[name^="user"], .header-social li {
   display: inline-block; }
+
+.header-logo h1, .auth-form label {
+  font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.auth-form input[name^="user"], .auth-form a, .information {
+  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.header-navigation.close, .header-navigation.open {
+  display: inline-block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.header-navigation.close:before {
+  content: "\f185"; }
+
+.header-navigation.open:before {
+  content: "\f2bd"; }
 
 .header-auth input, .auth-form input[name^="user"] {
   border-top-left-radius: 0;
@@ -367,7 +401,6 @@ header {
   width: 12.5rem;
   float: left; }
   .header-logo h1 {
-    font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     line-height: 60px; }
   .header-logo a {
     padding: 0 0 0 55px;
@@ -429,10 +462,19 @@ header {
     .header-social {
       display: none; } }
 
+.header-navigation {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  padding: 0 1.25rem;
+  width: 6.25rem;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  cursor: pointer; }
+
 .header-auth {
   padding: 0.875rem 1.25rem 0 0;
-  width: 26.25rem;
-  float: right; }
+  width: 26.25rem; }
   .header-auth input[name^="user"] {
     margin: 0 3px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -469,10 +511,11 @@ header {
 .auth-form {
   margin: 0 auto 3.75rem;
   width: 18.75rem; }
-  .auth-form label {
-    font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+  .auth-form .error {
+    border-color: #e73f38 !important; }
+    .auth-form .error:active, .auth-form .error:focus, .auth-form .error:hover {
+      border-color: #e73f38 !important; }
   .auth-form input[name^="user"] {
-    font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     margin-bottom: 1.25rem; }
@@ -492,8 +535,7 @@ header {
       box-shadow: inset 0 1px 0 0 #28441b;
       letter-spacing: -0.03125rem; }
   .auth-form a {
-    margin: 0.1875rem 0 0;
-    font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+    margin: 0.1875rem 0 0; }
 
 footer {
   max-width: 85.375em;
@@ -509,7 +551,6 @@ footer {
     clear: both; }
 
 .information {
-  font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.125rem; }
   .information img {
     margin: 0 auto;

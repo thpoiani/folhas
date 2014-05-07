@@ -3,6 +3,8 @@ block style
     link(rel='stylesheet', href='/css/enter.css')
 
 block script
+    script(src='/js/new_enter.js')
+//
     script(src='/js/user.js')
     script(src='/js/enter.js')
 
@@ -16,6 +18,6 @@ block body
             label(for="password") Password
             input(type="password", name="user[password]", id="password", tabindex="2")
 
-            input(type="submit", value="Enter", tabindex="4")
+            input(type="submit", value="Enter", title="Enter", tabindex="4")
 
-            a(rel="nofollow", href="/remember", tabindex="5") Forgot your password?
+            a(rel="nofollow", href="/remember", title="Forgot your password?", tabindex="5") Forgot your password?
