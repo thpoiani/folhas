@@ -18,7 +18,8 @@ module.exports.policies = {
 
   UserController: {
     validate: true,
-    create: true
+    create: true,
+    auth: true
   },
 
   HomeController: {

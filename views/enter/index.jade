@@ -10,7 +10,7 @@ block script
 
 block body
     section.auth
-        form.auth-form(method="post", enctype="multipart/form-data", novalidate)
+        form.auth-form(method="post", action="/user/auth", enctype="multipart/form-data", novalidate)
 
             label(for="email") Email
             input(type="email", name="user[email]", id="email", tabindex="1", autofocus="autofocus")

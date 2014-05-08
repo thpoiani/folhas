@@ -1,51 +1,58 @@
-var q = require('q');
+var bcrypt = require('bcrypt'),
+    validator = require('validator'),
+    _ = require('underscore');
 
 module.exports = {
 
-  create: function (req, res) {
+  create: function(req, res) {
+
+  },
+
+  auth: function (req, res) {
     var user = req.param('user');
+        errors = [];
 
-// TODO
-    q
-      .allSettled([
-        UserValidation.email(user.email.trim()),
-        UserValidation.password(user.password),
-        UserValidation.authentication(user.email.trim(), user.password)
-      ])
+    errors.push(
+      UserValidation.email(user.email.trim())
+    );
 
-      .then(function (results) {
-        var response = [];
+    errors.push(
+      UserValidation.password(user.password)
+    );
 
-        results.forEach(function (result) {
-          if (result.state !== "fulfilled") {
-            response.push(result.reason);
-          }
-        });
+    errors = _.compact(errors);
 
-        res.json(response);
-      });
+    if (errors.length) return res.json(errors);
+
+
+    UserValidation.authentication(user, function(user, errors) {
+      if (user) {
+        req.session.user = user;
+        return res.json(null);
+      }
+
+      return res.json([errors]);
+    });
   },
 
   validate: function (req, res) {
-    var user = req.param('user');
-
-    var json = function(response) {
-      res.json(response);
-    };
+    var user = req.param('user'),
+        errors = [];
 
     if (user.hasOwnProperty('email')) {
-      q
-        .fcall(UserValidation.email(user.email.trim()))
-        .then(json)
-        .fail(json);
+      errors.push(
+        UserValidation.email(user.email.trim())
+      );
     }
 
     if (user.hasOwnProperty('password')) {
-      q
-        .fcall(UserValidation.password(user.password))
-        .then(json)
-        .fail(json);
+      errors.push(
+        UserValidation.password(user.password)
+      );
     }
+
+    errors = _.compact(errors);
+    res.json(errors);
   }
 
 };

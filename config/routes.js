@@ -40,6 +40,12 @@ module.exports.routes = {
     action: 'create'
   },
 
+  // User
+  'post /user/auth' : {
+    controller: 'user',
+    action: 'auth'
+  },
+
   // Home
   '/': {
     controller: 'home',

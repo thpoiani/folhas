@@ -17,7 +17,7 @@
           attr = name.substring(name.lastIndexOf('[') + 1, name.lastIndexOf(']'));
 
           user[attr] = input.value;
-      };
+      }
 
       if (target) {
           assembly(target, user);
@@ -30,35 +30,64 @@
       return user;
     };
 
-    var isEmpty = function (obj) {
-        for(var prop in obj) {
-            if(obj.hasOwnProperty(prop))
-                return false;
-        }
-
-        return true;
-    }
-
     var removeError = function (target) {
-      var input = form.querySelector('#' + target.id),
-          label = form.querySelector('label[for="' + target.id + '"]'),
+      var message, label, span;
+
+      message = form.querySelector('p.error');
+      if (message) message.remove();
+
+      if (target) {
+        var input = form.querySelector('#' + target.id);
+
+        label = form.querySelector('label[for="' + target.id + '"]');
+        span = label.querySelector('span');
+
+        input.classList.remove('error');
+        label.classList.remove('error');
+        if (span) span.remove();
+      } else {
+        var labels = form.querySelectorAll('label'),
+            i = 0;
+
+        for (i = labels.length - 1; i >= 0; i--) {
+          label = labels[i];
           span = label.querySelector('span');
 
-      input.classList.remove('error');
-      label.classList.remove('error');
+          label.classList.remove('error');
+          if (span) span.remove();
+        }
 
-      if (span) span.remove();
+        for (i = inputs.length - 1; i >= 0; i--) {
+          inputs[i].classList.remove('error');
+        }
+      }
     };
 
     var addError = function (response) {
-      var input = form.querySelector('#' + response.name),
-          label = form.querySelector('label[for="' + response.name + '"]'),
-          message = ' <span>' + response.message + '</span>';
+      for (var i = response.length - 1; i >= 0; i--) {
+        var field, element;
 
-      input.classList.add('error');
-      label.classList.add('error');
-      label.innerHTML += message;
-    }
+        field = response[i];
+
+        if (field.name) {
+          var input = form.querySelector('#' + field.name),
+              label = form.querySelector('label[for="' + field.name + '"]');
+
+          element = doc.createElement("span");
+          element.innerText = field.message;
+
+          input.classList.add('error');
+          label.classList.add('error');
+          label.appendChild(element);
+        } else {
+          element = doc.createElement("p");
+          element.classList.add('error');
+          element.innerText = field.message;
+
+          form.insertBefore(element, form.firstChild);
+        }
+      }
+    };
 
     var requestValidation = function (event) {
       event.preventDefault();
@@ -66,7 +95,7 @@
       socket.post('/user/validate', { "user" : getUser(event.target) }, function (response) {
         removeError(event.target);
 
-        if (!isEmpty(response)) addError(response);
+        if (response.length) addError(response);
       });
     };
 
@@ -80,8 +109,11 @@
       form.onsubmit = function(event) {
         event.preventDefault();
 
-        socket.post('/user', { "user" : getUser() }, function(response) {
-          console.log(response);
+        socket.post(event.target.action, { "user" : getUser() }, function(response) {
+          if (!response) location.href = '/me';
+
+          removeError();
+          addError(response);
         });
       };
     };

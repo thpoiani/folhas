@@ -308,7 +308,7 @@ dl {
 .header-auth input, .auth-form input[name^="user"], .header-social li {
   display: inline-block; }
 
-.header-logo h1, .auth-form label {
+.header-logo h1, .auth-form label, .auth-form p {
   font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
 .auth-form input[name^="user"], .auth-form a, .information {
@@ -511,6 +511,8 @@ header {
 .auth-form {
   margin: 0 auto 3.75rem;
   width: 18.75rem; }
+  .auth-form label, .auth-form p {
+    font-weight: bold; }
   .auth-form .error {
     border-color: #e73f38 !important; }
     .auth-form .error:active, .auth-form .error:focus, .auth-form .error:hover {

@@ -2,8 +2,9 @@
   @include margin(0 auto rem(60));
   width: rem(300);
 
-  label {
+  label, p {
     @extend %Quicksand-Light;
+    font-weight: bold;
   }
 
   .error {
