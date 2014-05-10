@@ -1,0 +1,12 @@
+.modal-inner {
+  @include transition(opacity .25s ease);
+  background: white;
+  border-radius: 3px;
+  margin: auto;
+  max-height: 95%;
+  position: relative;
+  overflow: auto;
+  width: 60%;
+  padding: rem(20);
+  margin-top: 5em;
+}

@@ -1,6 +1,11 @@
 module.exports = {
 
   attributes: {
+    title: {
+      type: 'string',
+      defaultsTo: 'Untitled document'
+    },
+
     hash: {
       type: 'string',
       required: true,

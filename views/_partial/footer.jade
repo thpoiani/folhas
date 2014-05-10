@@ -1,11 +1,13 @@
 footer
     .information
-        .information-author(itemprop="author" itemscope itemtype="http://schema.org/Person")
-            a(href="https://github.com/thpoiani", target="_blank", title="Thiago Henrique Poiani")
-                figure
-                    img(alt="Thiago Henrique Poiani",src="https://avatars3.githubusercontent.com/u/1860289?s=120",height="120",width="120", itemprop="image")
-                    figcaption
-                        p.author-name(itemprop="name") Thiago Henrique Poiani
+        if footer
+          .information-author(itemprop="author" itemscope itemtype="http://schema.org/Person")
+              a(href="https://github.com/thpoiani", target="_blank", title="Thiago Henrique Poiani")
+                  figure
+                      img(alt="Thiago Henrique Poiani",src="https://avatars3.githubusercontent.com/u/1860289?s=120",height="120",width="120", itemprop="image")
+                      figcaption
+                          p.author-name(itemprop="name") Thiago Henrique Poiani
+
         p.information-project <a href="https://github.com/thpoiani/folhas" target="_blank" title="folhas" itemprop="url">folhas</a> is licensed under <a href="https://github.com/thpoiani/folhas/blob/master/LICENSE" target="_blank" title="MIT license">MIT license</a>
 
 

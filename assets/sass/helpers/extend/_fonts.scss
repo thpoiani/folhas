@@ -39,3 +39,59 @@
     content: "\f2bd";
   }
 }
+
+%ionicon-log-out {
+  @extend %ion;
+
+  &:before {
+    content: "\f29f";
+  }
+}
+
+%ionicon-ios7-gear {
+  @extend %ion;
+
+  &:before {
+    content: "\f195";
+  }
+}
+
+%ionicon-plus-round {
+  @extend %ion;
+
+  &:before {
+    content: "\f217";
+  }
+}
+
+%ionicon-edit {
+  @extend %ion;
+
+  &:before {
+    content: "\f2bf";
+  }
+}
+
+%ionicon-close-round {
+  @extend %ion;
+
+  &:before {
+    content: "\f129";
+  }
+}
+
+%ionicon-share {
+  @extend %ion;
+
+  &:before {
+    content: "\f220";
+  }
+}
+
+%ionicon-arrow-return-left {
+  @extend %ion;
+
+  &:before {
+    content: "\f265";
+  }
+}

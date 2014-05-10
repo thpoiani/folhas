@@ -25,9 +25,10 @@ module.exports = {
     if (errors.length) return res.json(errors);
 
 
-    UserValidation.authentication(user, function(user, errors) {
-      if (user) {
-        req.session.user = user;
+    UserValidation.authentication(user, function(model, errors) {
+      if (model) {
+        req.session.user = model;
+
         return res.json(null);
       }
 

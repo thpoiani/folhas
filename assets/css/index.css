@@ -272,7 +272,7 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social, .header-navigation, .banner-content, .authentication-enter, .authentication-join, .technologies, .information {
+.header-navigation, .header-social, .banner-content, .authentication-enter, .authentication-join, .technologies, .information {
   text-align: center; }
 
 .header-auth {
@@ -284,19 +284,19 @@ dl {
 .header-navigation, .header-auth {
   float: right; }
 
-.header-logo a, .header-navigation.close, .header-auth .header-auth-remember:hover, .technologies-nodejs a:hover {
+.header-navigation.close, .header-auth .header-auth-remember:hover, .header-logo a, .technologies-nodejs a:hover {
   color: #28441B; }
 
 .header-auth .header-auth-remember, .technologies-nodejs a {
   color: #557C16; }
 
-.header-logo a:hover, .header-navigation.close:hover, .header-navigation.open {
+.header-navigation.close:hover, .header-navigation.open, .header-logo a:hover {
   color: #FA8D37; }
 
 .header-navigation.open:hover {
   color: #E73F38; }
 
-.header-logo, .header-social, .header-auth, .banner-content, .ace {
+.header-auth, .header-logo, .header-social, .banner-content, .ace {
   height: 100%; }
 
 .ace {
@@ -362,14 +362,6 @@ dl {
   content: "\f2bd"; }
 
 .header-auth input {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -378,6 +370,7 @@ dl {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   transition: all 300ms;
+  border-radius: 0;
   font-size: 0.875rem;
   padding: 0.4375rem;
   height: 2rem; }
@@ -424,72 +417,6 @@ header {
     display: table;
     clear: both; }
 
-.header-logo {
-  padding: 0 0 0 20px;
-  width: 12.5rem;
-  float: left; }
-  .header-logo h1 {
-    line-height: 60px; }
-  .header-logo a {
-    padding: 0 0 0 55px;
-    background: url("/images/logo-folhas.png") no-repeat;
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    transition: all 300ms; }
-    .header-logo a:hover {
-      background: url("/images/logo-folhas-hover.png") no-repeat; }
-  @media screen and (max-width: 768px) {
-    .header-logo {
-      margin-right: 0; } }
-  @media screen and (max-width: 480px) {
-    .header-logo {
-      margin: 0 auto;
-      float: none;
-      padding: 0;
-      width: 165px; } }
-
-.header-social {
-  margin-right: 0;
-  padding: 6px 0 0;
-  float: left;
-  width: 148px; }
-  .header-social ul {
-    font-size: 0; }
-  .header-social li {
-    margin: 0 0 0 -5px; }
-  .header-social a {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    transition: all 300ms;
-    width: 48px;
-    height: 48px; }
-  .header-social .header-social-facebook a {
-    background: url("/images/social/facebook.png") no-repeat; }
-    .header-social .header-social-facebook a:hover {
-      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
-  .header-social .header-social-googleplus a {
-    background: url("/images/social/googleplus.png") no-repeat; }
-    .header-social .header-social-googleplus a:hover {
-      background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
-  .header-social .header-social-twitter a {
-    background: url("/images/social/twitter.png") no-repeat; }
-    .header-social .header-social-twitter a:hover {
-      background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
-  @media screen and (max-width: 768px) {
-    .header-social {
-      float: right; } }
-  @media screen and (max-width: 480px) {
-    .header-social {
-      display: none; } }
-
 .header-navigation {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -499,6 +426,8 @@ header {
   font-size: 3.5rem;
   line-height: 3.5rem;
   cursor: pointer; }
+  .header-navigation.open .header-menu {
+    top: 3.75rem; }
 
 .header-auth {
   padding: 0.875rem 1.25rem 0 0;
@@ -524,6 +453,77 @@ header {
     line-height: 0; }
   @media screen and (max-width: 768px) {
     .header-auth {
+      display: none; } }
+
+.header-logo {
+  padding: 0 0 0 20px;
+  width: 12.5rem;
+  float: left; }
+  .header-logo h1 {
+    line-height: 60px; }
+  .header-logo a {
+    padding: 0 0 0 55px;
+    background: url("/images/logo-folhas.png") no-repeat;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms; }
+    .header-logo a:hover {
+      background: url("/images/logo-folhas-hover.png") no-repeat; }
+  @media screen and (max-width: 768px) {
+    .header-logo {
+      margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .header-logo {
+      margin: 0 auto;
+      float: none;
+      padding: 0;
+      width: 165px; } }
+
+.header-menu {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  position: absolute;
+  top: -12.5rem;
+  right: 0;
+  width: 15.625rem;
+  height: 12.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: -1px 1px 5px -3px rgba(0, 0, 0, 0.5); }
+
+.header-social {
+  margin-right: 0;
+  padding: 6px 0 0;
+  float: left;
+  width: 148px; }
+  .header-social ul {
+    font-size: 0; }
+  .header-social li {
+    margin: 0 0 0 -5px; }
+  .header-social a {
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px; }
+  .header-social .header-social-facebook a {
+    background: url("/images/social/facebook.png") no-repeat; }
+    .header-social .header-social-facebook a:hover {
+      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
+  .header-social .header-social-googleplus a {
+    background: url("/images/social/googleplus.png") no-repeat; }
+    .header-social .header-social-googleplus a:hover {
+      background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
+  .header-social .header-social-twitter a {
+    background: url("/images/social/twitter.png") no-repeat; }
+    .header-social .header-social-twitter a:hover {
+      background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
+  @media screen and (max-width: 768px) {
+    .header-social {
+      float: right; } }
+  @media screen and (max-width: 480px) {
+    .header-social {
       display: none; } }
 
 header {
@@ -588,7 +588,6 @@ header {
       margin: 0; } }
 
 .enter-button {
-  border: 1px solid white;
   background: #f7c451;
   float: right;
   border: 1px solid #fa8d37 !important; }
@@ -614,7 +613,6 @@ header {
       margin: 0; } }
 
 .join-button {
-  border: 1px solid white;
   background: #fa8d37;
   border: 1px solid #fa8d37 !important; }
   .join-button:active, .join-button:focus, .join-button:hover {
@@ -679,14 +677,7 @@ footer {
   font-size: 1.125rem; }
   .information img {
     margin: 0 auto;
-    border-top-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
-    border-top-left-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
+    border-radius: 3px;
     box-shadow: 0px 0px 6px -2px #666666; }
 
 .information-author {
@@ -697,14 +688,7 @@ footer {
     display: initial; }
   .information-author img {
     margin: 0 auto;
-    border-top-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
-    border-top-left-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
+    border-radius: 3px;
     box-shadow: 0px 0px 6px -2px #666666; }
   .information-author figcaption {
     position: absolute;

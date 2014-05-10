@@ -4,5 +4,12 @@
 @import "block/header/header";
 @import "block/header/elements/base";
 
+@import "block/profile/profile";
+@import "block/profile/elements/base";
+
+@import "block/document/document";
+@import "block/document/elements/base";
+@import "block/document/modifier/base";
+
 @import "block/footer/footer";
 @import "block/footer/elements/base";

@@ -1,0 +1,14 @@
+.auth-form {
+  input[type="submit"] {
+    width: rem(200);
+
+    &.delete {
+      background: $color-FA8D37;
+
+      &:active, &:focus, &:hover {
+        background: $color-E73F38;
+        box-shadow: inset 0 1px 0 0 $color-E73F38;
+      }
+    }
+  }
+}

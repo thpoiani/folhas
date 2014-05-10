@@ -1,12 +1,9 @@
 %input {
-  @include border-top-radius(0);
-  @include border-bottom-radius(0);
-  @include border-left-radius(0);
-  @include border-right-radius(0);
   @include appearance(none);
   @include transition(all 300ms);
   @extend %display-inline-block;
   @extend %vertical-align-top;
+  border-radius: 0;
   font-size: rem(14);
   padding: rem(7);
   height: rem(32);

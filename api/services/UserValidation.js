@@ -48,7 +48,7 @@ exports.authentication = function(user, cb) {
       if (err) return cb(null, {name: '', message: 'We lost connection'});
       if (!result) return cb(null, {name: '', message: 'Incorrect email or password'});
 
-      cb(user);
+      cb(model);
     });
   });
 }

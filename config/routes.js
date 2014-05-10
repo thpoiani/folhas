@@ -34,13 +34,11 @@ module.exports.routes = {
     action: 'validate'
   },
 
-  // User
   'post /user' : {
     controller: 'user',
     action: 'create'
   },
 
-  // User
   'post /user/auth' : {
     controller: 'user',
     action: 'auth'
@@ -58,10 +56,15 @@ module.exports.routes = {
     action: 'index'
   },
 
-  'post /enter': {
-    controller: 'enter',
-    action: 'enter'
+  // Exit
+  'get /exit': {
+    controller: 'exit',
+    action: 'index'
   },
+
+
+//////////////////////////////////
+
 
   // Remember
   'get /remember': {
@@ -96,12 +99,6 @@ module.exports.routes = {
   'post /join': {
     controller: 'join',
     action: 'create'
-  },
-
-  // Exit
-  '/exit': {
-    controller: 'enter',
-    action: 'exit'
   },
 
   // Me

@@ -1,0 +1,9 @@
+.modal-text {
+  @extend %Quicksand-Light;
+  font-size: 100%;
+  text-align: justify;
+
+  a.remove {
+    color: #E73F38;
+  }
+}

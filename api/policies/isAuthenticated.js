@@ -1,8 +1,3 @@
 module.exports = function(req, res, next) {
-
-  if (req.session.user) {
-    return next();
-  }
-
-  return res.redirect('/enter');
+  return (req.session.user) ? next() : res.redirect('/enter');
 };

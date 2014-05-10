@@ -36,8 +36,7 @@
     "node-uuid": "~1.4.1",
     "hashids": "~0.3.3",
     "underscore": "~1.6.0",
-    "mobile-detect": "~0.2.0",
-    "q": "~1.0.1"
+    "mobile-detect": "~0.2.0"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

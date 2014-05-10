@@ -27,11 +27,14 @@ module.exports.policies = {
   },
 
   EnterController: {
-    index: 'isNotAuthenticated',
-    enter: 'isNotAuthenticated',
-    remember: 'isNotAuthenticated',
-    exit: 'isAuthenticated'
+    index: 'isNotAuthenticated'
   },
+
+  ExitController: {
+    index: 'isAuthenticated'
+  },
+
+  ///////////////////////////
 
   RememberController: {
     index: 'isNotAuthenticated',

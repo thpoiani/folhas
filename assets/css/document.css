@@ -272,10 +272,10 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-social, .header-navigation, .information {
+.header-navigation, .header-social, .document-title, .information {
   text-align: center; }
 
-.header-auth {
+.header-auth, .profile-settings {
   text-align: right; }
 
 .header-auth input, .header-auth input[type="submit"], .header-logo h1 {
@@ -284,34 +284,40 @@ dl {
 .header-navigation, .header-auth {
   float: right; }
 
-.header-logo a, .header-navigation.close, .header-auth .header-auth-remember:hover {
+.header-navigation.close, .header-auth .header-auth-remember:hover, .header-logo a, .profile-dashboard, .profile-settings .icon {
   color: #28441B; }
 
 .header-auth .header-auth-remember {
   color: #557C16; }
 
-.header-logo a:hover, .header-navigation.close:hover, .header-navigation.open {
+.header-navigation.close:hover, .header-navigation.open, .header-logo a:hover, .profile-settings .icon:hover {
   color: #FA8D37; }
 
 .header-navigation.open:hover {
   color: #E73F38; }
 
-.header-logo, .header-social, .header-auth {
+.header-auth, .header-logo, .header-social, .ace {
   height: 100%; }
+
+.ace {
+  width: 100%; }
 
 .header-social a, .information img, .information-author img {
   display: block; }
 
-.header-auth input, .header-social li {
+.header-auth input, .header-social li, .profile-settings .settings-dashboard,
+.profile-settings .settings-create,
+.profile-settings .settings-update,
+.profile-settings .settings-logout {
   display: inline-block; }
 
-.header-logo h1 {
+.header-logo h1, .profile h2, .profile-dashboard {
   font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.information {
+.profile-dashboard strong, .document-title, .information {
   font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.header-navigation.close, .header-navigation.open {
+.header-navigation.close, .header-navigation.open, .profile-settings .settings-logout .icon, .profile-settings .settings-update .icon, .profile-settings .settings-create .icon, .profile-settings .settings-dashboard .icon {
   display: inline-block;
   font-family: "Ionicons";
   speak: none;
@@ -330,15 +336,19 @@ dl {
 .header-navigation.open:before {
   content: "\f2bd"; }
 
+.profile-settings .settings-logout .icon:before {
+  content: "\f29f"; }
+
+.profile-settings .settings-update .icon:before {
+  content: "\f195"; }
+
+.profile-settings .settings-create .icon:before {
+  content: "\f217"; }
+
+.profile-settings .settings-dashboard .icon:before {
+  content: "\f265"; }
+
 .header-auth input {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -347,6 +357,7 @@ dl {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   transition: all 300ms;
+  border-radius: 0;
   font-size: 0.875rem;
   padding: 0.4375rem;
   height: 2rem; }
@@ -393,72 +404,6 @@ header {
     display: table;
     clear: both; }
 
-.header-logo {
-  padding: 0 0 0 20px;
-  width: 12.5rem;
-  float: left; }
-  .header-logo h1 {
-    line-height: 60px; }
-  .header-logo a {
-    padding: 0 0 0 55px;
-    background: url("/images/logo-folhas.png") no-repeat;
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    transition: all 300ms; }
-    .header-logo a:hover {
-      background: url("/images/logo-folhas-hover.png") no-repeat; }
-  @media screen and (max-width: 768px) {
-    .header-logo {
-      margin-right: 0; } }
-  @media screen and (max-width: 480px) {
-    .header-logo {
-      margin: 0 auto;
-      float: none;
-      padding: 0;
-      width: 165px; } }
-
-.header-social {
-  margin-right: 0;
-  padding: 6px 0 0;
-  float: left;
-  width: 148px; }
-  .header-social ul {
-    font-size: 0; }
-  .header-social li {
-    margin: 0 0 0 -5px; }
-  .header-social a {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    transition: all 300ms;
-    width: 48px;
-    height: 48px; }
-  .header-social .header-social-facebook a {
-    background: url("/images/social/facebook.png") no-repeat; }
-    .header-social .header-social-facebook a:hover {
-      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
-  .header-social .header-social-googleplus a {
-    background: url("/images/social/googleplus.png") no-repeat; }
-    .header-social .header-social-googleplus a:hover {
-      background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
-  .header-social .header-social-twitter a {
-    background: url("/images/social/twitter.png") no-repeat; }
-    .header-social .header-social-twitter a:hover {
-      background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
-  @media screen and (max-width: 768px) {
-    .header-social {
-      float: right; } }
-  @media screen and (max-width: 480px) {
-    .header-social {
-      display: none; } }
-
 .header-navigation {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -468,6 +413,8 @@ header {
   font-size: 3.5rem;
   line-height: 3.5rem;
   cursor: pointer; }
+  .header-navigation.open .header-menu {
+    top: 3.75rem; }
 
 .header-auth {
   padding: 0.875rem 1.25rem 0 0;
@@ -495,6 +442,133 @@ header {
     .header-auth {
       display: none; } }
 
+.header-logo {
+  padding: 0 0 0 20px;
+  width: 12.5rem;
+  float: left; }
+  .header-logo h1 {
+    line-height: 60px; }
+  .header-logo a {
+    padding: 0 0 0 55px;
+    background: url("/images/logo-folhas.png") no-repeat;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms; }
+    .header-logo a:hover {
+      background: url("/images/logo-folhas-hover.png") no-repeat; }
+  @media screen and (max-width: 768px) {
+    .header-logo {
+      margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .header-logo {
+      margin: 0 auto;
+      float: none;
+      padding: 0;
+      width: 165px; } }
+
+.header-menu {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  position: absolute;
+  top: -12.5rem;
+  right: 0;
+  width: 15.625rem;
+  height: 12.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: -1px 1px 5px -3px rgba(0, 0, 0, 0.5); }
+
+.header-social {
+  margin-right: 0;
+  padding: 6px 0 0;
+  float: left;
+  width: 148px; }
+  .header-social ul {
+    font-size: 0; }
+  .header-social li {
+    margin: 0 0 0 -5px; }
+  .header-social a {
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px; }
+  .header-social .header-social-facebook a {
+    background: url("/images/social/facebook.png") no-repeat; }
+    .header-social .header-social-facebook a:hover {
+      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
+  .header-social .header-social-googleplus a {
+    background: url("/images/social/googleplus.png") no-repeat; }
+    .header-social .header-social-googleplus a:hover {
+      background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
+  .header-social .header-social-twitter a {
+    background: url("/images/social/twitter.png") no-repeat; }
+    .header-social .header-social-twitter a:hover {
+      background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
+  @media screen and (max-width: 768px) {
+    .header-social {
+      float: right; } }
+  @media screen and (max-width: 480px) {
+    .header-social {
+      display: none; } }
+
+.profile {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1.25rem 0;
+  margin-bottom: 1.25rem; }
+  .profile:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.profile-dashboard {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  font-size: 180%; }
+  .profile-dashboard:last-child {
+    margin-right: 0; }
+
+.profile-settings {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  font-size: 2rem; }
+  .profile-settings:last-child {
+    margin-right: 0; }
+  .profile-settings .icon {
+    margin: 0 0.625rem; }
+
+.document {
+  max-width: 85.375em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto 3.75rem;
+  padding: 3.75rem 0; }
+  .document:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.document-editor {
+  box-shadow: 0px 1px 5px -3px rgba(0, 0, 0, 0.5);
+  height: 31.25rem;
+  width: 33.75rem;
+  margin: 0 auto; }
+
+.document-title {
+  font-weight: normal;
+  margin-bottom: 0.625rem;
+  outline: none; }
+
+.document {
+  padding: 0.625rem 0; }
+
 footer {
   max-width: 85.375em;
   margin-left: auto;
@@ -512,14 +586,7 @@ footer {
   font-size: 1.125rem; }
   .information img {
     margin: 0 auto;
-    border-top-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
-    border-top-left-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
+    border-radius: 3px;
     box-shadow: 0px 0px 6px -2px #666666; }
 
 .information-author {
@@ -530,14 +597,7 @@ footer {
     display: initial; }
   .information-author img {
     margin: 0 auto;
-    border-top-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
-    border-top-left-radius: 0.1875rem;
-    border-bottom-left-radius: 0.1875rem;
-    border-top-right-radius: 0.1875rem;
-    border-bottom-right-radius: 0.1875rem;
+    border-radius: 3px;
     box-shadow: 0px 0px 6px -2px #666666; }
   .information-author figcaption {
     position: absolute;

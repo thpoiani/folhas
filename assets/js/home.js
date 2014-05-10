@@ -46,7 +46,6 @@
 
         editor.getSession().setUseWrapMode(true);
         editor.getSession().setUseSoftTabs(true);
-        editor.focus();
 
         disableKeyBindings(editor);
         instance = editor;
@@ -83,11 +82,25 @@
 
     };
 
+    exports.menu = function() {
+      var menu = doc.querySelector('.header-navigation');
+
+      menu.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var isClosed = this.className.indexOf('close') > 0;
+
+        this.className = (isClosed) ? this.className.replace('close', 'open') : this.className.replace('open', 'close');
+      });
+    }
+
     return exports;
   })();
 
 //  Home.createDocument();
   Home.animation.header();
+  Home.menu();
   Home.ace.initialize();
   Home.ace.resize();
 

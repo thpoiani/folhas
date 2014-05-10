@@ -8,7 +8,18 @@ module.exports = {
 
       if (!document) return res.serverError('Invalid HASH');
 
-      res.render('document/index', {document: document});
+      var data = {
+        isPhone: MobileDetect.isPhone(req),
+        document: document,
+        user: req.session.user,
+      }
+
+      // TODO NAO PEGAR USUARIO DA SESSÃO, MAS BUSCA PELO AUTHOR DO DOCUMENTO
+      data.pageTitle = req.session.user
+        ? "folhas | " + req.session.user.name + "'s Document: " + document.title
+        : "folhas";
+
+      res.render('document/index', data);
     });
   },
 

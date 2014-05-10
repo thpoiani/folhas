@@ -21,6 +21,10 @@
     @extend %ionicon-ios7-close-empty;
     @extend %color-#FA8D37;
 
+    .header-menu {
+      top: rem(60);
+    }
+
     &:hover {
       @extend %color-#E73F38;
     }

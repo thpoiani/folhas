@@ -6,7 +6,7 @@
     var exports = {},
         instance = null,
         element = doc.getElementById('editor'),
-        theme = 'ace/theme/solarized_light',
+        theme = 'ace/theme/chrome',
         hash = location.pathname.split('/').pop(),
         text;
 
@@ -30,6 +30,7 @@
         var editor = Ace.edit(element);
 
         editor.setTheme(theme);
+        element.style.fontSize = '16px';
 
         editor.getSession().setUseWrapMode(true);
         editor.getSession().setUseSoftTabs(true);

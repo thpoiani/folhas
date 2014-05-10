@@ -1,0 +1,28 @@
+.modal-footer {
+  @extend %text-align-right;
+  @extend %Quicksand-Light;
+
+  .button {
+    @extend %submit;
+    @extend %display-inline-block;
+    @extend %text-align-center;
+    width: rem(100);
+  }
+
+  .submit-button {
+    background: $color-FA8D37;
+    margin-left: rem(10);
+
+    &:active, &:focus, &:hover {
+      background: $color-E73F38;
+    }
+  }
+
+  .cancel-button {
+    background: $color-F7C451;
+
+    &:active, &:focus, &:hover {
+      background: $color-FA8D37;
+    }
+  }
+}

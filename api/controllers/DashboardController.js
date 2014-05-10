@@ -23,10 +23,19 @@ var fn_push_error = function (message, name, value) {
 module.exports = {
 
   index: function (req, res) {
-    Document.find({author: req.session.user.email}, function(err, documents) {
+    var author = req.session.user;
+
+    Document.find({author: author.email}, function(err, documents) {
       if (err) throw new Error(err);
 
-      res.render('dashboard/index', {user: req.session.user, documents: documents});
+      var data = {
+        pageTitle: "folhas | " + author.name + "'s Dashboard",
+        isPhone: MobileDetect.isPhone(req),
+        user: author,
+        documents: documents
+      };
+
+      res.render('dashboard/index', data);
     });
   },
 
