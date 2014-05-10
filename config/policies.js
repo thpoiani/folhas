@@ -60,6 +60,7 @@ module.exports.policies = {
   DocumentController: {
     index: true,
     create: true,
+    destroy: 'isAuthenticated',
     connect: true,
     change: true
   }

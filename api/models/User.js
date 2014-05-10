@@ -56,7 +56,7 @@ module.exports = {
   },
 
   beforeUpdate: function (values, next) {
-    User.findOne({email: values.email}, function(err, user) {
+    User.findOne({email: values.email, isActive: true}, function(err, user) {
       if (err) {
         return next(err);
       }

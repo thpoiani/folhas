@@ -25,7 +25,7 @@ module.exports = {
   index: function (req, res) {
     var author = req.session.user;
 
-    Document.find({author: author.email}, function(err, documents) {
+    Document.find({author: author.email, isActive: true}, function(err, documents) {
       if (err) throw new Error(err);
 
       var data = {

@@ -18,7 +18,7 @@ exports.email = function(email) {
 };
 
 exports.emailExists = function (email, cb) {
-  User.findOne({email: email}, function(err, model) {
+  User.findOne({email: email, isActive: true}, function(err, model) {
     if (err) return {name: 'mongodb', message: 'We lost connection'};
     if (model) return {name: 'email', message: 'This email already exists'};
 
@@ -27,7 +27,7 @@ exports.emailExists = function (email, cb) {
 };
 
 exports.emailNotExists = function (email) {
-  User.findOne({email: email}, function(err, model) {
+  User.findOne({email: email, isActive: true}, function(err, model) {
     if (err) return {name: 'mongodb', message: 'We lost connection'};
     if (!model) return {name: 'email', message: 'This email don\'t exists'};
   });
@@ -40,7 +40,7 @@ exports.password = function(password) {
 };
 
 exports.authentication = function(user, cb) {
-  User.findOne({email: user.email.trim()}, function(err, model) {
+  User.findOne({email: user.email.trim(), isActive: true}, function(err, model) {
     if (err) return cb(null, {name: '', message: 'We lost connection'});
     if (!model) return cb(null, {name: '', message: 'Incorrect email or password'});
 

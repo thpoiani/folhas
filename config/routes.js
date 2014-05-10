@@ -62,6 +62,16 @@ module.exports.routes = {
     action: 'index'
   },
 
+  // Document
+  'post /document': {
+    controller: 'document',
+    action: 'create'
+  },
+
+  'delete /document/:hash': {
+    controller: 'document',
+    action: 'destroy'
+  },
 
 //////////////////////////////////
 
@@ -129,12 +139,6 @@ module.exports.routes = {
   'put /me/change_password': {
     controller: 'dashboard',
     action: 'change_password'
-  },
-
-  // Document
-  'post /document': {
-    controller: 'document',
-    action: 'create'
   },
 
   '/document/connect': {

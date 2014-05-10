@@ -574,6 +574,10 @@ header {
     font-size: 100%;
     font-weight: normal; }
 
+.document-share a,
+.document-edit a,
+.document-remove a {
+  padding: 0.5rem; }
 .document-share img,
 .document-edit img,
 .document-remove img {

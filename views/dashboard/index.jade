@@ -23,7 +23,7 @@ block body
         table
             tbody
                 each document in documents
-                    tr.document(data-url="/#{document.hash}", title="#{document.title}")
+                    tr.document(title="#{document.title}", data-hash="#{document.hash}", data-url="/#{document.hash}")
                         td.document-title
                             h3= document.title
 

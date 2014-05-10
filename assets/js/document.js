@@ -41,19 +41,26 @@
       },
 
       onChange: function() {
-        text = instance.getValue();
+        var title = doc.querySelector('.document-title');
 
-        instance.getSession().on('change', function(e) {
-          setTimeout(function(){
-            if (instance.getValue() !== text) {
+        var changeEvent = function(event) {
+          setTimeout(function() {
+            if (instance.getValue() !== text || event.target) {
               socket.get('/document/change', {
-                hash: hash, 
+                hash: hash,
                 cursor: instance.getCursorPosition(),
-                text: instance.getValue()
+                text: instance.getValue(),
+                title: title.innerText
               });
             }
           }, 0);
-        });
+        };
+
+        text = instance.getValue();
+        title = doc.querySelector('.document-title');
+
+        title.addEventListener('input', changeEvent);
+        instance.getSession().on('change', changeEvent);
       }
     }
 
@@ -65,8 +72,11 @@
       },
 
       change: function() {
+        var title = doc.querySelector('.document-title');
+
         socket.on('change', function(response) {
           text = response.text;
+          title.innerText = response.title;
           instance.setValue(response.text, 1);
           instance.navigateTo(response.cursor.row, response.cursor.column);
         });

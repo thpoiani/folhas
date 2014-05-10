@@ -3,16 +3,12 @@ module.exports = {
   index: function (req, res) {
     var hash = req.param('hash');
 
-    Document.findOne({hash: hash}, function (err, document) {
-      if (err) throw new Error(err);
-
-      if (!document) return res.serverError('Invalid HASH');
-
+    DocumentService.findDocumentByHash(hash, function(document) {
       var data = {
         isPhone: MobileDetect.isPhone(req),
         document: document,
         user: req.session.user,
-      }
+      };
 
       // TODO NAO PEGAR USUARIO DA SESSÃO, MAS BUSCA PELO AUTHOR DO DOCUMENTO
       data.pageTitle = req.session.user
@@ -24,15 +20,17 @@ module.exports = {
   },
 
   create: function (req, res) {
-    if (!req.isSocket) throw new Error('This request must be sent by socket');
-
-    var author = req.session.user ? req.session.user.email : null,
-      hash = DocumentService.generateHash();
-
-    Document.create({author: author, hash: hash}).done(function (err, document) {
-      if (err) throw new Error(err);
-
+    DocumentService.createDocumentBySocket(req, function(document) {
       res.json({success: true, document: document});
+    });
+  },
+
+  destroy: function (req, res) {
+    var hash = req.param('hash');
+
+    DocumentService.destroyDocumentByHash(hash, function() {
+      // TODO SOCKET EMIT
+      res.json({success: true});
     });
   },
 
@@ -47,18 +45,22 @@ module.exports = {
   change: function(req, res) {
     if (!req.isSocket) throw new Error('This request must be sent by socket');
 
-    var hash = req.param('hash');
-    var text = req.param('text');
-    var cursor = req.param('cursor');
+    var hash, text, cursor, title;
 
-    Document.findOne({hash: hash}, function(err, document){
+    hash = req.param('hash');
+    text = req.param('text');
+    cursor = req.param('cursor');
+    title = req.param('title');
+
+    Document.findOne({hash: hash, isActive: true}, function(err, document){
       if (err) throw new Error(err);
 
       document.text = text;
+      document.title = title;
 
       document.save(function(err){
         if (err) throw new Error(err);
-        sails.io.sockets.in(hash).emit('change', {hash: hash, text: text, cursor: cursor});
+        sails.io.sockets.in(hash).emit('change', {hash: hash, text: text, cursor: cursor, title: title});
       });
     });
   }

@@ -1,4 +1,4 @@
-(function (win, doc) {
+(function (win, doc, socket) {
   'use strict';
 
   var Dashboard = (function () {
@@ -32,8 +32,39 @@
 
     exports.modal = {
       init: function() {
+        this.assembly();
         this.open();
         this.close();
+        this.esc();
+        this.onSubmit();
+      },
+
+      onSubmit: function() {
+        var submit = doc.querySelector('.submit-button');
+
+        submit.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          var hash = this.getAttribute('data-hash');
+
+          socket.delete('/document/' + hash, function(response) {
+            if (response.success) {
+              doc.querySelector('.modal-close').click();
+
+              // TODO
+              setTimeout(function(){
+                location.reload();
+              }, 700);
+            }
+          });
+        });
+      },
+
+      assembly: function() {
+        var submit = document.querySelector('.submit-button');
+
+        submit.title = "Remove";
+        submit.innerText = "REMOVE";
       },
 
       open: function() {
@@ -46,18 +77,22 @@
           event.preventDefault();
           event.stopPropagation();
 
-          var row, title, text, data;
+          var row, title, text, submit, data;
 
           row = this.parentNode.parentNode;
           title = modal.querySelector('.modal-title');
           text = modal.querySelector('.modal-text');
+          submit = modal.querySelector('.submit-button');
+
           data = {
             title: row.title,
-            url: row.getAttribute('data-url')
+            url: row.getAttribute('data-url'),
+            hash: row.getAttribute('data-hash')
           };
 
           title.innerText = 'Remove "' + data.title + '"';
           text.innerHTML = 'You really want to remove the document <a class="remove" href="' + data.url + '" target="_blank" title="' + data.title + '"><strong>' + data.title + '</strong></a>?';
+          submit.setAttribute('data-hash', data.hash);
 
           modal.style.visibility = 'visible';
           modal.style.opacity = 1;
@@ -69,11 +104,12 @@
       },
 
       close: function() {
-        var modal, close, cancel;
+        var modal, close, cancel, layer;
 
-        modal = document.querySelector('.modal');
+        modal = doc.querySelector('.modal');
         close = modal.querySelector('.modal-close');
         cancel = modal.querySelector('.cancel-button');
+        layer = modal.querySelector('.modal-window');
 
         var closeModal = function(event) {
           event.preventDefault();
@@ -85,6 +121,16 @@
 
         close.addEventListener('click', closeModal);
         cancel.addEventListener('click', closeModal);
+        layer.addEventListener('click', closeModal);
+      },
+
+      esc: function() {
+        doc.onkeydown = function(event) {
+            event = event || window.event;
+            if (event.keyCode == 27) {
+              doc.querySelector('.modal-close').click();
+            }
+        };
       }
     };
 
@@ -95,4 +141,4 @@
   Dashboard.rowClickable();
   Dashboard.modal.init();
 
-})(window, document);
+})(window, document, socket);

@@ -64,6 +64,8 @@
     };
 
     var addError = function (response) {
+      if (!response) return;
+
       for (var i = response.length - 1; i >= 0; i--) {
         var field, element;
 
