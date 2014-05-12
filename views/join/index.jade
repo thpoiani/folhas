@@ -3,16 +3,16 @@ block style
     link(rel='stylesheet', href='/css/join.css')
 
 block script
-    script(src='/js/user.js')
     script(src='/js/join.js')
 
 block body
     section.auth
-        form.auth-form(method="post", enctype="multipart/form-data", novalidate)
+        form.auth-form(method="post", action="/user", enctype="multipart/form-data", novalidate)
+
             label(for="name") Name
             input(type="text", name="user[name]", id="name", tabindex="1", autofocus="autofocus")
 
-            label(for="email") E-mail
+            label(for="email") Email
             input(type="email", name="user[email]", id="email", tabindex="2")
 
             label(for="password") Password

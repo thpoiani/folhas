@@ -1,5 +1,6 @@
 var bcrypt = require('bcrypt'),
-    validator = require('validator');
+    validator = require('validator'),
+    _ = require('underscore');
 
 exports.name = function(name) {
   if (validator.isNull(name)) {
@@ -19,8 +20,8 @@ exports.email = function(email) {
 
 exports.emailExists = function (email, cb) {
   User.findOne({email: email, isActive: true}, function(err, model) {
-    if (err) return {name: '', message: 'We lost connection'};
-    if (model) return {name: 'email', message: 'This email already exists'};
+    if (err) return cb({name: '', message: 'We lost connection'});
+    if (model) return cb({name: 'email', message: 'This email already exists'});
 
     cb();
   });
@@ -93,4 +94,8 @@ exports.comparePasswords = function(new_password, old_password, cb) {
 
     cb();
   });
+};
+
+exports.hasRecovery = function(model) {
+  return _.findWhere(model.recovery, {hasChanged: false});
 };

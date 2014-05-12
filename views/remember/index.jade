@@ -3,12 +3,11 @@ block style
     link(rel='stylesheet', href='/css/remember.css')
 
 block script
-    script(src='/js/user.js')
     script(src='/js/remember.js')
 
 block body
     section.auth
-        form.auth-form(method="post", enctype="multipart/form-data", novalidate)
+        form.auth-form(method="post", action="/user/remember", enctype="multipart/form-data", novalidate)
 
             label(for="email") Email
             input(type="email", name="user[email]", id="email", tabindex="1", autofocus="autofocus")

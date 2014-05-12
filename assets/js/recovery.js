@@ -1,97 +1,137 @@
-(function (win, doc, User) {
+(function (win, doc, socket) {
   'use strict';
 
   var Recovery = (function () {
 
-    var exports = {};
+    var exports = {},
+      form = doc.querySelector('form.auth-form'),
+      inputs = form.querySelectorAll('input[name^=user]'),
+      email = form.querySelector('[name=email]').value;
 
-    var input = {
-      password: doc.querySelector('input[name=password]')
+    var getUser = function (target) {
+      var user = {};
+
+      function assembly(input, user) {
+          var name, attr;
+
+          name = input.name;
+          attr = name.substring(name.lastIndexOf('[') + 1, name.lastIndexOf(']'));
+
+          user[attr] = input.value;
+      }
+
+      if (target) {
+          assembly(target, user);
+      } else {
+        for (var i = inputs.length - 1; i >= 0; i--) {
+          assembly(inputs[i], user);
+        }
+      }
+
+      return user;
     };
 
-    var assemblyUser = function () {
-      var password = input.password.value;
+    var removeError = function (target) {
+      var message, label, span;
 
-      return new User(null, null, password);
-    };
+      message = form.querySelector('p.error');
+      if (message) message.remove();
 
-    var validateUser = function (user) {
-      var errors = user.getErrors();
+      if (target) {
+        var input = form.querySelector('#' + target.id);
 
-      for (var i = 0, length = errors.length; i < length; i++) {
-        input[errors[i]].className = 'error';
+        label = form.querySelector('label[for="' + target.id + '"]');
+        span = label.querySelector('span');
+
+        input.classList.remove('error');
+        label.classList.remove('error');
+        if (span) span.remove();
+      } else {
+        var labels = form.querySelectorAll('label'),
+            i = 0;
+
+        for (i = labels.length - 1; i >= 0; i--) {
+          label = labels[i];
+          span = label.querySelector('span');
+
+          label.classList.remove('error');
+          if (span) span.remove();
+        }
+
+        for (i = inputs.length - 1; i >= 0; i--) {
+          inputs[i].classList.remove('error');
+        }
       }
     };
 
-    var clearInput = function (name) {
-      input[name].className = '';
+    var addError = function (response) {
+      if (!response) return;
+
+      for (var i = response.length - 1; i >= 0; i--) {
+        var field, element;
+
+        field = response[i];
+
+        if (field.name) {
+          var input = form.querySelector('#' + field.name),
+              label = form.querySelector('label[for="' + field.name + '"]');
+
+          element = doc.createElement("span");
+          element.innerText = field.message;
+
+          input.classList.add('error');
+          label.classList.add('error');
+          label.appendChild(element);
+        } else {
+          element = doc.createElement("p");
+          element.classList.add('error');
+          element.innerText = field.message;
+
+          form.insertBefore(element, form.firstChild);
+        }
+      }
     };
 
-    exports.form = function () {
-      var blur, submit, form, inputs;
+    var requestValidation = function (event) {
+      event.preventDefault();
 
-      blur = function (event) {
-        var user = assemblyUser(),
-          field = event.srcElement.name;
+      socket.post('/user/validate', { user: getUser(event.target) }, function (response) {
+        removeError(event.target);
 
-        if (user.isValid(field)) {
-          clearInput(field);
-        } else {
-          validateUser(user);
-        }
-      };
+        if (response.length) addError(response);
+      });
+    };
 
-      submit = function (event) {
-        var user = assemblyUser(),
-            form = event.srcElement;
+    exports.validateOnBlur = function () {
+      for (var i = inputs.length - 1; i >= 0; i--) {
+        inputs[i].addEventListener('blur', requestValidation);
+      }
+    };
 
+    exports.requestOnSubmit = function() {
+      form.onsubmit = function(event) {
         event.preventDefault();
 
-        if (user.isValid('password')) {
-          socket.post(location.href, {user: user}, function (response) {
-            if (response.success) {
-              location.href = '/me';
-            } else {
-              console.log(response);
+        var data = {
+          unique_id: location.pathname.replace('/recovery/', ''),
+          user: getUser()
+        };
 
-              var container = doc.getElementById('errors'),
-                length = response.errors.length;
+        socket.put(event.target.action + '/' + email, data, function(response) {
+          console.log(response);
 
-              if (!container) {
-                container = doc.createElement('div');
-                container.setAttribute('id', 'errors');
+          // if (!response) location.href = '/dashboard';
 
-                form.appendChild(container);
-              }
-
-              container.innerHTML = null;
-
-              for (var i = 0; i < length; i++) {
-                var error = doc.createElement('p');
-                error.innerHTML = response.errors[i].message;
-
-                container.innerHTML += error.outerHTML;
-              }
-            }
-          });
-        } else {
-          validateUser(user);
-        }
+          // removeError();
+          // addError(response);
+        });
       };
-
-      form = doc.querySelector('form');
-      inputs = form.querySelectorAll('input[name]');
-
-      form.addEventListener('submit', submit);
-
-      for (var i = inputs.length - 1; i >= 0; i--) {
-        inputs[i].addEventListener('blur', blur);
-      }
     };
 
     return exports;
   })();
 
-  Recovery.form();
+  Recovery.validateOnBlur();
+  Recovery.requestOnSubmit();
 
-})(window, document, User);
+})(window, document, socket);

@@ -29,19 +29,9 @@
 module.exports.routes = {
 
   // User
-  'post /user/validate' : {
-    controller: 'user',
-    action: 'validate'
-  },
-
   'post /user' : {
     controller: 'user',
     action: 'create'
-  },
-
-  'post /user/auth' : {
-    controller: 'user',
-    action: 'auth'
   },
 
   'put /user/:email': {
@@ -54,9 +44,35 @@ module.exports.routes = {
     action: 'destroy'
   },
 
+  'post /user/auth' : {
+    controller: 'user',
+    action: 'auth'
+  },
+
+  'post /user/validate' : {
+    controller: 'user',
+    action: 'validate'
+  },
+
+  'post /user/remember/:email': {
+    controller: 'user',
+    action: 'remember'
+  },
+
+  'put /user/remember/:email': {
+    controller: 'user',
+    action: 'recovery'
+  },
+
   // Home
-  '/': {
+  'get /': {
     controller: 'home',
+    action: 'index'
+  },
+
+  // Join
+  'get /join': {
+    controller: 'join',
     action: 'index'
   },
 
@@ -84,42 +100,16 @@ module.exports.routes = {
     action: 'index'
   },
 
-//////////////////////////////////
-
-
   // Remember
   'get /remember': {
     controller: 'remember',
     action: 'index'
   },
 
-  // Remember
-  'post /remember': {
-    controller: 'remember',
-    action: 'remember'
-  },
-
   // Recovery
   'get /recovery/:unique_id': {
-    controller: 'remember',
-    action: 'recovery'
-  },
-
-  // Recovery
-  'post /recovery/:unique_id': {
-    controller: 'remember',
-    action: 'update'
-  },
-
-  // Join
-  'get /join': {
-    controller: 'join',
+    controller: 'recovery',
     action: 'index'
-  },
-
-  'post /join': {
-    controller: 'join',
-    action: 'create'
   },
 
 ///////////////////////////////////////////

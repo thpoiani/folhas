@@ -17,15 +17,21 @@ module.exports.policies = {
   '*': false,
 
   UserController: {
-    auth: true,
     create: true,
     update: true,
     destroy: true,
-    validate: true
+    auth: true,
+    validate: true,
+    remember: true,
+    recovery: true
   },
 
   HomeController: {
     index: true
+  },
+
+  JoinController: {
+    index: 'isNotAuthenticated'
   },
 
   EnterController: {
@@ -44,19 +50,12 @@ module.exports.policies = {
     index: 'isAuthenticated',
   },
 
-  ///////////////////////////
-
   RememberController: {
-    index: 'isNotAuthenticated',
-    remember: 'isNotAuthenticated',
-    recovery: 'isNotAuthenticated',
-    update: 'isNotAuthenticated'
+    index: 'isNotAuthenticated'
   },
 
-  JoinController: {
-    index: 'isNotAuthenticated',
-    create: 'isNotAuthenticated',
-    destroy: 'isAuthenticated'
+  RecoveryController: {
+    index: 'isNotAuthenticated'
   },
 
   DocumentController: {

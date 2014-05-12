@@ -3,17 +3,18 @@ block style
     link(rel='stylesheet', href='/css/recovery.css')
 
 block script
-    script(src='/js/user.js')
     script(src='/js/recovery.js')
 
 block body
     section.auth
-        if (success)
+        if (user)
             p= user.name
             p= user.email
-            p= user.password
 
-            form.auth-form(method="post", enctype="multipart/form-data", novalidate)
+            form.auth-form(method="post", action="/user/remember", enctype="multipart/form-data", novalidate)
+                input(type="hidden", name="_method", value="put")
+                input(type="hidden", name="email", value="#{user.email}")
+
                 label(for="password") New password
                 input(type="password", name="user[password]", id="password", tabindex="1", autofocus="autofocus")
 
