@@ -3,19 +3,26 @@ module.exports = {
   index: function (req, res) {
     var hash = req.param('hash');
 
-    DocumentService.findDocumentByHash(hash, function(document) {
+    DocumentService.findDocumentByHash(hash, function(err, document) {
+      if (err || !document) return res.notFound();
+
+      var author = document.author;
+
       var data = {
         isPhone: MobileDetect.isPhone(req),
         document: document,
-        user: req.session.user,
+        user: null,
+        pageTitle: 'folhas'
       };
 
-      // TODO NAO PEGAR USUARIO DA SESSÃO, MAS BUSCA PELO AUTHOR DO DOCUMENTO
-      data.pageTitle = req.session.user
-        ? "folhas | " + req.session.user.name + "'s Document: " + document.title
-        : "folhas";
+      if (!author) return res.render('document/index', data);
 
-      res.render('document/index', data);
+      UserService.findUserByEmail(author, function(user) {
+        data.user = user;
+        data.pageTitle = "folhas | " + user.name + "'s Document: " + document.title;
+
+        res.render('document/index', data);
+      });
     });
   },
 
@@ -41,26 +48,23 @@ module.exports = {
     req.socket.join(hash);
   },
 
-
   change: function(req, res) {
     if (!req.isSocket) throw new Error('This request must be sent by socket');
 
-    var hash, text, cursor, title;
+    var data = {
+      hash: req.param('hash'),
+      text: req.param('text'),
+      title: req.param('title'),
+      cursor: req.param('cursor')
+    };
 
-    hash = req.param('hash');
-    text = req.param('text');
-    cursor = req.param('cursor');
-    title = req.param('title');
-
-    Document.findOne({hash: hash, isActive: true}, function(err, document){
-      if (err) throw new Error(err);
-
-      document.text = text;
-      document.title = title;
+    DocumentService.findDocumentByHash(data.hash, function(document) {
+      document.text = data.text;
+      document.title = data.title;
 
       document.save(function(err){
         if (err) throw new Error(err);
-        sails.io.sockets.in(hash).emit('change', {hash: hash, text: text, cursor: cursor, title: title});
+        sails.io.sockets.in(data.hash).emit('change', data);
       });
     });
   }

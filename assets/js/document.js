@@ -46,12 +46,14 @@
         var changeEvent = function(event) {
           setTimeout(function() {
             if (instance.getValue() !== text || event.target) {
-              socket.get('/document/change', {
+              var data = {
                 hash: hash,
                 cursor: instance.getCursorPosition(),
                 text: instance.getValue(),
                 title: title.innerText
-              });
+              };
+
+              socket.put('/document/' + hash, data);
             }
           }, 0);
         };
@@ -67,7 +69,7 @@
     exports.socket = {
       connect: function() {
         socket.on('connect', function() {
-          socket.get('/document/connect', {hash: hash});
+          socket.get('/document/connect/' + hash);
         });
       },
 

@@ -24,11 +24,19 @@ exports.generateHash = function () {
 
 exports.findDocumentByHash = function (hash, cb) {
   Document.findOne({hash: hash, isActive: true}, function (err, document) {
-    if (err) throw new Error(err);
+    if (err) cb(new Error(err), null);
 
-    if (!document) throw new Error('Invalid HASH');
+    if (!document) cb(new Error('Invalid HASH'), null);
 
-    cb(document);
+    cb(null, document);
+  });
+}
+
+exports.findDocumentsByAuthor = function (author, cb) {
+  Document.find({author: author, isActive: true}, function (err, documents) {
+    if (err) cb(new Error(err), null);
+
+    cb(null, documents);
   });
 }
 

@@ -17,9 +17,11 @@ module.exports.policies = {
   '*': false,
 
   UserController: {
-    validate: true,
+    auth: true,
     create: true,
-    auth: true
+    update: true,
+    destroy: true,
+    validate: true
   },
 
   HomeController: {
@@ -34,6 +36,14 @@ module.exports.policies = {
     index: 'isAuthenticated'
   },
 
+  DashboardController: {
+    index: 'isAuthenticated',
+  },
+
+  ProfileController: {
+    index: 'isAuthenticated',
+  },
+
   ///////////////////////////
 
   RememberController: {
@@ -46,14 +56,6 @@ module.exports.policies = {
   JoinController: {
     index: 'isNotAuthenticated',
     create: 'isNotAuthenticated',
-    destroy: 'isAuthenticated'
-  },
-
-  DashboardController: {
-    index: 'isAuthenticated',
-    edit: 'isAuthenticated',
-    update: 'isAuthenticated',
-    change_password: 'isAuthenticated',
     destroy: 'isAuthenticated'
   },
 

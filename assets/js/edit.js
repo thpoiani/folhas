@@ -12,6 +12,7 @@
         var form = event.srcElement,
           action = form.action,
           method = form.querySelector('[name=_method]').value,
+          email = form.querySelector('[name=email]').value,
           user = {};
 
         var inputs = form.querySelectorAll('input[name^=user]');
@@ -27,15 +28,17 @@
 
         switch (method) {
           case 'put':
-            socket.put(action, {user: user}, function (response) {
-              // TODO
+            socket.put(action + '/' + email, {user: user, form: form.id}, function (response) {
+              // TODO validação
               console.log(response);
             });
             break;
 
           case 'delete':
-            socket.delete(action, {user: user}, function (response) {
-              // TODO
+            // TODO, abrir modal
+
+            socket.delete(action + '/' + email, {user: user}, function (response) {
+              // TODO validação
               console.log(response);
 
               if (response.success) {

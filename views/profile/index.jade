@@ -11,12 +11,13 @@ block body
         nav.profile-settings
             ul
                 li.settings-dashboard
-                    a.icon(href="/me", title="Back to dashboard")
+                    a.icon(href="/dashboard", title="Back to dashboard")
 
     section.auth
         h3.auth-title Edit profile
-        form.auth-form(method="post", action="/me", enctype="multipart/form-data", novalidate)
+        form#profile.auth-form(method="post", action="/user", enctype="multipart/form-data", novalidate)
             input(type="hidden", name="_method", value="put")
+            input(type="hidden", name="email", value="#{user.email}")
 
             label(for="name") Name
             input(type="text", name="user[name]", id="name", tabindex="1", value="#{user.name}")
@@ -29,8 +30,9 @@ block body
 
     section.auth
         h3.auth-title Change password
-        form.auth-form(method="post", action="/me/change_password", enctype="multipart/form-data", novalidate)
+        form#password.auth-form(method="post", action="/user", enctype="multipart/form-data", novalidate)
             input(type="hidden", name="_method", value="put")
+            input(type="hidden", name="email", value="#{user.email}")
 
             label(for="password") Old password
             input(type="password", name="user[password]", id="password", tabindex="4")
@@ -45,8 +47,9 @@ block body
 
     section.auth.last
         h3.auth-title Delete account
-        form.auth-form(method="post", action="/me", enctype="multipart/form-data", novalidate)
+        form#delete.auth-form(method="post", action="/user", enctype="multipart/form-data", novalidate)
             input(type="hidden", name="_method", value="delete")
+            input(type="hidden", name="email", value="#{user.email}")
 
             label(for="delete_account_email") Email
             input(type="text", name="user[email]", id="delete_account_email", tabindex="8")

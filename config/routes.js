@@ -44,6 +44,16 @@ module.exports.routes = {
     action: 'auth'
   },
 
+  'put /user/:email': {
+    controller: 'user',
+    action: 'update'
+  },
+
+  'delete /user/:email': {
+    controller: 'user',
+    action: 'destroy'
+  },
+
   // Home
   '/': {
     controller: 'home',
@@ -62,15 +72,16 @@ module.exports.routes = {
     action: 'index'
   },
 
-  // Document
-  'post /document': {
-    controller: 'document',
-    action: 'create'
+  // Dashboard
+  'get /dashboard': {
+    controller: 'dashboard',
+    action: 'index'
   },
 
-  'delete /document/:hash': {
-    controller: 'document',
-    action: 'destroy'
+  // Profile
+  'get /profile': {
+    controller: 'profile',
+    action: 'index'
   },
 
 //////////////////////////////////
@@ -111,50 +122,34 @@ module.exports.routes = {
     action: 'create'
   },
 
-  // Me
-  'get /me': {
-    controller: 'dashboard',
-    action: 'index'
-  },
+///////////////////////////////////////////
 
-  // Profile
-  'put /me': {
-    controller: 'dashboard',
-    action: 'update'
-  },
-
-  // Profile - Change password
-  'delete /me': {
-    controller: 'dashboard',
-    action: 'destroy'
-  },
-
-  // Profile
-  'get /me/edit': {
-    controller: 'dashboard',
-    action: 'edit'
-  },
-
-  // Profile - Change password
-  'put /me/change_password': {
-    controller: 'dashboard',
-    action: 'change_password'
-  },
-
-  '/document/connect': {
+  // Document
+  '/document/connect/:hash': {
     controller: 'document',
     action: 'connect'
   },
 
-  '/document/change': {
+  'post /document': {
+    controller: 'document',
+    action: 'create'
+  },
+
+  'delete /document/:hash': {
+    controller: 'document',
+    action: 'destroy'
+  },
+
+  'put /document/:hash': {
     controller: 'document',
     action: 'change'
   },
 
-  '/:hash': {
+  'get /:hash': {
     controller: 'document',
     action: 'index'
   }
+
 
   /*
   // But what if you want your home page to display
