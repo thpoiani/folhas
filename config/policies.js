@@ -35,7 +35,8 @@ module.exports.policies = {
   },
 
   EnterController: {
-    index: 'isNotAuthenticated'
+    index: 'isNotAuthenticated',
+    facebook: 'isNotAuthenticated'
   },
 
   ExitController: {

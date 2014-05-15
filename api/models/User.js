@@ -3,9 +3,7 @@ var encrypt = function(values, next) {
 
   bcrypt.genSalt(function (err, salt) {
     bcrypt.hash(values.password, salt, function (err, hash) {
-      if (err) {
-        return next(err);
-      }
+      if (err) return next(err);
 
       values.password = hash;
       next();
@@ -31,8 +29,7 @@ module.exports = {
 
     password: {
       type: 'string',
-      minLength: 6,
-      required: true
+      defaultsTo: null
     },
 
     recovery: {
@@ -52,14 +49,14 @@ module.exports = {
   },
 
   beforeCreate: function (values, next) {
+    if (!values.password) next();
+
     encrypt(values, next);
   },
 
   beforeUpdate: function (values, next) {
     User.findOne({email: values.email, isActive: true}, function(err, user) {
-      if (err) {
-        return next(err);
-      }
+      if (err) return next(err);
 
       // if password changes
       if (user && values.password && user.password != values.password) {

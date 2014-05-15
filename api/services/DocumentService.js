@@ -33,7 +33,7 @@ exports.findDocumentByHash = function (hash, cb) {
 }
 
 exports.findDocumentsByAuthor = function (author, cb) {
-  Document.find({author: author, isActive: true}, function (err, documents) {
+  Document.find({author: author, isActive: true}).sort({title:1}).done(function(err, documents) {
     if (err) cb(new Error(err), null);
 
     cb(null, documents);

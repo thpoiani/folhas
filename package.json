@@ -36,7 +36,10 @@
     "node-uuid": "~1.4.1",
     "hashids": "~0.3.3",
     "underscore": "~1.6.0",
-    "mobile-detect": "~0.2.0"
+    "mobile-detect": "~0.2.0",
+    "email-templates": "~0.1.8",
+    "passport": "~0.2.0",
+    "passport-facebook": "~1.0.3"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

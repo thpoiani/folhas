@@ -17,7 +17,9 @@ module.exports = {
 
       if (!author) return res.render('document/index', data);
 
-      UserService.findUserByEmail(author, function(user) {
+      UserService.findUserByEmail(author, function(err, user) {
+        if (err) return res.notFound();
+
         data.user = user;
         data.pageTitle = "folhas | " + user.name + "'s Document: " + document.title;
 
@@ -58,7 +60,7 @@ module.exports = {
       cursor: req.param('cursor')
     };
 
-    DocumentService.findDocumentByHash(data.hash, function(document) {
+    DocumentService.findDocumentByHash(data.hash, function(err, document) {
       document.text = data.text;
       document.title = data.title;
 
