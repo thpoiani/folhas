@@ -33,8 +33,8 @@ module.exports = {
   express: {
     customMiddleware: function (app) {
       passport.use(new FacebookStrategy({
-        clientID: "",
-        clientSecret: "",
+        clientID: "275028299334780",
+        clientSecret: "b172217c09fe1ff109d4d35c8c6ef975",
         callbackURL: "http://localhost:1337/enter/facebook/callback"
       }, verifyHandler));
 

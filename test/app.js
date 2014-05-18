@@ -3,7 +3,8 @@
 var Sails = require('sails')
   , request = require('supertest')
   , app
-  , user;
+  , user
+  , document;
 
 before(function(done) {
   Sails.lift({
@@ -25,7 +26,16 @@ describe('Waterline models tests', function(done) {
       password: "password"
     };
 
-    done();
+    document = {
+      author: user.email,
+      hash: 'ABCDEFGH'
+    };
+
+    User.destroy({email: user.email}, function() {
+      Document.destroy({author: user.email}, function() {
+        done();
+      });
+    });
   });
 
   describe('User model', function(done) {
@@ -76,258 +86,168 @@ describe('Waterline models tests', function(done) {
 
   });
 
-});
+  describe('Document model', function(done) {
 
-describe('request', function(done) {
-
-  describe('GET /', function(done) {
-    it('should return 200', function (done) {
-      request(app.express.app).get('/').expect(200, done);
-    });
-  });
-
-  describe('GET /join', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 200', function (done) {
-        request(app.express.app).get('/join').expect(200, done);
+    it('should create a Document record', function(done) {
+      Document.create(document).done(function(err, model) {
+        if (err) throw err;
+        done();
       });
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should find Documents', function(done) {
+      Document.find().done(function(err, models) {
+        if (err) throw err;
+        done();
+      });
+    });
+
+    it('should find Document by Author', function(done) {
+      Document.findByAuthor(user.email).done(function(err, model) {
+        if (err) throw err;
+        model[0].should.have.property('author', user.email);
+        done();
+      });
+    });
+
+    it('should update a Document\'s title', function(done) {
+      Document.findOne({author: user.email}).done(function(err, model) {
+        if (err) throw err;
+
+        var title = 'Title';
+        model.title = title;
+
+        model.save(function(err){
+          if (err) throw err;
+          model.title.should.be.exactly(title);
+          done();
+        });
+      });
+    });
+
+    it('should remove a Document', function(done) {
+      Document.destroy({author: user.email}).done(function(err, user) {
+        if (err) throw err;
+        done();
+      });
+    });
+
+  });
+
+});
+
+describe('Requests', function(done) {
+
+  before(function(done) {
+    user = {
+      name: "user",
+      email: "user@folhas.com",
+      password: "password"
+    };
+
+    User.destroy({email: user.email}, function(err, model) {
+      User.create(user, function(err, model) {
+        done();
+      });
+    });
+  });
+
+  describe('GET /', function(done) {
+    it('should return 200', function (done) {
+      request(app.express.app)
+        .get('/')
+        .expect(200, done);
     });
   });
 
   describe('GET /enter', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 200', function (done) {
-        request(app.express.app).get('/enter').expect(200, done);
-      });
+    it('should return 200 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/enter')
+        .expect(200, done);
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should return 302 if user is authenticated', function (done) {
+      request(app.express.app)
+        .post('/user/auth')
+        .send({user: {email: user.email, password: "password"}})
+        .expect(200, function(err, res) {
+          if (err) done(err);
+
+          // req.body === {}
+
+          request(app.express.app)
+            .get('/enter')
+            .expect(302, done);
+      });
+    });
+  });
+/*
+  describe('GET /join', function(done) {
+    it('should return 200 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/join')
+        .expect(200, done);
+    });
+
+    it('should return 302 if user is authenticated', function (done) {
+      throw new Error('Must be implemented');
+        // request(app.express.app).get('/join').expect(302, done);
     });
   });
 
   describe('GET /exit', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 302', function (done) {
-        request(app.express.app).get('/exit').expect(302, done);
-      });
+    it('should return 302 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/exit')
+        .expect(302, done);
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should return 200 if user is authenticated', function (done) {
+      throw new Error('Must be implemented');
+      // request(app.express.app).get('/exit').expect(200, done);
     });
   });
 
   describe('GET /dashboard', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 302', function (done) {
-        request(app.express.app).get('/dashboard').expect(302, done);
-      });
+    it('should return 302 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/dashboard')
+        .expect(302, done);
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should return 200 if user is authenticated', function (done) {
+      throw new Error('Must be implemented');
+      // request(app.express.app).get('/dashboard').expect(200, done);
     });
   });
 
   describe('GET /profile', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 302', function (done) {
-        request(app.express.app).get('/profile').expect(302, done);
-      });
+    it('should return 302 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/profile')
+        .expect(302, done);
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should return 200 if user is authenticated', function (done) {
+      throw new Error('Must be implemented');
+      // request(app.express.app).get('/profile').expect(200, done);
     });
   });
 
   describe('GET /remember', function(done) {
-    describe('not authenticated', function(done) {
-      it('should return 200', function (done) {
-        request(app.express.app).get('/remember').expect(200, done);
-      });
+    it('should return 302 if user isn\'t authenticated', function (done) {
+      request(app.express.app)
+        .get('/remember')
+        .expect(200, done);
     });
 
-    describe('authenticated', function(done) {
-      // TODO
+    it('should return 200 if user is authenticated', function (done) {
+      throw new Error('Must be implemented');
+      // request(app.express.app).get('/remember').expect(200, done);
     });
   });
-
-  // describe('POST /enter', function(done) {
-  //   it('should return 200', function (done) {
-  //     var param = {
-  //       user : {
-  //         email: 'test@test.com',
-  //         password: 'test'
-  //       }
-  //     };
-
-  //     request(app.express.app).post('/enter').send(param).expect(200, done);
-  //   });
-  // });
-
-  // describe('GET /remember', function(done) {
-  //   it('should return 200', function (done) {
-  //     request(app.express.app).get('/remember').expect(200, done);
-  //   });
-  // });
-
-  // describe('POST /remember', function(done) {
-  //   it('should return 200', function (done) {
-  //     var param = {
-  //       user : {
-  //         email: 'test@test.com'
-  //       }
-  //     };
-
-  //     request(app.express.app).post('/remember').send(param).expect(200, done);
-  //   });
-  // });
-
-  // describe('GET /recovery/:unique_id', function(done) {
-  //   it('should return 200', function (done) {
-  //     request(app.express.app).get('/recovery/test').expect(200, done);
-  //   });
-  // });
-
-  // describe('POST /recovery/:unique_id', function(done) {
-  //   it('should return 200', function (done) {
-  //     var param = {
-  //       user : {
-  //         password: 'test'
-  //       }
-  //     };
-
-  //     request(app.express.app).post('/recovery/test').send(param).expect(200, done);
-  //   });
-  // });
-
-  
-
-  // describe('POST /join', function(done) {
-  //   it('should return 200', function (done) {
-  //     var param = {
-  //       user : {
-  //         name: 'test',
-  //         email: 'test@test.com',
-  //         password: 'test'
-  //       }
-  //     };
-
-  //     // TODO
-  //     request(app.express.app).post('/join').send(param).expect(200, done);
-  //   });
-  // });
-
-  // describe('GET /exit', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).get('/exit').expect(302, done);
-  //     });
-  //   })
-
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       var param = {
-  //         user : {
-  //           email: 'test@test.com',
-  //           password: 'test'
-  //         }
-  //       };
-
-  //       request(app.express.app).post('/enter').send(param).end(function(err, res){
-  //         request(app.express.app).get('/exit').expect(200, done);
-  //       });
-  //     });
-  //   })
-  // });
-
-  // describe('GET /me', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).get('/me').expect(302, done);
-  //     });
-  //   });
-
-  //   // TODO
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       request(app.express.app).get('/me').expect(200, done);
-  //     });
-  //   });
-  // });
-
-  // describe('PUT /me', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).put('/me').expect(302, done);
-  //     });
-  //   });
-
-  //   // TODO
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       request(app.express.app).put('/me').expect(200, done);
-  //     });
-  //   });
-  // });
-
-  // describe('DELETE /me', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).del('/me').expect(302, done);
-  //     });
-  //   });
-
-  //   // TODO
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       request(app.express.app).del('/me').expect(200, done);
-  //     });
-  //   });
-  // });
-
-  // describe('GET /me/edit', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).get('/me/edit').expect(302, done);
-  //     });
-  //   });
-
-  //   // TODO
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       request(app.express.app).get('/me/edit').expect(200, done);
-  //     });
-  //   });
-  // });
-
-  // describe('PUT /me/change_password', function(done) {
-  //   describe('not authenticated', function(done) {
-  //     it('should return 302', function (done) {
-  //       request(app.express.app).put('/me/change_password').expect(302, done);
-  //     });
-  //   });
-
-  //   // TODO
-  //   describe('authenticated', function(done) {
-  //     it('should return 200', function (done) {
-  //       request(app.express.app).put('/me/change_password').expect(200, done);
-  //     });
-  //   });
-  // });
-
-  // describe('GET /:hash', function(done) {
-  //   it('should return 200', function (done) {
-  //     request(app.express.app).get('/test').expect(200, done);
-  //   });
-  // });
-
+*/
 });
 
 after(function(done) {

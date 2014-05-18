@@ -3,7 +3,7 @@ block style
     link(rel='stylesheet', href='/css/profile.css')
 
 block script
-    script(src='/js/edit.js')
+    script(src='/js/profile.js')
 
 block body
     section.profile
@@ -58,3 +58,5 @@ block body
             input(type="password", name="user[password]", id="delete_account_password", tabindex="9")
 
             input.delete(type="submit", value="Delete account", tabindex="10")
+
+    include ../_partial/modal

@@ -53,10 +53,6 @@
     }
   }
 
-  @include media($tablet) {
-    float: right;
-  }
-
   @include media($mobile) {
     display: none;
   }

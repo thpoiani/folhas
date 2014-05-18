@@ -14,8 +14,9 @@ block body
                 li.settings-create
                     a.icon(href="#", data-create="document", title="Create new document")
 
-                li.settings-update
-                    a.icon(href="/profile", title="Account settings")
+                if user.password
+                  li.settings-update
+                      a.icon(href="/profile", title="Account settings")
 
                 li.settings-logout
                     a.icon(href="/exit", title="Exit")

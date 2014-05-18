@@ -1,4 +1,5 @@
-var Hashids = require("hashids"),
+var bcrypt = require('bcrypt'),
+    Hashids = require("hashids"),
     _ = require('underscore');
 
 var update = function (id, user, cb) {
@@ -229,5 +230,18 @@ exports.recoveryPassword = function(user, model, cb) {
     if (err) return cb(err);
 
     cb(null, model);
+  });
+};
+
+exports.authentication = function(user, cb) {
+  User.findOne({email: user.email.trim(), isActive: true}, function(err, model) {
+    if (err) return cb(null, {name: '', message: 'We lost connection'});
+    if (!model) return cb(null, {name: '', message: 'Incorrect email or password'});
+
+    bcrypt.compare(user.password, model.password, function (err, result) {
+      if (err || !result) return cb(null, {name: '', message: 'Incorrect email or password'});
+
+      cb(model);
+    });
   });
 };

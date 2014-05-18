@@ -27,10 +27,4 @@
     @include omega();
   }
 
-  @include media($mobile) {
-    margin: 0 auto;
-    float: none;
-    padding: 0;
-    width: 165px;
-  }
 }

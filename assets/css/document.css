@@ -275,28 +275,25 @@ dl {
 .header-navigation, .header-social, .document-title, .information {
   text-align: center; }
 
-.header-auth, .profile-settings {
+.profile-settings {
   text-align: right; }
 
-.header-auth input, .header-auth input[type="submit"], .header-logo h1 {
+.header-logo h1 {
   vertical-align: top; }
 
-.header-navigation, .header-auth {
+.header-navigation {
   float: right; }
 
-.header-navigation.close, .header-auth .header-auth-remember:hover, .header-logo a, .profile-dashboard, .profile-settings .icon {
+.header-navigation.close .header-navigation-menu, .header-logo a, .profile-dashboard, .profile-settings .icon {
   color: #28441B; }
 
-.header-auth .header-auth-remember {
-  color: #557C16; }
-
-.header-navigation.close:hover, .header-navigation.open, .header-logo a:hover, .profile-settings .icon:hover {
+.header-navigation.close .header-navigation-menu:hover, .header-navigation.open .header-navigation-menu, .header-logo a:hover, .profile-settings .icon:hover {
   color: #FA8D37; }
 
-.header-navigation.open:hover {
+.header-navigation.open .header-navigation-menu:hover {
   color: #E73F38; }
 
-.header-auth, .header-logo, .header-social, .ace {
+.header-logo, .header-social, .ace {
   height: 100%; }
 
 .ace {
@@ -305,7 +302,7 @@ dl {
 .header-social a, .information img, .information-author img {
   display: block; }
 
-.header-auth input, .header-social li, .profile-settings .settings-dashboard,
+.header-social li, .profile-settings .settings-dashboard,
 .profile-settings .settings-create,
 .profile-settings .settings-update,
 .profile-settings .settings-logout {
@@ -317,7 +314,7 @@ dl {
 .profile-dashboard strong, .document-title, .information {
   font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.header-navigation.close, .header-navigation.open, .profile-settings .settings-logout .icon, .profile-settings .settings-update .icon, .profile-settings .settings-create .icon, .profile-settings .settings-dashboard .icon {
+.header-navigation.close .header-navigation-menu, .header-navigation.open .header-navigation-menu, .profile-settings .settings-logout .icon, .profile-settings .settings-update .icon, .profile-settings .settings-create .icon, .profile-settings .settings-dashboard .icon {
   display: inline-block;
   font-family: "Ionicons";
   speak: none;
@@ -330,10 +327,10 @@ dl {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.header-navigation.close:before {
+.header-navigation.close .header-navigation-menu:before {
   content: "\f185"; }
 
-.header-navigation.open:before {
+.header-navigation.open .header-navigation-menu:before {
   content: "\f2bd"; }
 
 .profile-settings .settings-logout .icon:before {
@@ -348,39 +345,7 @@ dl {
 .profile-settings .settings-dashboard .icon:before {
   content: "\f265"; }
 
-.header-auth input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  -webkit-transition: all 300ms;
-  -moz-transition: all 300ms;
-  transition: all 300ms;
-  border-radius: 0;
-  font-size: 0.875rem;
-  padding: 0.4375rem;
-  height: 2rem; }
-  .header-auth input:hover, .header-auth input:focus {
-    border-color: #557c16; }
-
-.header-auth input[type="submit"] {
-  -webkit-transition: all 300ms;
-  -moz-transition: all 300ms;
-  transition: all 300ms;
-  color: white;
-  cursor: pointer;
-  font-weight: normal;
-  outline: none;
-  border: none;
-  box-shadow: none;
-  text-shadow: none;
-  letter-spacing: 0.125rem; }
-  .header-auth input[type="submit"]:active, .header-auth input[type="submit"]:focus, .header-auth input[type="submit"]:hover {
-    border: none;
-    letter-spacing: -0.125rem; }
-
-.header-auth, .information-author {
+.information-author {
   position: relative; }
 
 header {
@@ -411,36 +376,12 @@ header {
   padding: 0 1.25rem;
   width: 6.25rem;
   font-size: 3.5rem;
-  line-height: 3.5rem;
-  cursor: pointer; }
+  line-height: 3.5rem; }
   .header-navigation.open .header-menu {
     top: 3.75rem; }
 
-.header-auth {
-  padding: 0.875rem 1.25rem 0 0;
-  width: 26.25rem; }
-  .header-auth input[name^="user"] {
-    margin: 0 3px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-    font-family: inherit;
-    width: 10rem; }
-  .header-auth input[type="submit"] {
-    margin: 0 0 0 0.1875rem;
-    width: 3.75rem;
-    background: #557c16; }
-    .header-auth input[type="submit"]:active, .header-auth input[type="submit"]:focus, .header-auth input[type="submit"]:hover {
-      background: #28441b;
-      box-shadow: inset 0 1px 0 0 #28441b;
-      letter-spacing: -0.03125rem; }
-  .header-auth .header-auth-remember {
-    position: absolute;
-    right: 105px;
-    bottom: 7px;
-    font-size: 0.75rem;
-    line-height: 0; }
-  @media screen and (max-width: 768px) {
-    .header-auth {
-      display: none; } }
+.header-navigation-menu {
+  cursor: pointer; }
 
 .header-logo {
   padding: 0 0 0 20px;
@@ -459,12 +400,6 @@ header {
   @media screen and (max-width: 768px) {
     .header-logo {
       margin-right: 0; } }
-  @media screen and (max-width: 480px) {
-    .header-logo {
-      margin: 0 auto;
-      float: none;
-      padding: 0;
-      width: 165px; } }
 
 .header-menu {
   -webkit-transition: all 300ms;
@@ -477,6 +412,15 @@ header {
   height: 12.5rem;
   background: rgba(255, 255, 255, 0.3);
   box-shadow: -1px 1px 5px -3px rgba(0, 0, 0, 0.5); }
+
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 200px;
+  min-height: 0;
+  background: white; }
 
 .header-social {
   margin-right: 0;
@@ -506,9 +450,6 @@ header {
     background: url("/images/social/twitter.png") no-repeat; }
     .header-social .header-social-twitter a:hover {
       background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
-  @media screen and (max-width: 768px) {
-    .header-social {
-      float: right; } }
   @media screen and (max-width: 480px) {
     .header-social {
       display: none; } }
@@ -575,8 +516,7 @@ footer {
   margin-right: auto;
   padding: 3.75rem 0;
   background: #e73f38;
-  box-shadow: inset 0px 1px 10px -5px #333;
-  max-width: 100%; }
+  box-shadow: inset 0px 1px 10px -5px #333; }
   footer:after {
     content: "";
     display: table;
@@ -613,3 +553,9 @@ footer {
   color: white; }
   .information-project a:hover {
     text-decoration: underline; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }

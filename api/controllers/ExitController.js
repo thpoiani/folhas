@@ -1,8 +1,8 @@
 module.exports = {
 
   index: function (req, res) {
+    req.session.user = null;
     req.logout();
-    req.session = null;
 
     res.redirect('/enter');
   }

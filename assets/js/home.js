@@ -25,14 +25,38 @@
 
     exports.animation = {
       header: function () {
-        var technologies = doc.querySelector('.technologies'),
-            header = document.querySelector('header');
+        var header = doc.querySelector('header'),
+            headerMenu = doc.querySelector('.header-menu'),
+            menu = doc.querySelector('.menu'),
+            technologies = doc.querySelector('.technologies');
 
         win.onscroll = function() {
+          var headerMenuHeight = headerMenu.offsetHeight + headerMenu.offsetTop;
+          var height = headerMenuHeight + win.scrollY - technologies.offsetTop;
+
+          (height > 0)
+            ? menu.style.height = height + 'px'
+            : menu.style.height = 0;
+
           (win.scrollY >= technologies.offsetTop)
-           ? header.style.backgroundColor = "white"
-           : header.style.backgroundColor = "";
+            ? header.style.backgroundColor = "white"
+            : header.style.backgroundColor = "";
         };
+      },
+
+      menu: function() {
+        var menu = doc.querySelector('.header-navigation-menu');
+
+        menu.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          var isClosed = this.parentElement.className.indexOf('close') > 0;
+
+          this.parentElement.className = (isClosed)
+          ? this.parentElement.className.replace('close', 'open')
+          : this.parentElement.className.replace('open', 'close');
+        });
       }
 
     };
@@ -58,8 +82,8 @@
         if (html.className === 'phone') {
           element.style.width = documentEditor.style.width = '300px';
         } else {
-          window.onresize = function() {
-            (window.innerWidth <= 600)
+          win.onresize = function() {
+            (win.innerWidth <= 600)
               ? element.style.width = documentEditor.style.width = '300px'
               : element.style.width = documentEditor.style.width = '';
           }
@@ -82,25 +106,12 @@
 
     };
 
-    exports.menu = function() {
-      var menu = doc.querySelector('.header-navigation');
-
-      menu.addEventListener('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        var isClosed = this.className.indexOf('close') > 0;
-
-        this.className = (isClosed) ? this.className.replace('close', 'open') : this.className.replace('open', 'close');
-      });
-    }
-
     return exports;
   })();
 
 //  Home.createDocument();
   Home.animation.header();
-  Home.menu();
+  Home.animation.menu();
   Home.ace.initialize();
   Home.ace.resize();
 

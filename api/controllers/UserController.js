@@ -73,7 +73,6 @@ module.exports = {
   },
 
   auth: function (req, res) {
-    // TODO extrair para UserService
     var user = req.param('user');
         errors = [];
 
@@ -89,11 +88,11 @@ module.exports = {
 
     if (errors.length) return res.json(errors);
 
-    UserValidation.authentication(user, function(model, errors) {
+    UserService.authentication(user, function(model, errors) {
       if (!model) return res.json([errors]);
 
       req.session.user = model;
-      return res.json(null);
+      res.json(null);
     });
   },
 

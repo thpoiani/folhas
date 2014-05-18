@@ -1,32 +1,45 @@
 (function (win, doc, socket) {
   'use strict';
 
-  var Dashboard = (function () {
+  var Profile = (function () {
 
     var exports = {};
 
-    exports.createDocument = function() {
-      var button = doc.querySelector('[data-create="document"]');
+    var getUser = function (form) {
+      var user = {},
+          inputs = form.querySelectorAll('input[name^=user]');
 
-      button.addEventListener('click', function() {
-        socket.post('/document', function(response) {
-          if (response.success) {
-            location.href = '/' + response.document.hash;
-          }
-        });
-      });
+      for (var i = inputs.length - 1; i >= 0; i--) {
+        var name, attr;
 
+        name = inputs[i].name;
+        attr = name.substring(name.lastIndexOf('[') + 1, name.lastIndexOf(']'));
+
+        user[attr] = inputs[i].value;
+      }
+
+      return user;
     };
 
-    exports.rowClickable = function() {
-      var rows = doc.querySelectorAll('tr[data-url]');
+    exports.form = function () {
+      var submit = function (event) {
+        event.preventDefault();
 
-      var onClick = function() {
-        location.href = this.getAttribute('data-url');
-      };
+        var form = event.srcElement,
+            action = form.action,
+            email = form.querySelector('[name=email]').value;
 
-      for (var i = 0, length = rows.length; i < length; i++) {
-        rows[i].addEventListener('click', onClick);
+        socket.put(action + '/' + email, {user: getUser(form), form: form.id}, function (response) {
+          // TODO validação
+          console.log(response);
+        });
+      }
+
+      var puts = doc.querySelectorAll('form [value=put]');
+
+      for (var i = puts.length - 1; i >= 0; i--) {
+        var form = puts[i].parentElement;
+        form.addEventListener('submit', submit);
       }
     };
 
@@ -46,16 +59,20 @@
         submit.addEventListener('click', function(event) {
           event.preventDefault();
 
-          var hash = this.getAttribute('data-hash');
+          var form = doc.querySelector('#delete'),
+              email = this.getAttribute('data-email');
 
-          socket.delete('/document/' + hash, function(response) {
+          socket.delete('/user/' + email , {user: getUser(form)}, function (response) {
             if (response.success) {
               doc.querySelector('.modal-close').click();
 
               // TODO
               setTimeout(function(){
-                location.reload();
+                location.href = '/';
+
               }, 700);
+            } else {
+              // TODO
             }
           });
         });
@@ -71,37 +88,34 @@
       open: function() {
         var remove, modal;
 
-        remove = document.querySelectorAll('.document-remove a');
+        remove = document.querySelector('.delete');
         modal = document.querySelector('.modal');
 
         var onClick = function(event) {
           event.preventDefault();
           event.stopPropagation();
 
-          var row, title, text, submit, data;
+          var name, title, text, submit, data;
 
-          row = this.parentNode.parentNode;
+          name = doc.querySelector('.profile-dashboard strong').innerText;
           title = modal.querySelector('.modal-title');
           text = modal.querySelector('.modal-text');
           submit = modal.querySelector('.submit-button');
 
           data = {
-            title: row.title,
-            url: row.getAttribute('data-url'),
-            hash: row.getAttribute('data-hash')
+            title: name,
+            email: doc.querySelector('#delete [name=email]').value
           };
 
           title.innerText = 'Remove "' + data.title + '"';
-          text.innerHTML = 'You really want to remove the document <a class="remove" href="' + data.url + '" target="_blank" title="' + data.title + '"><strong>' + data.title + '</strong></a>?';
-          submit.setAttribute('data-hash', data.hash);
+          text.innerHTML = 'You really want to remove your account??';
+          submit.setAttribute('data-email', data.email);
 
           modal.style.visibility = 'visible';
           modal.style.opacity = 1;
         };
 
-        for (var i = 0, length = remove.length; i < length; i++) {
-            remove[i].addEventListener('click', onClick);
-        }
+        remove.addEventListener('click', onClick);
       },
 
       close: function() {
@@ -138,8 +152,7 @@
     return exports;
   })();
 
-  Dashboard.createDocument();
-  Dashboard.rowClickable();
-  Dashboard.modal.init();
+  Profile.form();
+  Profile.modal.init();
 
 })(window, document, socket);

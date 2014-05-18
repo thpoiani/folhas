@@ -73,20 +73,6 @@ exports.emailEquals = function (user, session) {
   }
 };
 
-exports.authentication = function(user, cb) {
-  User.findOne({email: user.email.trim(), isActive: true}, function(err, model) {
-    if (err) return cb(null, {name: '', message: 'We lost connection'});
-    if (!model) return cb(null, {name: '', message: 'Incorrect email or password'});
-
-    bcrypt.compare(user.password, model.password, function (err, result) {
-      if (err) return cb(null, {name: '', message: 'We lost connection'});
-      if (!result) return cb(null, {name: '', message: 'Incorrect email or password'});
-
-      cb(model);
-    });
-  });
-};
-
 exports.comparePasswords = function(new_password, old_password, cb) {
   bcrypt.compare(new_password, old_password, function (err, result) {
     if (err) return cb({name: '', message: 'We lost connection'});
