@@ -1,7 +1,9 @@
 (function (win, doc, Ace) {
   'use strict';
 
-  var Home   = (function () {
+  var alreadyWrite = false;
+
+  var Home = (function () {
 
     var exports = {},
       instance = null,
@@ -103,13 +105,56 @@
           }
         });
       });
-
     };
+
+    exports.analytics = function() {
+      // social
+      doc.querySelector('.header-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'facebook');
+      });
+
+      doc.querySelector('.header-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'googleplus');
+      });
+
+      doc.querySelector('.header-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'twitter');
+      });
+
+      // access
+      doc.querySelector('.authentication-enter a').addEventListener('click', function() {
+        ga('send', 'event', 'access', 'click', 'enter');
+      });
+
+      doc.querySelector('.authentication-join a').addEventListener('click', function() {
+        ga('send', 'event', 'access', 'click', 'join');
+      });
+
+      // github
+      doc.querySelector('.information-author a').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'poiani');
+      });
+
+      doc.querySelector('.information-project a[itemprop]').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'folhas');
+      });
+
+      doc.querySelector('.information-project a:not([itemprop])').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'license');
+      });
+    }
 
     return exports;
   })();
 
 //  Home.createDocument();
+
+//  if (!alreadyWrite) {
+//   alreadyWrite = true;
+//   ga('send', 'event', 'document', 'write', 'home');
+// }
+
+  Home.analytics();
   Home.animation.header();
   Home.animation.menu();
   Home.ace.initialize();
