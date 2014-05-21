@@ -1,0 +1,42 @@
+.auth-facebook {
+  @include margin(0 auto rem(60));
+  @extend %text-align-center;
+  @extend %Quicksand-Bold;
+  width: rem(300);
+}
+
+.facebook-login {
+  @include transition(all 300ms);
+  @extend %Quicksand-Regular;
+  @extend %display-block;
+  @extend %position-relative;
+  height: 48px;
+  line-height: 46px;
+  padding-left: 40px;
+  letter-spacing: rem(2px);
+
+  &:before {
+    @extend %position-absolute;
+    @include transition(all 300ms);
+    background: url("/images/social/facebook.png") no-repeat;
+    content: '';
+    height: 48px;
+    width: 48px;
+    left: 0;
+  }
+
+  &:hover {
+    background: #3B5998;
+    color: white;
+    letter-spacing: rem(-1px);
+
+    &:before {
+      @extend %position-absolute;
+      background: #3B5998 url("/images/social/facebook-hover.png") no-repeat;
+      content: '';
+      height: 48px;
+      width: 48px;
+      left: 0;
+    }
+  }
+}

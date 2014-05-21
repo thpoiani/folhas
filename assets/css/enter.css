@@ -272,7 +272,7 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.header-navigation, .header-social, .information {
+.header-navigation, .header-social, .auth-facebook, .information {
   text-align: center; }
 
 .auth-form input[name^="user"], .auth-form input[type="submit"], .header-logo h1 {
@@ -299,7 +299,7 @@ dl {
 .auth-form input[name^="user"] {
   width: 100%; }
 
-.header-social a, .information img, .information-author img {
+.header-social a, .facebook-login, .information img, .information-author img {
   display: block; }
 
 .auth-form input[name^="user"], .header-social li {
@@ -308,8 +308,11 @@ dl {
 .header-logo h1, .auth-form label, .auth-form p {
   font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.auth-form input[name^="user"], .auth-form a, .information {
+.auth-form input[name^="user"], .auth-form a, .facebook-login, .information {
   font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+.auth-facebook {
+  font-family: "Quicksand-Bold", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
 .header-navigation.close .header-navigation-menu, .header-navigation.open .header-navigation-menu {
   display: inline-block;
@@ -362,7 +365,10 @@ dl {
     border: none;
     letter-spacing: -0.125rem; }
 
-.information-author {
+.facebook-login:before, .facebook-login:hover:before {
+  position: absolute; }
+
+.facebook-login, .information-author {
   position: relative; }
 
 header {
@@ -505,6 +511,38 @@ header {
   .auth-form a {
     margin: 0.1875rem 0 0; }
 
+.auth-facebook {
+  margin: 0 auto 3.75rem;
+  width: 18.75rem; }
+
+.facebook-login {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  height: 48px;
+  line-height: 46px;
+  padding-left: 40px;
+  letter-spacing: 0.125rem; }
+  .facebook-login:before {
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    background: url("/images/social/facebook.png") no-repeat;
+    content: '';
+    height: 48px;
+    width: 48px;
+    left: 0; }
+  .facebook-login:hover {
+    background: #3B5998;
+    color: white;
+    letter-spacing: -0.0625rem; }
+    .facebook-login:hover:before {
+      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat;
+      content: '';
+      height: 48px;
+      width: 48px;
+      left: 0; }
+
 footer {
   max-width: 85.375em;
   margin-left: auto;
@@ -548,9 +586,3 @@ footer {
   color: white; }
   .information-project a:hover {
     text-decoration: underline; }
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; }

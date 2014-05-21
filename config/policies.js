@@ -26,6 +26,14 @@ module.exports.policies = {
     recovery: true
   },
 
+  DocumentController: {
+    index: true,
+    create: true,
+    destroy: true,
+    connect: true,
+    change: true
+  },
+
   HomeController: {
     index: true
   },
@@ -57,13 +65,5 @@ module.exports.policies = {
 
   RecoveryController: {
     index: 'isNotAuthenticated'
-  },
-
-  DocumentController: {
-    index: true,
-    create: true,
-    destroy: 'isAuthenticated',
-    connect: true,
-    change: true
   }
 }

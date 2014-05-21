@@ -10,10 +10,11 @@ block body
     if user
         section.profile
               h2.profile-dashboard <strong>#{user.name}</strong>'s Document
-              nav.profile-settings
-                  ul
-                      li.settings-dashboard
-                          a.icon(href="/dashboard", title="Back to dashboard")
+              if session
+                nav.profile-settings
+                    ul
+                        li.settings-dashboard
+                            a.icon(href="/dashboard", title="Back to dashboard")
 
     section.document
         h3.document-title(contenteditable) #{document.title}

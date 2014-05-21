@@ -12,7 +12,8 @@ module.exports = {
         isPhone: MobileDetect.isPhone(req),
         document: document,
         user: null,
-        pageTitle: 'folhas'
+        pageTitle: 'folhas',
+        session: req.user ? req.user[0] : req.session.user
       };
 
       if (!author) return res.render('document/index', data);

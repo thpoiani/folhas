@@ -616,12 +616,25 @@ header {
 .document-edit {
   font-size: 1.25rem;
   width: 10%; }
+  @media screen and (max-width: 480px) {
+    .document-edit {
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0; }
+      .document-edit a {
+        padding-left: 0;
+        padding-right: 0; } }
 
 .document-remove {
   font-size: 1.25rem;
   width: 10%; }
-  .document-remove path.remove {
-    fill: #fff; }
+  @media screen and (max-width: 480px) {
+    .document-remove {
+      padding-left: 0;
+      padding-right: 0; }
+      .document-remove a {
+        padding-left: 0;
+        padding-right: 0; } }
 
 table {
   box-shadow: 0 0px 5px -2px rgba(0, 0, 1, 0.3);
@@ -704,9 +717,3 @@ footer {
   color: white; }
   .information-project a:hover {
     text-decoration: underline; }
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; }
