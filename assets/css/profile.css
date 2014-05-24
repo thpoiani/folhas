@@ -272,13 +272,13 @@ dl {
 .header-logo h1 {
   text-align: left; }
 
-.modal-footer .button, .header-navigation, .header-social, .auth-title, .information {
+.modal-footer .button, .social ul, .header-navigation, .header-social, .auth-title, .information {
   text-align: center; }
 
 .modal-footer, .profile-settings {
   text-align: right; }
 
-.auth-form input[name^="user"], .modal-footer .button, .auth-form input[type="submit"], .header-logo h1 {
+.social input, .auth-form input[name^="user"], .modal-footer .button, .auth-form input[type="submit"], .header-logo h1 {
   vertical-align: top; }
 
 .header-navigation, .auth-form span, .auth-form a {
@@ -302,10 +302,10 @@ dl {
 .auth-form input[name^="user"] {
   width: 100%; }
 
-.header-social a, .information img, .information-author img {
+.social li a, .header-social a, .information img, .information-author img {
   display: block; }
 
-.auth-form input[name^="user"], .modal-footer .button, .header-social li, .profile-settings .settings-dashboard,
+.social input, .auth-form input[name^="user"], .modal-footer .button, .social li, .header-social li, .profile-settings .settings-dashboard,
 .profile-settings .settings-create,
 .profile-settings .settings-update,
 .profile-settings .settings-logout {
@@ -314,7 +314,7 @@ dl {
 .modal-footer, .modal-text, .header-logo h1, .profile h2, .profile-dashboard, .auth-form label, .auth-form p {
   font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.modal-title, .profile-dashboard strong, .auth-form input[name^="user"], .auth-form a, .auth-title, .information {
+.modal-title, .social input, .profile-dashboard strong, .auth-form input[name^="user"], .auth-form a, .auth-title, .information {
   font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
 .header-navigation.close .header-navigation-menu, .header-navigation.open .header-navigation-menu, .profile-settings .settings-logout .icon, .profile-settings .settings-update .icon, .profile-settings .settings-create .icon, .modal-close, .profile-settings .settings-dashboard .icon {
@@ -351,7 +351,7 @@ dl {
 .profile-settings .settings-dashboard .icon:before {
   content: "\f265"; }
 
-.auth-form input[name^="user"] {
+.social input, .auth-form input[name^="user"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -364,7 +364,7 @@ dl {
   font-size: 0.875rem;
   padding: 0.4375rem;
   height: 2rem; }
-  .auth-form input[name^="user"]:hover, .auth-form input[name^="user"]:focus {
+  .social input:hover, .auth-form input[name^="user"]:hover, .social input:focus, .auth-form input[name^="user"]:focus {
     border-color: #557c16; }
 
 .modal-footer .button, .auth-form input[type="submit"] {
@@ -425,6 +425,8 @@ dl {
   width: 60%;
   padding: 1.25rem;
   margin-top: 5em; }
+  .modal-inner.social {
+    width: 250px; }
 
 .modal-text {
   font-size: 100%;
@@ -434,6 +436,37 @@ dl {
 
 .modal-title {
   font-size: 140%; }
+
+.social ul {
+  font-size: 0; }
+.social li {
+  margin: 0 0.3125rem; }
+  .social li a {
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px; }
+.social .modal-close {
+  width: auto; }
+.social .modal-social-facebook a {
+  background: url("/images/social/facebook.png") no-repeat; }
+  .social .modal-social-facebook a:hover {
+    background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
+.social .modal-social-googleplus a {
+  background: url("/images/social/googleplus.png") no-repeat; }
+  .social .modal-social-googleplus a:hover {
+    background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
+.social .modal-social-twitter a {
+  background: url("/images/social/twitter.png") no-repeat; }
+  .social .modal-social-twitter a:hover {
+    background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
+.social input {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-size: 1rem; }
+  .social input:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); }
 
 .modal-window {
   -webkit-transition: opacity 0.25s ease;

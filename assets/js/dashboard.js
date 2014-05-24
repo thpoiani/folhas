@@ -34,10 +34,21 @@
       init: function() {
         this.assembly();
         this.open();
-        this.close();
+        this.innerClick();
+
+        this.close(doc.querySelector('#modal'));
+        this.close(doc.querySelector('#social'));
+
         this.esc();
         this.onSubmit();
-        document.querySelector('.modal-inner').addEventListener('click', function(e){e.stopPropagation()});
+      },
+
+      innerClick: function() {
+        var inner = doc.querySelectorAll('.modal-inner')
+
+        for (var i = 0, length = inner.length; i < length; i++) {
+          inner[i].addEventListener('click', function(e){e.stopPropagation()});
+        }
       },
 
       onSubmit: function() {
@@ -62,17 +73,19 @@
       },
 
       assembly: function() {
-        var submit = document.querySelector('.submit-button');
+        var submit = doc.querySelector('.submit-button');
 
         submit.title = "Remove";
         submit.innerText = "REMOVE";
       },
 
       open: function() {
-        var remove, modal;
+        var remove, modal, share, social;
 
-        remove = document.querySelectorAll('.document-remove a');
-        modal = document.querySelector('.modal');
+        remove = doc.querySelectorAll('.document-remove a');
+        modal = doc.querySelector('#modal');
+        share = doc.querySelectorAll('.document-share a');
+        social = doc.querySelector('#social');
 
         var onClick = function(event) {
           event.preventDefault();
@@ -99,15 +112,47 @@
           modal.style.opacity = 1;
         };
 
+        var onClickSocial = function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          var row, text, input, url, facebook, googleplus, twitter, data;
+
+          row = this.parentNode.parentNode;
+          text = social.querySelector('.modal-text');
+          input = social.querySelector('input');
+          facebook = social.querySelector('.modal-social-facebook a');
+          googleplus = social.querySelector('.modal-social-googleplus a');
+          twitter = social.querySelector('.modal-social-twitter a');
+
+          data = {
+            title: row.title,
+            url: row.getAttribute('data-url')
+          };
+
+          url = location.origin + data.url;
+          text.innerHTML = data.title;
+          input.value = url;
+          facebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+          googleplus.href = "https://plus.google.com/share?url=" + url;
+          twitter.href = "https://twitter.com/intent/tweet?url=" + url;
+
+          social.style.visibility = 'visible';
+          social.style.opacity = 1;
+        }
+
         for (var i = 0, length = remove.length; i < length; i++) {
             remove[i].addEventListener('click', onClick);
         }
+
+        for (var i = 0, length = share.length; i < length; i++) {
+            share[i].addEventListener('click', onClickSocial);
+        }
       },
 
-      close: function() {
+      close: function(modal) {
         var modal, close, cancel, layer;
 
-        modal = doc.querySelector('.modal');
         close = modal.querySelector('.modal-close');
         cancel = modal.querySelector('.cancel-button');
         layer = modal.querySelector('.modal-window');
@@ -129,7 +174,11 @@
         doc.onkeydown = function(event) {
             event = event || window.event;
             if (event.keyCode == 27) {
-              doc.querySelector('.modal-close').click();
+              var close = doc.querySelectorAll('.modal-close');
+
+              for (var i = 0, length = close.length; i < length; i++) {
+                close[i].click();
+              }
             }
         };
       }
