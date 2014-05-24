@@ -37,11 +37,6 @@ module.exports = {
       defaultsTo: []
     },
 
-    apiKey: {
-      type: 'string',
-      defaultsTo: null
-    },
-
     isActive: {
       type: 'boolean',
       defaultsTo: true

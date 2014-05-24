@@ -1,7 +1,8 @@
 module.exports = {
 
   index: function (req, res) {
-    var user = req.session.user || req.user[0];
+    var user = req.user ? req.user[0] : req.session.user;
+    req.session.user = user;
 
     DocumentService.findDocumentsByAuthor(user.email, function(err, documents) {
       if (err) return res.notFound(err);

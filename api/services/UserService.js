@@ -60,6 +60,18 @@ exports.create = function(user, cb) {
 exports.updateProfile = function (user, session, cb) {
   var errors = [];
 
+  var validate = function(user, session) {
+    UserValidation.emailIsUnique(user.email, session, function(err, model) {
+      if (err) return cb(err);
+
+      update(session.id, user, function(err, model) {
+        if (err) return cb(err);
+
+        return cb(null, model);
+      });
+    });
+  };
+
   errors.push(
     UserValidation.name(user.name)
   );
@@ -72,15 +84,15 @@ exports.updateProfile = function (user, session, cb) {
 
   if (errors.length) return cb(errors);
 
-  UserValidation.emailIsUnique(user.email, session, function(err, model) {
-    if (err) return cb(err);
-
-    update(session.id, user, function(err, model) {
+  if (typeof session === 'string') {
+    User.findOne({id: session}, function (err, model) {
       if (err) return cb(err);
 
-      return cb(null, model);
+      validate(user, model);
     });
-  });
+  } else {
+    validate(user, session);
+  }
 };
 
 exports.updatePassword = function (user, session, cb) {
@@ -119,34 +131,46 @@ exports.updatePassword = function (user, session, cb) {
 exports.destroy = function (user, session, cb) {
   var errors = [];
 
-  errors.push(
-    UserValidation.emailEquals(user.email, session.email)
-  );
+  var validate = function(user, session) {
+    errors.push(
+      UserValidation.emailEquals(user.email, session.email)
+    );
 
-  errors.push(
-    UserValidation.password(user.password)
-  );
+    errors.push(
+      UserValidation.password(user.password)
+    );
 
-  errors = _.compact(errors);
+    errors = _.compact(errors);
 
-  if (errors.length) return cb(errors);
+    if (errors.length) return cb(errors);
 
-  UserService.findUserByEmail(session.email, function(errors, model) {
+    UserService.findUserByEmail(session.email, function(errors, model) {
 
-    if (errors) return cb(errors);
-
-    UserValidation.comparePasswords(user.password, model.password, function(errors) {
       if (errors) return cb(errors);
 
-      model.isActive = false;
+      UserValidation.comparePasswords(user.password, model.password, function(errors) {
+        if (errors) return cb(errors);
 
-      model.save(function (err) {
-        if (err) return cb({name: '', message: 'We lost connection'});
+        model.isActive = false;
 
-        cb(null, model);
+        model.save(function (err) {
+          if (err) return cb({name: '', message: 'We lost connection'});
+
+          cb(null, model);
+        });
       });
     });
-  });
+  };
+
+  if (typeof session === 'string') {
+    User.findOne({id: session}, function (err, model) {
+      if (err) return cb(err);
+
+      validate(user, model);
+    });
+  } else {
+    validate(user, session);
+  }
 };
 
 exports.hasRecovery = function (user, cb) {

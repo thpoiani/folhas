@@ -3,12 +3,14 @@ var bcrypt = require('bcrypt'),
     _ = require('underscore');
 
 var assembly = function (model, method) {
+  if (!model) throw new Error('Missing user data');
+
   var user = {
-    name: (model.name ? model.name.trim() : null),
-    email: (model.email ? model.email.trim() : null),
-    password: model.password,
-    new_password: model.new_password,
-    confirm_new_password: model.confirm_new_password
+    name: (model['name'] ? model.name.trim() : null),
+    email: (model['email'] ? model.email.trim() : null),
+    password: model['password'],
+    new_password: model['new_password'],
+    confirm_new_password: model['confirm_new_password']
   };
 
   if (method === 'create') {
@@ -19,27 +21,41 @@ var assembly = function (model, method) {
   return user;
 };
 
+var errorObject = function(id, message, url) {
+  return {
+    id: id,
+    message: message,
+    url: url || 'http://docs.folhas.apiary.io/'
+  };
+}
+
 module.exports = {
 
   create: function(req, res) {
-    var user = assembly(req.param('user'), 'create');
+    var user;
+
+    try {
+      user = assembly(req.param('user'), 'create');
+    } catch (err) {
+      return res.json(400, errorObject('user_data', err.message, 'http://docs.folhas.apiary.io/#post-%2Fuser'));
+    }
 
     UserService.create(user, function(errors, model) {
-      if (errors) return res.json(errors);
+      if (errors) return res.json(400, errorObject('user_data', errors));
 
       req.session.user = model;
-      res.json(null);
+      res.json(201, model);
     });
   },
 
   update: function (req, res) {
     var email = req.param('email'),
-        user = assembly(req.param('user')),
-        form = req.param('form'),
-        session = req.session.user;
+        form = req.param('form') || 'profile',
+        session = req.session.user || req.param('client_id'),
+        user;
 
     var response = function (errors, model) {
-      if (errors) return res.json(errors);
+      if (errors) return res.json(400, errorObject('user_update', errors));
 
       var user = {
         name: model.name,
@@ -47,11 +63,17 @@ module.exports = {
       };
 
       req.session.user = model;
-
-      res.json({success: true, user: user});
+      res.json(200, model);
     };
 
-    if (!email.length) throw new Error();
+    if (!email) return res.json(400, errorObject('user_email', 'Missing user email', 'http://docs.folhas.apiary.io/#put-%2Fuser%2F%7Bemail%7D%2F%7B%3Fclient_id%7D'));
+    if (!session) return res.json(401, errorObject('user_client_id', 'Missing authentication or client_id', 'http://docs.folhas.apiary.io/#put-%2Fuser%2F%7Bemail%7D%2F%7B%3Fclient_id%7D'));
+
+    try {
+      user = assembly(req.param('user'));
+    } catch (err) {
+      return res.json(400, errorObject('user_data', err.message));
+    }
 
     switch (form) {
     case 'profile' : UserService.updateProfile(user, session, response); break;
@@ -62,13 +84,22 @@ module.exports = {
   destroy: function(req, res) {
     var email = req.param('email'),
       user = assembly(req.param('user')),
-      session = req.session.user;
+      session = req.session.user || req.param('client_id');
+
+    if (!email) return res.json(400, errorObject('user_email', 'Missing user email', 'http://docs.folhas.apiary.io/#delete-%2Fuser%2F%7Bemail%7D%2F%7B%3Fclient_id%7D'));
+    if (!session) return res.json(401, errorObject('user_client_id', 'Missing authentication or client_id', 'http://docs.folhas.apiary.io/#delete-%2Fuser%2F%7Bemail%7D%2F%7B%3Fclient_id%7D'));
+
+    try {
+      user = assembly(req.param('user'));
+    } catch (err) {
+      return res.json(400, errorObject('user_data', err.message));
+    }
 
     UserService.destroy(user, session, function(errors, model) {
-      if (errors) return res.json(errors);
+      if (errors) return res.json(400, errorObject('user_update', errors));
 
       req.session.user = null;
-      res.json({success: true, user: null});
+      res.json(200, model);
     });
   },
 

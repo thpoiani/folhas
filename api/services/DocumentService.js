@@ -1,13 +1,5 @@
 var Hashids = require('hashids');
 
-var create = function(data, cb) {
-  Document.create(data).done(function (err, document) {
-    if (err) throw new Error(err);
-
-    cb(document);
-  });
-}
-
 exports.generateHash = function () {
   var options, hashids;
 
@@ -40,28 +32,55 @@ exports.findDocumentsByAuthor = function (author, cb) {
   });
 }
 
-exports.createDocumentBySocket = function (req, cb) {
-  if (!req.isSocket) throw new Error('This request must be sent by socket');
+exports.createDocument = function (user, hash, cb) {
+  var validate = function (user) {
+    var data = {
+      author: user.email,
+      hash: hash
+    };
 
-  var author = req.session.user ? req.session.user.email : null,
-      hash = DocumentService.generateHash();
+    Document.create(data).done(function (err, document) {
+      if (err) return cb(err);
 
-  create({author: author, hash: hash}, cb);
+      cb(null, document);
+    });
+  }
+
+  if (typeof user === 'string') {
+    User.findOne({id: user}, function (err, model) {
+      if (err) return cb(err);
+
+      validate(model);
+    });
+  } else {
+    validate(user);
+  }
 };
 
-exports.destroyDocumentByHash = function (hash, cb) {
-  Document.findOne({hash: hash, isActive: true}, function (err, document) {
-    if (err) throw new Error(err);
+exports.destroyDocumentByHash = function (user, hash, cb) {
+  var validate = function (user) {
+    Document.findOne({hash: hash, author: user.email, isActive: true}, function (err, document) {
+      if (err || !document) return cb('Invalid HASH');
 
-    if (!document) throw new Error('Invalid HASH');
+      document.isActive = false;
 
-    document.isActive = false;
+      document.save(function(err) {
+        if (err) return cb(err);
 
-    document.save(function(err) {
-      if (err) throw new Error(err);
-
-      cb();
+        document.author = user;
+        cb(null, document);
+      });
     });
-  });
+  }
+
+  if (typeof user === 'string') {
+    User.findOne({id: user}, function (err, model) {
+      if (err) return cb(err);
+
+      validate(model);
+    });
+  } else {
+    validate(user);
+  }
 
 };

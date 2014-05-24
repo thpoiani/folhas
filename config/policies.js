@@ -28,6 +28,7 @@ module.exports.policies = {
 
   DocumentController: {
     index: true,
+    show: true,
     create: true,
     destroy: true,
     connect: true,

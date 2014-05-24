@@ -10,8 +10,8 @@
 
       button.addEventListener('click', function() {
         socket.post('/document', function(response) {
-          if (response.success) {
-            location.href = '/' + response.document.hash;
+          if (!response.message) {
+            location.href = '/' + response.hash;
           }
         });
       });
@@ -49,7 +49,7 @@
           var hash = this.getAttribute('data-hash');
 
           socket.delete('/document/' + hash, function(response) {
-            if (response.success) {
+            if (!response.message) {
               doc.querySelector('.modal-close').click();
 
               // TODO

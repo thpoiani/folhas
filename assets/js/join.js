@@ -112,10 +112,10 @@
         event.preventDefault();
 
         socket.post(event.target.action, { user: getUser() }, function(response) {
-          if (!response) location.href = '/dashboard';
+          if (!response.message) location.href = '/dashboard';
 
           removeError();
-          addError(response);
+          addError(response.message);
         });
       };
     };

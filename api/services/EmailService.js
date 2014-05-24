@@ -10,8 +10,8 @@ exports.send = function(model, recovery, cb) {
   smtp = nodemailer.createTransport("SMTP", {
     service: "Gmail",
     auth: {
-      user: "user", // TODO
-      pass: "pass" // TODO
+      user: "thpoiani@gmail.com", // TODO
+      pass: "tgopoiani01" // TODO
     }
   });
 

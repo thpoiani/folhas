@@ -112,8 +112,6 @@ module.exports.routes = {
     action: 'index'
   },
 
-///////////////////////////////////////////
-
   // Document
   '/document/connect/:hash': {
     controller: 'document',
@@ -138,6 +136,11 @@ module.exports.routes = {
   'get /:hash': {
     controller: 'document',
     action: 'index'
+  },
+
+  'get /document/:hash': {
+    controller: 'document',
+    action: 'show'
   }
 
 
