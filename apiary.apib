@@ -1,0 +1,185 @@
+FORMAT: 1A
+HOST: http://folhas-thpoiani.rhcloud.com/
+
+# folhas
+Text editor for reactive writing and documents sharing on social networks
+
+# Group User
+Manage users in **folhas API**
+
+## User Collection [/user]
+### Create a user [POST]
++ Request (application/json)
+
+        {
+          "user": {
+            "name": "Thiago Henrique Poiani",
+            "email": "thpoiani@folhas.com",
+            "password": "password"
+          }
+        }
+
++ Response 201 (application/json)
+
+        {
+          "name": "Thiago Henrique Poiani",
+          "email": "thpoiani@folhas.com",
+          "password": "$2a$10$xmGzX2qUbLiQGkK68hhpGu0qKMv3rcNdX8q8s3CZQJ1wN3Tg4dlJW",
+          "isActive": true,
+          "createdAt": "2014-01-01T00:00:00.000Z",
+          "updatedAt": "2014-01-01T00:00:00.000Z",
+          "id": "53802e02426b490b1c60a5c3"
+        }
+
+## Profile [/user/{email}/{?client_id}]
+### Update a user [PUT]
++ Parameters
+    + email (required, email, `thpoiani@folhas.com`) ... `email` of the User to perform action with.
+    + client_id (required, string, `53802e02426b490b1c60a5c3`) ... `client_id` of the User to perform action with.
+
++ Request (application/json)
+
+        {
+            "user": {
+                "name": "Thiago Poiani",
+                "email": "thpoiani@folhas.com"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "name": "Thiago Poiani",
+          "email": "thpoiani@folhas.com",
+          "password": "$2a$10$xmGzX2qUbLiQGkK68hhpGu0qKMv3rcNdX8q8s3CZQJ1wN3Tg4dlJW",
+          "isActive": true,
+          "createdAt": "2014-01-01T00:00:00.000Z",
+          "updatedAt": "2014-01-02T00:00:00.000Z",
+          "id": "53802e02426b490b1c60a5c3"
+        }
+        
+### Remove a user [DELETE]
++ Parameters
+    + email (required, email, `thpoiani@folhas.com`) ... `email` of the User to perform action with.
+    + client_id (required, string, `53802e02426b490b1c60a5c3`) ... `client_id` of the User to perform action with.
+
++ Request (application/json)
+
+        {
+            "user": {
+                "email": "thpoiani@folhas.com",
+                "password": "password"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "name": "Thiago Poiani",
+          "email": "thpoiani@folhas.com",
+          "password": "$2a$10$xmGzX2qUbLiQGkK68hhpGu0qKMv3rcNdX8q8s3CZQJ1wN3Tg4dlJW",
+          "isActive": false,
+          "createdAt": "2014-01-01T00:00:00.000Z",
+          "updatedAt": "2014-01-03T00:00:00.000Z",
+          "id": "53802e02426b490b1c60a5c3"
+        }
+        
+# Group Document
+Manage user's documents in **folhas API**
+
+## Document Collection [/document/{?client_id}]
+### Create a document [POST]
++ Parameters
+    + client_id (required, string, `53802e02426b490b1c60a5c3`) ... `client_id` of the User to perform action with.
+
++ Response 201 (application/json)
+
+        {
+          "author": "thpoiani@folhas.com",
+          "hash": "PyJBAR0LXM",
+          "title": "Untitled document",
+          "text": "",
+          "isActive": true,
+          "createdAt": "2014-01-05T00:00:00.000Z",
+          "updatedAt": "2014-01-05T00:00:00.000Z",
+          "id": "53804c097c6ea8e726e17192"
+        }
+        
+## Document [/document/{hash}]
+### Show a document [GET]
++ Parameters
+    + hash (required, string, `PyJBAR0LXM`) ... `hash` of the Document to perform action with.
+
++ Response 200 (application/json)
+
+        {
+          "author": {
+              "name": "Thiago Poiani",
+              "email": "thpoiani@folhas.com",
+              "password": "$2a$10$xmGzX2qUbLiQGkK68hhpGu0qKMv3rcNdX8q8s3CZQJ1wN3Tg4dlJW",
+              "isActive": true,
+              "createdAt": "2014-01-01T00:00:00.000Z",
+              "updatedAt": "2014-01-02T00:00:00.000Z",
+              "id": "53802e02426b490b1c60a5c3"
+            },
+          "createdAt": "2014-01-05T00:00:00.000Z",
+          "hash": "PyJBAR0LXM",
+          "isActive": true,
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "title": "Document title",
+          "updatedAt": "2014-01-06T00:00:00.000Z",
+          "id": "53804c097c6ea8e726e17192"
+        }
+
+
+### Update a document [PUT]
++ Parameters
+    + hash (required, string, `PyJBAR0LXM`) ... `hash` of the Document to perform action with.
+
++ Request (application/json)
+
+        {
+            "title": "Document title", 
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+
++ Response 200 (application/json)
+
+        {
+            "author": "thpoiani@folhas.com",
+            "createdAt": "2014-01-05T00:00:00.000Z",
+            "hash": "PyJBAR0LXM",
+            "isActive": true,
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "title": "Document title",
+            "updatedAt": "2014-01-06T00:00:00.000Z",
+            "id": "53804c097c6ea8e726e17192"
+        }
+
+## Destroy [/document/{hash}/{?client_id}]
+### Remove a document [DELETE]
++ Parameters
+    + hash (required, string, `PyJBAR0LXM`) ... `hash` of the Document to perform action with.
+    + client_id (required, string, `53802e02426b490b1c60a5c3`) ... `client_id` of the User to perform action with.
+
++ Response 200 (application/json)
+
+        {
+          "author": {
+              "name": "Thiago Poiani",
+              "email": "thpoiani@folhas.com",
+              "password": "$2a$10$xmGzX2qUbLiQGkK68hhpGu0qKMv3rcNdX8q8s3CZQJ1wN3Tg4dlJW",
+              "isActive": true,
+              "createdAt": "2014-01-01T00:00:00.000Z",
+              "updatedAt": "2014-01-02T00:00:00.000Z",
+              "id": "53802e02426b490b1c60a5c3"
+            },
+          "createdAt": "2014-01-05T00:00:00.000Z",
+          "hash": "PyJBAR0LXM",
+          "isActive": false,
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "title": "Document title",
+          "updatedAt": "2014-01-07T00:00:00.000Z",
+          "id": "53804c097c6ea8e726e17192"
+        }
+        
