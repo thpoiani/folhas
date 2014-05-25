@@ -8,7 +8,14 @@ module.exports = {
       if (err) return res.notFound(err);
 
       var data = {
-        pageTitle: "folhas | " + user.name + "'s Dashboard",
+        seo: {
+          title: "folhas | " + user.name + "'s Dashboard",
+          description: 'Text editor for reactive writing and documents sharing on social networks',
+          keywords: 'folhas, text, editor, reactive, write, collaborative, document, share, social network, poiani',
+          url: 'http://folhas-thpoiani.rhcloud.com/dashboard',
+          image: 'http://folhas-thpoiani.rhcloud.com/images/folhas.png',
+          canonical: 'http://folhas-thpoiani.rhcloud.com'
+        },
         isPhone: MobileDetect.isPhone(req),
         user: user,
         documents: documents

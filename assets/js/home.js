@@ -1,14 +1,16 @@
-(function (win, doc, Ace) {
+(function (win, doc, Ace, io) {
   'use strict';
 
-  var alreadyWrite = false;
+  var socket = io.connect();
 
   var Home = (function () {
 
     var exports = {},
-      instance = null,
-      element = doc.getElementById('editor'),
-      theme = 'ace/theme/chrome';
+        instance = null,
+        element = doc.getElementById('editor'),
+        theme = 'ace/theme/chrome',
+        hash = "POIANI",
+        text;
 
     var disableKeyBindings = function(editor) {
       editor.commands.removeCommands([
@@ -77,6 +79,25 @@
         instance = editor;
       },
 
+      onChange: function() {
+        var changeEvent = function(event) {
+          setTimeout(function() {
+            if (instance.getValue() !== text) {
+              var data = {
+                hash: hash,
+                cursor: instance.getCursorPosition(),
+                text: instance.getValue()
+              };
+
+              socket.put('/document/' + hash, data);
+            }
+          }, 0);
+        };
+
+        text = instance.getValue();
+        instance.getSession().on('change', changeEvent);
+      },
+
       resize: function() {
         var html= doc.getElementsByTagName('html')[0],
             documentEditor = doc.getElementsByClassName('document-editor')[0];
@@ -94,17 +115,20 @@
       }
     };
 
-    exports.createDocument = function() {
-      var button = doc.querySelector('[data-create="document"]');
-
-      button.addEventListener('click', function() {
-        socket.post('/document', function(response) {
-          console.log(response);
-          if (response.success) {
-            location.href = '/' + response.document.hash;
-          }
+    exports.socket = {
+      connect: function() {
+        socket.on('connect', function() {
+          socket.get('/document/connect/' + hash);
         });
-      });
+      },
+
+      change: function() {
+        socket.on('change', function(response) {
+          text = response.text;
+          instance.setValue(response.text, 1);
+          instance.navigateTo(response.cursor.row, response.cursor.column);
+        });
+      }
     };
 
     exports.analytics = function() {
@@ -147,17 +171,13 @@
     return exports;
   })();
 
-//  Home.createDocument();
-
-//  if (!alreadyWrite) {
-//   alreadyWrite = true;
-//   ga('send', 'event', 'document', 'write', 'home');
-// }
-
   Home.analytics();
   Home.animation.header();
   Home.animation.menu();
+  Home.socket.connect();
   Home.ace.initialize();
   Home.ace.resize();
+  Home.ace.onChange();
+  Home.socket.change();
 
-})(window, document, ace);
+})(window, document, ace, window.io);

@@ -27,7 +27,7 @@ module.exports.policies = {
   },
 
   DocumentController: {
-    index: true,
+    index: 'isStatic',
     show: true,
     create: true,
     destroy: true,

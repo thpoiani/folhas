@@ -316,7 +316,7 @@ dl {
 
 .header-navigation.close .header-navigation-menu, .header-navigation.open .header-navigation-menu, .profile-settings .settings-logout .icon, .profile-settings .settings-update .icon, .profile-settings .settings-create .icon, .profile-settings .settings-dashboard .icon {
   display: inline-block;
-  font-family: "Ionicons";
+  font-family: 'Ionicons';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -328,22 +328,22 @@ dl {
   -moz-osx-font-smoothing: grayscale; }
 
 .header-navigation.close .header-navigation-menu:before {
-  content: "\f185"; }
+  content: '\f185'; }
 
 .header-navigation.open .header-navigation-menu:before {
-  content: "\f2bd"; }
+  content: '\f2bd'; }
 
 .profile-settings .settings-logout .icon:before {
-  content: "\f29f"; }
+  content: '\f29f'; }
 
 .profile-settings .settings-update .icon:before {
-  content: "\f195"; }
+  content: '\f195'; }
 
 .profile-settings .settings-create .icon:before {
-  content: "\f217"; }
+  content: '\f217'; }
 
 .profile-settings .settings-dashboard .icon:before {
-  content: "\f265"; }
+  content: '\f265'; }
 
 .information-author {
   position: relative; }

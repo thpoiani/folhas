@@ -37,7 +37,7 @@
 
       if (!position[property] && Scroll.getPercentageOfScreenViewByClient() >= percent) {
         position[property] = true;
-        ga('send', 'event', 'scroll', 'view', 'percentage', percent);
+        ga('send', 'event', 'view', 'scroll', 'percentage', percent);
       }
     }
   });

@@ -7,7 +7,14 @@ module.exports = {
         if (errors) return res.json(errors);
 
         var data = {
-          pageTitle: "folhas | Recovery",
+          seo: {
+            title: 'folhas | Recovery',
+            description: 'Text editor for reactive writing and documents sharing on social networks',
+            keywords: 'folhas, text, editor, reactive, write, collaborative, document, share, social network, poiani, recovery, password',
+            url: 'http://folhas-thpoiani.rhcloud.com/recovery',
+            image: 'http://folhas-thpoiani.rhcloud.com/images/folhas.png',
+            canonical: 'http://folhas-thpoiani.rhcloud.com'
+          },
           isPhone: MobileDetect.isPhone(req),
           user: model
         };

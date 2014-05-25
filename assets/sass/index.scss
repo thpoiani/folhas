@@ -1,21 +1,21 @@
-@import "helpers/bootstrap";
-@import "helpers/extend/base";
+@import 'helpers/bootstrap';
+@import 'helpers/extend/base';
 
-@import "block/header/header";
-@import "block/header/elements/base";
-@import "block/header/modifier/base";
+@import 'block/header/header';
+@import 'block/header/elements/base';
+@import 'block/header/modifier/base';
 
-@import "block/banner/banner";
-@import "block/banner/elements/base";
+@import 'block/banner/banner';
+@import 'block/banner/elements/base';
 
-@import "block/authentication/authentication";
-@import "block/authentication/elements/base";
+@import 'block/authentication/authentication';
+@import 'block/authentication/elements/base';
 
-@import "block/technologies/technologies";
-@import "block/technologies/elements/base";
+@import 'block/technologies/technologies';
+@import 'block/technologies/elements/base';
 
-@import "block/document/document";
-@import "block/document/elements/editor";
+@import 'block/document/document';
+@import 'block/document/elements/editor';
 
-@import "block/footer/footer";
-@import "block/footer/elements/base";
+@import 'block/footer/footer';
+@import 'block/footer/elements/base';

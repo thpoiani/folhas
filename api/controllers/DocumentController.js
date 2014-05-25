@@ -17,10 +17,17 @@ module.exports = {
       var author = document.author;
 
       var data = {
+        seo: {
+          title: '',
+          description: 'Text editor for reactive writing and documents sharing on social networks',
+          keywords: 'folhas, text, editor, reactive, write, collaborative, document, share, social network, poiani',
+          url: 'http://folhas-thpoiani.rhcloud.com/' + document.hash,
+          image: 'http://folhas-thpoiani.rhcloud.com/images/folhas.png',
+          canonical: 'http://folhas-thpoiani.rhcloud.com'
+        },
         isPhone: MobileDetect.isPhone(req),
         document: document,
         user: null,
-        pageTitle: 'folhas',
         session: req.user ? req.user[0] : req.session.user
       };
 
@@ -30,7 +37,7 @@ module.exports = {
         if (err) return res.notFound();
 
         data.user = user;
-        data.pageTitle = "folhas | " + user.name + "'s Document: " + document.title;
+        data.seo.title = "folhas | " + user.name + "'s Document: " + document.title;
 
         res.render('document/index', data);
       });
@@ -96,6 +103,8 @@ module.exports = {
 
     DocumentService.findDocumentByHash(data.hash, function(err, document) {
       if (err) return res.json(400, errorObject('document_update', err, 'http://docs.folhas.apiary.io/#put-%2Fdocument%2F%7Bhash%7D'));
+
+      if (!document) return res.json(400, errorObject('document_update', err, 'http://docs.folhas.apiary.io/#put-%2Fdocument%2F%7Bhash%7D'));
 
       document.text = data.text;
       document.title = data.title;

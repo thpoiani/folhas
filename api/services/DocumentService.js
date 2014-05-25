@@ -84,3 +84,19 @@ exports.destroyDocumentByHash = function (user, hash, cb) {
   }
 
 };
+
+exports.getHomeDocument = function(document, cb) {
+  Document.findOne(document, function(err, model) {
+    if (err) return cb(err);
+
+    if (!model) {
+      Document.create(document, function(err, model) {
+        if (err) return cb(err);
+
+        cb(null, model);
+      });
+    } else {
+      cb(null, model);
+    }
+  });
+};

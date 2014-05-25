@@ -1,5 +1,7 @@
-(function (win, doc, Ace) {
+(function (win, doc, Ace, io) {
   'use strict';
+
+  var socket = io.connect();
 
   var Documento = (function () {
 
@@ -85,6 +87,29 @@
       }
     };
 
+    exports.analytics = function() {
+      // social
+      doc.querySelector('.header-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'facebook');
+      });
+
+      doc.querySelector('.header-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'googleplus');
+      });
+
+      doc.querySelector('.header-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'twitter');
+      });
+
+      doc.querySelector('.information-project a[itemprop]').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'folhas');
+      });
+
+      doc.querySelector('.information-project a:not([itemprop])').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'license');
+      });
+    }
+
     return exports;
   })();
 
@@ -92,5 +117,6 @@
   Documento.ace.initialize();
   Documento.ace.onChange();
   Documento.socket.change();
+  Documento.analytics();
 
-})(window, document, ace);
+})(window, document, ace, window.io);

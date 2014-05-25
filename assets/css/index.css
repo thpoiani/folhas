@@ -341,7 +341,7 @@ dl {
 
 .header-navigation.close .header-navigation-menu, .header-navigation.open .header-navigation-menu {
   display: inline-block;
-  font-family: "Ionicons";
+  font-family: 'Ionicons';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -353,10 +353,10 @@ dl {
   -moz-osx-font-smoothing: grayscale; }
 
 .header-navigation.close .header-navigation-menu:before {
-  content: "\f185"; }
+  content: '\f185'; }
 
 .header-navigation.open .header-navigation-menu:before {
-  content: "\f2bd"; }
+  content: '\f2bd'; }
 
 .authentication .button {
   -webkit-transition: all 300ms;
@@ -519,7 +519,7 @@ header {
   margin-left: auto;
   margin-right: auto;
   padding: 5rem 0;
-  box-shadow: inset 0px 1px 10px -5px #333;
+  box-shadow: inset 0 1px 10px -5px #333;
   background: #f7c451;
   max-width: 100%; }
   .authentication:after {

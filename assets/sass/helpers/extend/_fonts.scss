@@ -1,18 +1,18 @@
 %Quicksand-Light {
-  font-family: "Quicksand-Light", $helvetica;
+  font-family: 'Quicksand-Light', $helvetica;
 }
 
 %Quicksand-Regular {
-  font-family: "Quicksand-Regular", $helvetica;
+  font-family: 'Quicksand-Regular', $helvetica;
 }
 
 %Quicksand-Bold {
-  font-family: "Quicksand-Bold", $helvetica;
+  font-family: 'Quicksand-Bold', $helvetica;
 }
 
 %ion {
   display: inline-block;
-  font-family: "Ionicons";
+  font-family: 'Ionicons';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -28,7 +28,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f185";
+    content: '\f185';
   }
 }
 
@@ -36,7 +36,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f2bd";
+    content: '\f2bd';
   }
 }
 
@@ -44,7 +44,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f29f";
+    content: '\f29f';
   }
 }
 
@@ -52,7 +52,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f195";
+    content: '\f195';
   }
 }
 
@@ -60,7 +60,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f217";
+    content: '\f217';
   }
 }
 
@@ -68,7 +68,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f2bf";
+    content: '\f2bf';
   }
 }
 
@@ -76,7 +76,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f129";
+    content: '\f129';
   }
 }
 
@@ -84,7 +84,7 @@
   @extend %ion;
 
   &:before {
-    content: "\f220";
+    content: '\f220';
   }
 }
 
@@ -92,6 +92,6 @@
   @extend %ion;
 
   &:before {
-    content: "\f265";
+    content: '\f265';
   }
 }

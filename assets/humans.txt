@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Thiago Henrique Poiani -- <thpoiani@gmail.com>
+
+# THANKS
+
+    Danilo Moschetto -- <moschetto@gmail.com>
+    Vanguarda Brasil -- <http://vanguardabrasil.com> -- <contato@vanguardabrasil.com>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    node.js, Sails.js, Socket.IO
+    Bower, Grunt
+    SASS, Bourbon, Neat, Bitters
+    ACE

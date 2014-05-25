@@ -1,5 +1,7 @@
-(function (win, doc, socket) {
+(function (win, doc, io) {
   'use strict';
+
+  var socket = io.connect();
 
   var Enter = (function () {
 
@@ -120,10 +122,38 @@
       };
     };
 
+    exports.analytics = function() {
+      // social
+      doc.querySelector('.header-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'facebook');
+      });
+
+      doc.querySelector('.header-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'googleplus');
+      });
+
+      doc.querySelector('.header-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'twitter');
+      });
+
+      doc.querySelector('.auth-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'login', 'facebook');
+      });
+
+      doc.querySelector('.information-project a[itemprop]').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'folhas');
+      });
+
+      doc.querySelector('.information-project a:not([itemprop])').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'license');
+      });
+    }
+
     return exports;
   })();
 
   Enter.validateOnBlur();
   Enter.requestOnSubmit();
+  Enter.analytics();
 
-})(window, document, socket);
+})(window, document, window.io);

@@ -1,5 +1,7 @@
-(function (win, doc, socket) {
+(function (win, doc, io) {
   'use strict';
+
+  var socket = io.connect();
 
   var Dashboard = (function () {
 
@@ -11,6 +13,7 @@
       button.addEventListener('click', function() {
         socket.post('/document', function(response) {
           if (!response.message) {
+            ga('send', 'event', 'document', 'create', response.hash);
             location.href = '/' + response.hash;
           }
         });
@@ -61,6 +64,7 @@
 
           socket.delete('/document/' + hash, function(response) {
             if (!response.message) {
+              ga('send', 'event', 'document', 'destroy', hash);
               doc.querySelector('.modal-close').click();
 
               // TODO
@@ -127,15 +131,21 @@
 
           data = {
             title: row.title,
-            url: row.getAttribute('data-url')
+            url: row.getAttribute('data-url'),
+            hash: row.getAttribute('data-hash')
           };
 
           url = location.origin + data.url;
           text.innerHTML = data.title;
-          input.value = url;
-          facebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
-          googleplus.href = "https://plus.google.com/share?url=" + url;
-          twitter.href = "https://twitter.com/intent/tweet?url=" + url;
+          input.value = url + "?utm_source=share&utm_medium=social&utm_content=" + data.hash + "&utm_campaign=folhas";
+
+          facebook.href = facebook.getAttribute('data-href') + encodeURIComponent(url + "?utm_source=facebook&utm_medium=social&utm_content=" + data.hash + "&utm_campaign=folhas") ;
+          googleplus.href = googleplus.getAttribute('data-href') + encodeURIComponent(url + "?utm_source=googleplus&utm_medium=social&utm_content=" + data.hash + "&utm_campaign=folhas") ;
+          twitter.href = twitter.getAttribute('data-href') + encodeURIComponent(url + "?utm_source=twitter&utm_medium=social&utm_content=" + data.hash + "&utm_campaign=folhas") ;
+
+          facebook.setAttribute('data-hash', data.hash);
+          googleplus.setAttribute('data-hash', data.hash);
+          twitter.setAttribute('data-hash', data.hash);
 
           social.style.visibility = 'visible';
           social.style.opacity = 1;
@@ -184,11 +194,47 @@
       }
     };
 
+    exports.analytics = function () {
+      doc.querySelector('.header-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'facebook');
+      });
+
+      doc.querySelector('.header-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'googleplus');
+      });
+
+      doc.querySelector('.header-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'twitter');
+      });
+
+      // social
+      doc.querySelector('.modal-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'share', 'facebook', this.getAttribute('data-hash'));
+      });
+
+      doc.querySelector('.modal-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'share', 'googleplus', this.getAttribute('data-hash'));
+      });
+
+      doc.querySelector('.modal-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'share', 'twitter', this.getAttribute('data-hash'));
+      });
+
+      doc.querySelector('.information-project a[itemprop]').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'folhas');
+      });
+
+      doc.querySelector('.information-project a:not([itemprop])').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'license');
+      });
+    };
+
     return exports;
   })();
 
   Dashboard.createDocument();
   Dashboard.rowClickable();
   Dashboard.modal.init();
+  Dashboard.analytics();
 
-})(window, document, socket);
+})(window, document, window.io);

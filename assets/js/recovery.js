@@ -1,5 +1,7 @@
-(function (win, doc, socket) {
+(function (win, doc, io) {
   'use strict';
+
+  var socket = io.connect();
 
   var Recovery = (function () {
 
@@ -128,10 +130,34 @@
       };
     };
 
+    exports.analytics = function() {
+      // social
+      doc.querySelector('.header-social-facebook a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'facebook');
+      });
+
+      doc.querySelector('.header-social-googleplus a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'googleplus');
+      });
+
+      doc.querySelector('.header-social-twitter a').addEventListener('click', function() {
+        ga('send', 'event', 'social', 'click', 'twitter');
+      });
+
+      doc.querySelector('.information-project a[itemprop]').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'folhas');
+      });
+
+      doc.querySelector('.information-project a:not([itemprop])').addEventListener('click', function() {
+        ga('send', 'event', 'github', 'click', 'license');
+      });
+    }
+
     return exports;
   })();
 
   Recovery.validateOnBlur();
   Recovery.requestOnSubmit();
+  Recovery.analytics();
 
-})(window, document, socket);
+})(window, document, window.io);
