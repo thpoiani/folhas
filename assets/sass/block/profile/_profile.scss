@@ -1,0 +1,9 @@
+.profile {
+  @include outer-container;
+  @include padding(rem(80) rem(20) 0);
+  margin-bottom: rem(20);
+
+  h2 {
+    @extend %Quicksand-Light;
+  }
+}

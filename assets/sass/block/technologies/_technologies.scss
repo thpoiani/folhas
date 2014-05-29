@@ -1,0 +1,21 @@
+.technologies {
+  @include outer-container;
+  @include margin(0 auto rem(60));
+  @include padding(rem(80) rem(20) 0);
+  @extend %text-align-center;
+
+  @include media($mobile) {
+    @include padding(rem(80) rem(10) 0);
+    @include margin(0 0 rem(30) 0);
+  }
+
+  .title {
+    @extend %Quicksand-Bold;
+    font-weight: normal;
+  }
+
+  .description {
+    @extend %Quicksand-Regular;
+  }
+}
+

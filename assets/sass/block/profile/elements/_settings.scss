@@ -1,0 +1,38 @@
+
+.profile-settings {
+  @include span-columns(6);
+  @extend %text-align-right;
+  font-size: rem(32);
+
+  .settings-dashboard,
+  .settings-create,
+  .settings-update,
+  .settings-logout {
+    @extend %display-inline-block;
+  }
+
+  .settings-dashboard .icon{
+    @extend %ionicon-arrow-return-left;
+  }
+
+  .settings-create .icon{
+    @extend %ionicon-plus-round;
+  }
+
+  .settings-update .icon{
+    @extend %ionicon-ios7-gear;
+  }
+
+  .settings-logout .icon{
+    @extend %ionicon-log-out;
+  }
+
+  .icon {
+    @include margin(0 rem(10));
+    @extend %color-#28441B;
+
+    &:hover {
+      @extend %color-#FA8D37;
+    }
+  }
+}

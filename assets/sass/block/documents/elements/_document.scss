@@ -1,0 +1,67 @@
+.document-title {
+  width: 60%;
+  padding-top: rem(8);
+
+  h3 {
+    @include ellipsis();
+    @extend %Quicksand-Regular;
+    font-size: 100%;
+    font-weight: normal;
+  }
+}
+
+.document-share,
+.document-edit,
+.document-remove {
+  a {
+    @include padding(rem(8));
+  }
+
+  img {
+    @include transition (all 300ms);
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.document-share {
+  font-size: rem(28);
+  width: 20%;
+  @extend %text-align-center;
+}
+
+.document-edit {
+  font-size: rem(20);
+  width: 10%;
+  @extend %text-align-right;
+
+  @include media($mobile) {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+
+    a {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.document-remove {
+  font-size: rem(20);
+  width: 10%;
+  @extend %text-align-center;
+
+  @include media($mobile) {
+    padding-left: 0;
+    padding-right: 0;
+
+    a {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

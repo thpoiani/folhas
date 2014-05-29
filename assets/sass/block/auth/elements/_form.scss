@@ -1,0 +1,56 @@
+.auth-form {
+  @include margin(0 auto rem(60));
+  width: rem(300);
+
+  label, p {
+    @extend %Quicksand-Light;
+    font-weight: bold;
+  }
+
+  .error {
+    @extend %color-#E73F38;
+    border-color: $color-E73F38 !important;
+
+    &:active, &:focus, &:hover {
+      border-color: $color-E73F38 !important;
+    }
+  }
+
+  span {
+    @extend %float-right;
+  }
+
+  input[name^="user"] {
+    @extend %input;
+    @extend %width-full;
+    @extend %Quicksand-Regular;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-size: rem(16);
+    margin-bottom: rem(20);
+  }
+
+  input[type="submit"] {
+    @extend %submit;
+    border-radius: 0;
+    width: rem(90);
+    background: $color-557C16;
+
+    &:active, &:focus, &:hover {
+      background: $color-28441B;
+      box-shadow: inset 0 1px 0 0 $color-28441B;
+      letter-spacing: rem(-0.5px);
+    }
+  }
+
+  a {
+    @include margin(rem(3) 0 0 0);
+    @extend %float-right;
+    @extend %color-#557C16;
+    @extend %Quicksand-Regular;
+
+    &:hover {
+      @extend %color-#28441B;
+    }
+  }
+
+}

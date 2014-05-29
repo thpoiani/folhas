@@ -1,0 +1,6 @@
+*,
+*:before,
+*:after {
+  @include margin(0);
+  @include padding(0);
+}

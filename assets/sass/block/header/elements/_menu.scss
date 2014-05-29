@@ -1,0 +1,21 @@
+.header-menu  {
+  $width: rem(250);
+  $height: rem(200);
+
+  @include transition(all 300ms);
+  @include position(absolute, (-$height) 0 null null);
+  width: $width;
+  height: $height;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: -1px 1px 5px -3px rgba(0, 0, 0, 0.5);
+}
+
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 200px;
+  min-height: 0;
+  background: white;
+}

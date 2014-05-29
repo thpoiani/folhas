@@ -1,0 +1,97 @@
+%Quicksand-Light {
+  font-family: 'Quicksand-Light', $helvetica;
+}
+
+%Quicksand-Regular {
+  font-family: 'Quicksand-Regular', $helvetica;
+}
+
+%Quicksand-Bold {
+  font-family: 'Quicksand-Bold', $helvetica;
+}
+
+%ion {
+  display: inline-block;
+  font-family: 'Ionicons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%ionicon-ios7-drag {
+  @extend %ion;
+
+  &:before {
+    content: '\f185';
+  }
+}
+
+%ionicon-ios7-close-empty {
+  @extend %ion;
+
+  &:before {
+    content: '\f2bd';
+  }
+}
+
+%ionicon-log-out {
+  @extend %ion;
+
+  &:before {
+    content: '\f29f';
+  }
+}
+
+%ionicon-ios7-gear {
+  @extend %ion;
+
+  &:before {
+    content: '\f195';
+  }
+}
+
+%ionicon-plus-round {
+  @extend %ion;
+
+  &:before {
+    content: '\f217';
+  }
+}
+
+%ionicon-edit {
+  @extend %ion;
+
+  &:before {
+    content: '\f2bf';
+  }
+}
+
+%ionicon-close-round {
+  @extend %ion;
+
+  &:before {
+    content: '\f129';
+  }
+}
+
+%ionicon-share {
+  @extend %ion;
+
+  &:before {
+    content: '\f220';
+  }
+}
+
+%ionicon-arrow-return-left {
+  @extend %ion;
+
+  &:before {
+    content: '\f265';
+  }
+}

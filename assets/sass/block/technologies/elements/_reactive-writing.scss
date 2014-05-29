@@ -1,0 +1,7 @@
+.technologies-reactive-writing {
+  @extend %technologies;
+
+  @include media($device) {
+    margin-right: 0;
+  }
+}

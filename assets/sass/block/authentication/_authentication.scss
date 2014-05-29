@@ -1,0 +1,16 @@
+.authentication {
+  @include outer-container;
+  @include padding(rem(80) 0);
+  box-shadow: inset 0 1px 10px -5px #333;
+  background: $color-F7C451;
+  max-width: 100%;
+
+  .button {
+    @extend %display-block;
+    @extend %submit;
+    @include padding(rem(8) 0);
+    @extend %Quicksand-Light;
+    width: rem(300);
+    font-size: rem(32);
+  }
+}

@@ -1,0 +1,7 @@
+.document-title {
+  @extend %text-align-center;
+  @extend %Quicksand-Regular;
+  font-weight: normal;
+  margin-bottom: rem(10);
+  outline: none;
+}

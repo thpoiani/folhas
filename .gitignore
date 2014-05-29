@@ -13,3 +13,7 @@ results
 
 npm-debug.log
 node_modules
+assets/bower_components
+assets/.sass-cache
+.idea
+.tmp

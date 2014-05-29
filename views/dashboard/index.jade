@@ -1,0 +1,46 @@
+extends ../layout
+block style
+    link(rel='stylesheet', href='/css/dashboard.css')
+
+block script
+    script(src='/js/dashboard.js')
+
+block body
+
+    section.profile
+        h2.profile-dashboard <strong>#{user.name}</strong>'s Dashboard
+        nav.profile-settings
+            ul
+                li.settings-create
+                    a.icon(href="#", data-create="document", title="Create new document")
+
+                if user.password
+                  li.settings-update
+                      a.icon(href="/profile", title="Account settings")
+
+                li.settings-logout
+                    a.icon(href="/exit", title="Exit")
+
+    setion.documents
+        table
+            tbody
+                each document in documents
+                    tr.document(title="#{document.title}", data-hash="#{document.hash}", data-url="/#{document.hash}")
+                        td.document-title
+                            h3= document.title
+
+                        td.document-share
+                            a(href="#", title="Share in social network")
+                                img(src="/images/share.svg", width="28", height="28", alt="Share in social network")
+
+                        td.document-edit
+                            a(href="/#{document.hash}", title="Edit this document")
+                                img(src="/images/edit.svg", width="22", height="22", alt="Edit this document")
+
+                        td.document-remove
+                            a(href="#", title="Remove this document")
+                                img(src="/images/remove.svg", width="22", height="22", alt="Remove this document")
+
+    include ../_partial/modal
+
+    include ../_partial/modal-social

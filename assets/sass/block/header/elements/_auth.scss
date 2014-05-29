@@ -1,0 +1,39 @@
+.header-navigation {
+  @include transition(all 300ms);
+  @include padding(0 rem(20));
+  @extend %float-right;
+  @extend %text-align-center;
+  width: rem(100);
+  font-size: rem(56);
+  line-height: rem(56);
+
+  &.close {
+    .header-navigation-menu {
+      @extend %ionicon-ios7-drag;
+      @extend %color-#28441B;
+
+      &:hover {
+        @extend %color-#FA8D37;
+      }
+    }
+  }
+
+  &.open {
+    .header-navigation-menu {
+      @extend %ionicon-ios7-close-empty;
+      @extend %color-#FA8D37;
+
+      &:hover {
+        @extend %color-#E73F38;
+      }
+    }
+
+    .header-menu {
+      top: rem(60);
+    }
+  }
+}
+
+.header-navigation-menu {
+  cursor: pointer;
+}

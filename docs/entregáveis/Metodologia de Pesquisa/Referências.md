@@ -103,3 +103,11 @@
 
 > fabular.us
 > > http://fabular.us/
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+http://www.postgradolinguistica.ucv.cl/dev/documentos/90,889,Social_network_boyd_2007.pdf

@@ -1,0 +1,10 @@
+.documents {
+  @include outer-container;
+  @include padding(0 rem(20));
+  @include row(table);
+  margin-bottom: rem(20);
+
+  h2 {
+    @extend %Quicksand-Light;
+  }
+}

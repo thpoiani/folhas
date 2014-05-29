@@ -1,0 +1,7 @@
+.modal-window {
+  @include transition(opacity .25s ease);
+  @include position(fixed, 0px 0px 0px 0px);
+  background: rgba(0,0,0, .85);
+  text-align: left;
+  z-index: 9;
+}

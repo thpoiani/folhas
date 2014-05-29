@@ -1,0 +1,10 @@
+.profile-dashboard {
+  @include span-columns(6);
+  @extend %Quicksand-Light;
+  @extend %color-#28441B;
+  font-size: 180%;
+
+  strong {
+    @extend %Quicksand-Regular;
+  }
+}

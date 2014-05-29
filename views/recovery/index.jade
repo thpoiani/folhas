@@ -1,0 +1,25 @@
+extends ../layout
+block style
+    link(rel='stylesheet', href='/css/recovery.css')
+
+block script
+    script(src='/js/recovery.js')
+
+block body
+    section.auth
+        if (user)
+            form.auth-form(method="post", action="/user/remember", enctype="multipart/form-data", novalidate)
+                p  Hello #{user.name}
+
+                input(type="hidden", name="_method", value="put")
+                input(type="hidden", name="email", value="#{user.email}")
+
+                label(for="password") Set new password
+                input(type="password", name="user[password]", id="password", tabindex="1", autofocus="autofocus")
+
+                input(type="submit", value="Update", title="Update", tabindex="2")
+        else
+            each error in errors
+                p #{error.message}
+
+            a(href="/") Return
