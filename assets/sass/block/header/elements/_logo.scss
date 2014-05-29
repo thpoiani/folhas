@@ -27,4 +27,8 @@
     @include omega();
   }
 
+  @include media($mobile) {
+    width: rem(190);
+  }
+
 }

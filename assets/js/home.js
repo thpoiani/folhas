@@ -103,7 +103,7 @@
             documentEditor = doc.getElementsByClassName('document-editor')[0];
 
         if (html.className === 'phone') {
-          element.style.width = documentEditor.style.width = '300px';
+          element.style.width = documentEditor.style.width = '280px';
         } else {
           win.onresize = function() {
             (win.innerWidth <= 600)

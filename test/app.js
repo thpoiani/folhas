@@ -168,13 +168,13 @@ describe('Requests', function(done) {
     });
 
     it('should return 302 if user is authenticated', function (done) {
+      console.log(request);
+      console.log(app.express.app);
       request(app.express.app)
         .post('/user/auth')
         .send({user: {email: user.email, password: "password"}})
         .expect(200, function(err, res) {
           if (err) done(err);
-
-          // req.body === {}
 
           request(app.express.app)
             .get('/enter')

@@ -533,6 +533,9 @@ header {
   @media screen and (max-width: 768px) {
     .header-logo {
       margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .header-logo {
+      width: 11.875rem; } }
 
 .header-menu {
   -webkit-transition: all 300ms;

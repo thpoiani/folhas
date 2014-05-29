@@ -1,3 +1,4 @@
+
 var bcrypt = require('bcrypt'),
     validator = require('validator'),
     _ = require('underscore');
@@ -45,7 +46,7 @@ exports.emailIsUnique = function (email, session, cb) {
 
 exports.password = function(password) {
   if (!validator.isLength(password, 4)) {
-    return {name: 'password', message: 'Use at least 4 characters'};
+    return {name: 'password', message: 'At least 4 chars'};
   }
 };
 
