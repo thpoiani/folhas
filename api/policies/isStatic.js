@@ -16,6 +16,11 @@ module.exports = function(req, res, next) {
       url: '/sitemap.xml',
       dir: '/../../assets/sitemap.xml',
       type: 'application/xml'
+    },
+    webmasters: {
+      url: '/google43b94c073e2f6d15.html',
+      dir: '/../../assets/google43b94c073e2f6d15.html',
+      type: 'text/html'
     }
   };
 
@@ -32,6 +37,7 @@ module.exports = function(req, res, next) {
   case asset.robots.url : openFile(asset.robots); break;
   case asset.humans.url : openFile(asset.humans); break;
   case asset.sitemap.url : openFile(asset.sitemap); break;
+  case asset.webmasters.url : openFile(asset.webmasters); break;
   default: next();
   }
 };
