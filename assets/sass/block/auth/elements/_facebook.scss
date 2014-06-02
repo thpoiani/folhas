@@ -18,7 +18,8 @@
   &:before {
     @extend %position-absolute;
     @include transition(all 300ms);
-    background: url("/images/social/facebook.png") no-repeat;
+    @extend %sprite;
+    background-position: -5px -5px;
     content: '';
     height: 48px;
     width: 48px;
@@ -32,7 +33,9 @@
 
     &:before {
       @extend %position-absolute;
-      background: #3B5998 url("/images/social/facebook-hover.png") no-repeat;
+      @extend %sprite;
+      background-position: -63px -5px;
+      background-color: #3B5998;
       content: '';
       height: 48px;
       width: 48px;

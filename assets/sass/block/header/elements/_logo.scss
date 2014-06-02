@@ -14,8 +14,8 @@
   a {
     @extend %color-#28441B;
     @include padding(0 0 0 55px);
-    background: url("/images/logo-folhas.png") no-repeat;
     @include transition (all 300ms);
+    background: url("/images/logo-folhas.png") no-repeat;
 
     &:hover {
       @extend %color-#FA8D37;

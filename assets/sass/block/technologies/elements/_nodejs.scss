@@ -1,6 +1,19 @@
 .technologies-nodejs {
   @extend %technologies;
 
+  h2 {
+    @extend %hide-text;
+  }
+
+  .logo {
+    @extend %sprite;
+    width: 150px;
+    height: 41px;
+    background-position: -397px -5px;
+    margin: 0 auto;
+    display: block;
+  }
+
   a {
     @extend %color-#557C16;
 

@@ -1,3 +1,16 @@
 .technologies-ifsp {
+  h2 {
+    @extend %hide-text;
+  }
+
+  .logo {
+    @extend %sprite;
+    background-position: -237px -5px;
+    width: 150px;
+    height: 86px;
+    margin: 0 auto;
+    display: block;
+  }
+
   @extend %technologies;
 }

@@ -12,9 +12,9 @@ block body
     section.banner
         .banner-content
             img(src="/images/folhas.png", width="245", height="200", alt="folhas", title="folhas", itemprop="image")
-            p(itemprop="about") Text editor for reactive writing and documents sharing on social networks
+            h2(itemprop="about") Text editor for reactive writing and documents sharing on social networks
 
-    section.authentication
+    div.authentication
         .authentication-enter
             a(href="/enter", title="Enter").enter-button.button ENTER
         .authentication-join
@@ -22,18 +22,24 @@ block body
 
     section.technologies
         .technologies-ifsp(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
-            img(src="/images/ifsp.png", width="150", height="86", alt="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", title="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", itemprop="logo")
+            h2
+                a.logo(href="http://ifspsaocarlos.edu.br", target="_blank", title="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo", itemprop="logo") Instituto Federal de Educação, Ciência e Tecnologia de São Paulo
             p.description(itemprop="description") <strong itemprop="name">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, campus São Carlos</strong>.
+
         .technologies-reactive-writing(itemprop="mentions")
             h2.title Reactive Writing
-            p.description <strong>Reactive writing</strong> occurs when team members collaborate synchronously to develop their product. Team members react to and adjust each other's contributions as they are made.
+            p.description <strong itemprop="name">Reactive writing</strong> occurs when team members collaborate synchronously to develop their product. Team members react to and adjust each other's contributions as they are made.
+
         .technologies-nodejs(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
-            img(src="/images/nodejs.png", width="150", height="41", alt="node.js", title="node.js", itemprop="logo")
+            h2
+                a.logo(href="http://nodejs.org/", target="_blank", title="node.js", itemprop="logo")
             p.description(itemprop="description") <strong itemprop="name">Node.js</strong> is a platform built on <a href="https://code.google.com/p/v8/" target="_blank" title="V8 JavaScript Engine">Chrome's JavaScript runtime</a> for easily building fast, scalable network applications.
+
         .technologies-websockets(itemprop="mentions" itemscope itemtype="http://schema.org/Organization")
-            img(src="/images/socketio.png", width="150", height="39", alt="socket.io", title="socket.io", itemprop="logo")
+            h2
+                a.logo(href="http://socket.io/", target="_blank", title="socket.io", itemprop="logo")
             p.description(itemprop="description") <strong itemprop="name">Socket.IO</strong> aims to make realtime apps possible in every browser and mobile device, blurring the differences between the different transport mechanisms.
 
-    section.document
-        article.document-editor
+    div.document
+        div.document-editor
             #editor.ace= document.text

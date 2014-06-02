@@ -1,5 +1,7 @@
 .banner {
   @include outer-container;
-  height: rem(450);
-  background: url("/images/trianglify.png") no-repeat;
+  @extend %sprite;
+  background-position: -5px -101px;
+  max-width: 1365px;
+  height: 450px;
 }

@@ -330,10 +330,15 @@ dl {
 .header-social li {
   display: inline-block; }
 
+.technologies-ifsp h2, .technologies-nodejs h2, .technologies-websockets h2 {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+
 .header-logo h1, .authentication .button {
   font-family: "Quicksand-Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
-.banner-content, .technologies .description, .information {
+.banner-content h2, .technologies .description, .information {
   font-family: "Quicksand-Regular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
 .technologies .title {
@@ -376,6 +381,9 @@ dl {
 
 .information-author {
   position: relative; }
+
+.header-social a, .banner, .technologies-ifsp .logo, .technologies-nodejs .logo, .technologies-websockets .logo {
+  background: url("/images/sprite.png") no-repeat; }
 
 header {
   width: 100%;
@@ -420,10 +428,10 @@ header {
     line-height: 60px; }
   .header-logo a {
     padding: 0 0 0 55px;
-    background: url("/images/logo-folhas.png") no-repeat;
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
-    transition: all 300ms; }
+    transition: all 300ms;
+    background: url("/images/logo-folhas.png") no-repeat; }
     .header-logo a:hover {
       background: url("/images/logo-folhas-hover.png") no-repeat; }
   @media screen and (max-width: 768px) {
@@ -471,17 +479,20 @@ header {
     width: 48px;
     height: 48px; }
   .header-social .header-social-facebook a {
-    background: url("/images/social/facebook.png") no-repeat; }
+    background-position: -5px -5px; }
     .header-social .header-social-facebook a:hover {
-      background: #3b5998 url("/images/social/facebook-hover.png") no-repeat; }
+      background-position: -63px -5px;
+      background-color: #3B5998; }
   .header-social .header-social-googleplus a {
-    background: url("/images/social/googleplus.png") no-repeat; }
+    background-position: -121px -5px; }
     .header-social .header-social-googleplus a:hover {
-      background: #d14836 url("/images/social/googleplus-hover.png") no-repeat; }
+      background-position: -179px -5px;
+      background-color: #D14836; }
   .header-social .header-social-twitter a {
-    background: url("/images/social/twitter.png") no-repeat; }
+    background-position: -710px -5px; }
     .header-social .header-social-twitter a:hover {
-      background: #00aced url("/images/social/twitter-hover.png") no-repeat; }
+      background-position: -768px -5px;
+      background-color: #00ACED; }
   @media screen and (max-width: 480px) {
     .header-social {
       display: none; } }
@@ -493,8 +504,9 @@ header {
   max-width: 85.375em;
   margin-left: auto;
   margin-right: auto;
-  height: 28.125rem;
-  background: url("/images/trianglify.png") no-repeat; }
+  background-position: -5px -101px;
+  max-width: 1365px;
+  height: 450px; }
   .banner:after {
     content: "";
     display: table;
@@ -505,11 +517,13 @@ header {
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%;
-  margin-left: 25.58941%;
-  font-size: 1.25rem;
-  color: white; }
+  margin-left: 25.58941%; }
   .banner-content:last-child {
     margin-right: 0; }
+  .banner-content h2 {
+    font-weight: normal;
+    font-size: 1.25rem;
+    color: white; }
   .banner-content img {
     margin: 5rem 0 2.5rem; }
   @media screen and (max-width: 768px) {
@@ -599,9 +613,30 @@ header {
   .technologies .title {
     font-weight: normal; }
 
+.technologies-ifsp .logo {
+  background-position: -237px -5px;
+  width: 150px;
+  height: 86px;
+  margin: 0 auto;
+  display: block; }
+
 @media screen and (max-width: 1024px) {
   .technologies-reactive-writing {
     margin-right: 0; } }
+
+.technologies-nodejs .logo {
+  width: 150px;
+  height: 41px;
+  background-position: -397px -5px;
+  margin: 0 auto;
+  display: block; }
+
+.technologies-websockets .logo {
+  width: 143px;
+  height: 43px;
+  background-position: -557px -5px;
+  margin: 0 auto;
+  display: block; }
 
 .document {
   max-width: 85.375em;
